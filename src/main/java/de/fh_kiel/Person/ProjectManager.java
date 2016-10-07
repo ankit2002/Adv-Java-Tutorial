@@ -5,4 +5,13 @@ package de.fh_kiel.Person;
  */
 public class ProjectManager extends Developer {
 
+    public float pmExp;
+
+    public void setPmExp(float exp){
+        pmExp = exp;
+    }
+
+    public float getPmExp(){
+        return pmExp;
+    }
 }

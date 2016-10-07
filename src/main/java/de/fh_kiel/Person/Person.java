@@ -2,8 +2,6 @@ package de.fh_kiel.Person;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
-
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -86,15 +84,6 @@ public class Person {
                 .append(this.getLast_Name(), otherObject.getLast_Name())
                 .append(this.getAge(), otherObject.getAge())
                 .isEquals();
-    }
-
-    // Main Method
-    public static void main(String args[]){
-        Person person = new Person("Amit","Nagar", LocalDate.of(1900,1,01),"Male");
-
-        System.out.println(person.getFirst_Name() + " " +person.getLast_Name() +" "+ person.getAge() +" "+ person.getGender());
-        System.out.println("tostring :" + person.toString());
-        System.out.println("Hash :" + person.hashCode());
     }
 }
 
