@@ -18,6 +18,8 @@ public class Person {
     private LocalDate d_o_b;
     private  String gender;
 
+    public Person(){}
+
     // Constructor
     public Person(String fName,String lName,LocalDate dob,String gen){
         first_Name = fName;
