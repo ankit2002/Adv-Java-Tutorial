@@ -1,4 +1,6 @@
 package de.fh_kiel.Person;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -19,8 +21,7 @@ public class Person {
         d_o_b = dob;
         gender = gen;
     }
-
-
+    
     // Getter Method for First Name
     public String getFirst_Name(){
         return this.first_Name;
@@ -36,8 +37,6 @@ public class Person {
         return this.gender;
     }
 
-
-
     // Getter Method for Age
     public int getAge() {
         LocalDate currentDate = LocalDate.now();
@@ -48,7 +47,7 @@ public class Person {
         }
     }
 
-
+    // Main Method
     public static void main(String args[]){
         Person person = new Person("Amit","Nagar", LocalDate.of(1988,2,05),"Male");
 
