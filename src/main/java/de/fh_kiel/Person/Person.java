@@ -10,12 +10,14 @@ public class Person {
     private String first_Name;
     private String last_Name;
     private LocalDate d_o_b;
+    private  String gender;
 
     // Constructor
-    public Person(String fName,String lName,LocalDate dob){
+    public Person(String fName,String lName,LocalDate dob,String gen){
         first_Name = fName;
         last_Name = lName;
         d_o_b = dob;
+        gender = gen;
     }
 
 
@@ -29,6 +31,12 @@ public class Person {
         return this.last_Name;
     }
 
+    // Getter Method for Last Name
+    public String getGender(){
+        return this.gender;
+    }
+
+
 
     // Getter Method for Age
     public int getAge() {
@@ -40,12 +48,10 @@ public class Person {
         }
     }
 
-    
-    public static void main(String args[]){
-        Person person = new Person("Amit","Nagar", LocalDate.of(1988,2,05));
 
-        System.out.println(person.getFirst_Name());
-        System.out.println(person.getLast_Name());
-        System.out.println(person.getAge());
+    public static void main(String args[]){
+        Person person = new Person("Amit","Nagar", LocalDate.of(1988,2,05),"Male");
+
+        System.out.println(person.getFirst_Name() + " " +person.getLast_Name() +" "+ person.getAge() +" "+ person.getGender());
     }
 }
