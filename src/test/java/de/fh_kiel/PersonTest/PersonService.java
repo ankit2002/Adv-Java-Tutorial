@@ -17,18 +17,17 @@ public class PersonService {
 
         de.fh_kiel.Person.PersonService ps = new de.fh_kiel.Person.PersonService();
 
-        Person p = ps.createDev("Ankit","Rra", LocalDate.of(1980,2,2),"mae",2,50000,new String[]{"java","c++","asp"});
-        ps.createDev("Rahu","Raa",LocalDate.of(1980,2,2),"mae",2,50000,new String[]{"java","c++","asp"});
-        ps.createDev("sud","Raas",LocalDate.of(1980,2,2),"mae",2,50000,new String[]{"java","c++","asp"});
-        ps.createPM("mkit","Rasa",LocalDate.of(1980,2,2),"mae",2,50000,new String[]{"java","c++","asp"},5);
-        ps.createPM("tnkit","Raf",LocalDate.of(1980,2,2),"mae",2,50000,new String[]{"java","c++","asp"},2);
+        Person p = ps.createDev("Alex","thor", LocalDate.of(1980,2,2),"male",2,5000,new String[]{"java","c++"});
+        ps.createDev("Amit","Nagar",LocalDate.of(1970,5,1),"male",2,4000,new String[]{"js","python"});
+        ps.createDev("tarun","sharma",LocalDate.of(1967,3,5),"mae",2,3000,new String[]{"c","asp.net"});
+        ps.createPM("Faiz","khan",LocalDate.of(1960,6,7),"mae",2,2000,new String[]{"ruby","asp"},5);
+        ps.createPM("Veer","Jaara",LocalDate.of(1970,2,9),"mae",2,1500,new String[]{"perl","c++"},2);
 
-
-        System.out.println("Result");
         ps.showShortedData();
         ps.searchPerson("Rahu","Raa","mae",LocalDate.of(1980,2,2));
-        assertEquals("fasdfasd",ps.createDev("Ankit","Rra", LocalDate.of(1980,2,2),"mae",2,50000,new String[]{"java","c++","asp"}),p);
 
+        // Object Check
+        assertEquals("fasdfasd",ps.createDev("Ankit","Rra", LocalDate.of(1980,2,2),"mae",2,50000,new String[]{"java","c++","asp"}),p);
     }
 
 }
