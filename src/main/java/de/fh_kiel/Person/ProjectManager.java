@@ -7,6 +7,10 @@ public class ProjectManager extends Developer {
 
     public float pmExp;
 
+    /*ProjectManager(float exp){
+        pmExp = exp;
+    }*/
+
     public void setPmExp(float exp){
         pmExp = exp;
     }

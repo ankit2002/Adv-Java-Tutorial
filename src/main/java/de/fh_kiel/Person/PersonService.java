@@ -6,17 +6,51 @@ import java.time.LocalDate;
  */
 public class PersonService {
 
+
+    public void showAllDev(){
+
+    }
+
+    public void showAllPM(){
+
+    }
+
+    public void searchPM(){
+
+    }
+
+    public void searchDev(){
+
+    }
+
+
+
+
     // Main Method
     public static void main(String args[]){
-        Person person = new Person("Amit","Nagar", LocalDate.of(1980,1,01),"Male");
+
+        ProjectManager[] projectManagers = new ProjectManager[5];
+
+        for (int i=0;i<5;i++){
+            ProjectManager pm = new ProjectManager();
+            pm.setFirst_Name("Amit"+i);
+            pm.setD_o_b(LocalDate.of(1980,i+1,2));
+            pm.setGender("Male");
+            pm.setLast_Name("Nagar");
+            pm.setWorkExp(3);
+            pm.setMin_Salary(220000);
+            String[] arr = {"java","jsp","loda","c++"};
+            pm.setProg_lang(arr);
+            pm.setPmExp(2);
+            projectManagers[i] = pm;
+        }
 
 
-        Developer developer = new Developer();
+        for (ProjectManager pm:projectManagers){
+            System.out.println(pm.toString());
+        }
 
 
-        System.out.println(person.getFirst_Name() + " " +person.getLast_Name() +" "+ person.getAge() +" "+ person.getGender());
-        System.out.println("tostring :" + person.toString());
-        System.out.println("Hash :" + person.hashCode()+"  "+developer.getFirst_Name());
     }
 
 }

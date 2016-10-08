@@ -16,16 +16,33 @@ public class Person {
     private LocalDate d_o_b;
     private  String gender;
 
-    public Person(){}
+//    public Person(){}
 
-    // Constructor
+    /*// Constructor
     public Person(String fName,String lName,LocalDate dob,String gen){
         first_Name = fName;
         last_Name = lName;
         d_o_b = dob;
         gender = gen;
+    }*/
+
+
+    public void setFirst_Name(String fName){
+        first_Name = fName;
     }
-    
+
+    public void setLast_Name(String lName){
+        last_Name = lName;
+    }
+
+    public void setD_o_b(LocalDate dob){
+        d_o_b = dob;
+    }
+
+    public void setGender(String gen){
+        gender = gen;
+    }
+
     // Getter Method for First Name
     public String getFirst_Name(){
         return this.first_Name;
@@ -56,6 +73,7 @@ public class Person {
                 append("Firstname", getFirst_Name()).
                 append("LastName", getLast_Name()).
                 append("Age", getAge()).
+                append("Gender",getGender()).
                 toString();
     }
 
@@ -66,6 +84,7 @@ public class Person {
                 .append(this.getFirst_Name())
                 .append(this.getLast_Name())
                 .append(this.getAge())
+                .append(this.getLast_Name())
                 .toHashCode();
     }
 
@@ -83,7 +102,7 @@ public class Person {
                 .append(this.getFirst_Name(), otherObject.getFirst_Name())
                 .append(this.getLast_Name(), otherObject.getLast_Name())
                 .append(this.getAge(), otherObject.getAge())
+                .append(this.getGender(),otherObject.getGender())
                 .isEquals();
     }
 }
-

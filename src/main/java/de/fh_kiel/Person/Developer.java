@@ -9,6 +9,16 @@ public class Developer extends Person {
     private double min_Salary;
     private String[] prog_lang;
 
+
+    /*public Developer(){}
+
+    public Developer(float workex,double min_Sal,String str[]){
+        workExp = workex;
+        min_Salary = min_Sal;
+        prog_lang = str;
+    }*/
+
+
     public void setWorkExp(float workex){
         workExp = workex;
     }
