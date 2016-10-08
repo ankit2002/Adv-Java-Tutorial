@@ -18,4 +18,8 @@ public class ProjectManager extends Developer {
     public float getPmExp(){
         return pmExp;
     }
+
+    public boolean checkExp(){
+       return this.getPmExp()<=super.getWorkExp();
+    }
 }

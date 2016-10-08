@@ -1,56 +1,84 @@
 package de.fh_kiel.Person;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.TreeSet;
+import java.util.function.Predicate;
+
 
 /**
  * Created by amit on 07.10.16.
  */
 public class PersonService {
 
+    ArrayList<Person> listPerson = new ArrayList<>();
 
-    public void showAllDev(){
+    public void searchPerson(String fname,String lname,String gender,LocalDate age){
 
+        TreeSet<Person> ts = shortedData();
+        Person p = new Person();
+        p.setFirst_Name(fname);
+        p.setLast_Name(lname);
+        p.setD_o_b(age);
+        p.setGender(gender);
+
+        if(ts.contains(p)){
+            System.out.println("Person Found");
+            System.out.println(p.toString());
+        }
+        else {
+            System.out.println("Person Not Found");
+        }
     }
 
-    public void showAllPM(){
 
+    private TreeSet<Person> shortedData(){
+        TreeSet<Person> ts = new TreeSet<>();
+        if(listPerson!=null){
+            ts.addAll(listPerson);
+        }
+        return ts;
     }
 
-    public void searchPM(){
-
+    public void showShortedData(){
+        for (Person p:shortedData()) {
+            System.out.println(p.toString());
+        }
     }
 
-    public void searchDev(){
-
+    public Person createDev(String fname,String lname,LocalDate dte,String gender,float workex,double min_Sal,String arr[]){
+        Developer obj = new Developer();
+        obj.setFirst_Name(fname);
+        obj.setD_o_b(dte);
+        obj.setGender(gender);
+        obj.setLast_Name(lname);
+        obj.setWorkExp(workex);
+        obj.setMin_Salary(min_Sal);
+        obj.setProg_lang(arr);
+        listPerson.add(obj);
+        return obj;
     }
 
+    public Person createPM(String fname,String lname,LocalDate dte,String gender,float workex,double min_Sal,String arr[],float pmExp){
 
-
-
-    // Main Method
-    public static void main(String args[]){
-
-        ProjectManager[] projectManagers = new ProjectManager[5];
-
-        for (int i=0;i<5;i++){
-            ProjectManager pm = new ProjectManager();
-            pm.setFirst_Name("Amit"+i);
-            pm.setD_o_b(LocalDate.of(1980,i+1,2));
-            pm.setGender("Male");
-            pm.setLast_Name("Nagar");
-            pm.setWorkExp(3);
-            pm.setMin_Salary(220000);
-            String[] arr = {"java","jsp","loda","c++"};
-            pm.setProg_lang(arr);
-            pm.setPmExp(2);
-            projectManagers[i] = pm;
+        if(pmExp<=workex){
+            ProjectManager obj = new ProjectManager();
+            obj.setFirst_Name(fname);
+            obj.setD_o_b(dte);
+            obj.setGender(gender);
+            obj.setLast_Name(lname);
+            obj.setWorkExp(workex);
+            obj.setMin_Salary(min_Sal);
+            obj.setProg_lang(arr);
+            obj.setPmExp(pmExp);
+            listPerson.add(obj);
+            return obj;
+        }else {
+            System.out.println("Exp is Greater");
         }
 
-
-        for (ProjectManager pm:projectManagers){
-            System.out.println(pm.toString());
-        }
-
-
+        return null;
     }
+
+
 
 }

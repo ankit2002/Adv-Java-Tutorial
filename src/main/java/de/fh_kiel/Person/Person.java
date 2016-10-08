@@ -9,7 +9,9 @@ import java.time.Period;
 /**
  * Created by Ankit on 10/4/2016.
  */
-public class Person {
+
+
+public class Person implements Comparable<Person> {
 
     private String first_Name;
     private String last_Name;
@@ -25,6 +27,11 @@ public class Person {
         d_o_b = dob;
         gender = gen;
     }*/
+
+    @Override
+    public int compareTo(Person o) {
+        return this.getFirst_Name().compareTo(o.getFirst_Name());
+    }
 
 
     public void setFirst_Name(String fName){
@@ -84,7 +91,7 @@ public class Person {
                 .append(this.getFirst_Name())
                 .append(this.getLast_Name())
                 .append(this.getAge())
-                .append(this.getLast_Name())
+                .append(this.getGender())
                 .toHashCode();
     }
 
@@ -105,4 +112,6 @@ public class Person {
                 .append(this.getGender(),otherObject.getGender())
                 .isEquals();
     }
+
+
 }
