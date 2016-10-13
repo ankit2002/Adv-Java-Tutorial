@@ -5,18 +5,22 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.io.*;
+import java.util.UUID;
 
 /**
  * Created by Ankit on 10/4/2016.
  */
 
 
-public class Person implements Comparable<Person> {
+public class Person implements Comparable<Person> , Serializable {
 
     private String first_Name;
     private String last_Name;
     private LocalDate d_o_b;
-    private  String gender;
+    private String gender;
+    private static final long serialVersionUID = 1L;
+    private long id;
 
 //    public Person(){}
 
@@ -50,6 +54,10 @@ public class Person implements Comparable<Person> {
         gender = gen;
     }
 
+    //public void setUniqueId(long id){
+      //  this.id = id;
+    //}
+
     // Getter Method for First Name
     public String getFirst_Name(){
         return this.first_Name;
@@ -74,6 +82,13 @@ public class Person implements Comparable<Person> {
             return 0;
         }
     }
+    //getter for unique id
+    public long getUniqueId(long id){
+        this.id = id;
+        System.out.println ("id : " + this.id);
+
+        return this.id;
+    }
 
     public String toString() {
         return new ToStringBuilder(this).
@@ -81,6 +96,7 @@ public class Person implements Comparable<Person> {
                 append("LastName", getLast_Name()).
                 append("Age", getAge()).
                 append("Gender",getGender()).
+                append("Id" ,id).
                 toString();
     }
 
@@ -92,6 +108,7 @@ public class Person implements Comparable<Person> {
                 .append(this.getLast_Name())
                 .append(this.getAge())
                 .append(this.getGender())
+                .append(this.id)
                 .toHashCode();
     }
 
@@ -110,6 +127,7 @@ public class Person implements Comparable<Person> {
                 .append(this.getLast_Name(), otherObject.getLast_Name())
                 .append(this.getAge(), otherObject.getAge())
                 .append(this.getGender(),otherObject.getGender())
+                .append(this.id,otherObject.id)
                 .isEquals();
     }
 
