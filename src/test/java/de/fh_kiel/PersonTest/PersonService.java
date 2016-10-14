@@ -6,6 +6,11 @@ import org.junit.Test;
 import java.time.LocalDate;
 import java.util.TreeSet;
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.*;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 /**
  * Created by Ankit on 10/8/2016.
@@ -27,7 +32,7 @@ public class PersonService {
         ps.searchPerson("Rahu","Raa","mae",LocalDate.of(1980,2,2));
 
         // Object Check
-        assertEquals("fasdfasd",ps.createDev("Ankit","Rra", LocalDate.of(1980,2,2),"mae",2,50000,new String[]{"java","c++","asp"}),p);
+        assertEquals(ps.createDev("Alex","thor", LocalDate.of(1980,2,2),"male",2,5000,new String[]{"java","c++"}),p);
     }
 
 }

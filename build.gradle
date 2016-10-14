@@ -23,6 +23,8 @@ dependencies {
     // The production code uses the SLF4J logging API at compile time
     compile 'org.slf4j:slf4j-api:1.7.21'
     compile 'org.apache.commons:commons-lang3:3.4'
+    repositories { jcenter() }
+    dependencies { testCompile "org.mockito:mockito-core:2.0.57-beta" }
 
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the
