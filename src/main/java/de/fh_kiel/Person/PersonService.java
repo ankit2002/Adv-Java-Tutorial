@@ -45,9 +45,10 @@ public class PersonService {
         }
     }
 
-    public Person createDev(String fname,String lname,LocalDate dte,String gender,float workex,double min_Sal,String arr[]){
+    public Person createDev(String fname, String lname, LocalDate dte, String gender, float workex, double min_Sal, String arr[]){
         Developer obj = new Developer();
-        obj.setFirst_Name(fname);
+//        obj.setFirst_Name(fname);
+        obj.firstName(fname);
         obj.setD_o_b(dte);
         obj.setGender(gender);
         obj.setLast_Name(lname);
@@ -58,11 +59,13 @@ public class PersonService {
         return obj;
     }
 
+
     public Person createPM(String fname,String lname,LocalDate dte,String gender,float workex,double min_Sal,String arr[],float pmExp){
 
         if(pmExp<=workex){
             ProjectManager obj = new ProjectManager();
-            obj.setFirst_Name(fname);
+//            obj.setFirst_Name(fname);
+            obj.firstName(fname);
             obj.setD_o_b(dte);
             obj.setGender(gender);
             obj.setLast_Name(lname);
@@ -80,5 +83,9 @@ public class PersonService {
     }
 
 
+
+    public ArrayList<Person> getAllPersons(){
+        return listPerson;
+    }
 
 }

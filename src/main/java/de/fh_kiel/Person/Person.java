@@ -11,22 +11,23 @@ import java.time.Period;
  */
 
 
-public class Person implements Comparable<Person> {
+public class Person implements Comparable<Person>,java.io.Serializable {
 
     private String first_Name;
     private String last_Name;
     private LocalDate d_o_b;
-    private  String gender;
+    private String gender;
+    private Long id;
 
-//    public Person(){}
+    public Person(){}
 
-    /*// Constructor
+    // Constructor
     public Person(String fName,String lName,LocalDate dob,String gen){
-        first_Name = fName;
-        last_Name = lName;
-        d_o_b = dob;
-        gender = gen;
-    }*/
+        this.first_Name = fName;
+        this.last_Name = lName;
+        this.d_o_b = dob;
+        this.gender = gen;
+    }
 
     @Override
     public int compareTo(Person o) {
@@ -35,19 +36,19 @@ public class Person implements Comparable<Person> {
 
 
     public void setFirst_Name(String fName){
-        first_Name = fName;
+        this.first_Name = fName;
     }
 
     public void setLast_Name(String lName){
-        last_Name = lName;
+        this.last_Name = lName;
     }
 
     public void setD_o_b(LocalDate dob){
-        d_o_b = dob;
+        this.d_o_b = dob;
     }
 
     public void setGender(String gen){
-        gender = gen;
+        this.gender = gen;
     }
 
     // Getter Method for First Name
@@ -64,6 +65,12 @@ public class Person implements Comparable<Person> {
     public String getGender(){
         return this.gender;
     }
+
+    public Person firstName(String fName){
+        this.first_Name = fName;
+        return this;
+    }
+
 
     // Getter Method for Age
     public int getAge() {
@@ -112,6 +119,4 @@ public class Person implements Comparable<Person> {
                 .append(this.getGender(),otherObject.getGender())
                 .isEquals();
     }
-
-
 }

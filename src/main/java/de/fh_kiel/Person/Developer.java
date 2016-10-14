@@ -10,38 +10,41 @@ public class Developer extends Person {
     private String[] prog_lang;
 
 
-    /*public Developer(){}
+    public Developer(){}
+
 
     public Developer(float workex,double min_Sal,String str[]){
-        workExp = workex;
-        min_Salary = min_Sal;
-        prog_lang = str;
-    }*/
+        this.workExp = workex;
+        this.min_Salary = min_Sal;
+        this.prog_lang = str;
+    }
 
+    /*
+    * getter and Setter Method of the class Variables
+    */
 
     public void setWorkExp(float workex){
-        workExp = workex;
-    }
-
-    public void setMin_Salary(double min_Sal){
-        min_Salary = min_Sal;
-    }
-
-    public void setProg_lang(String str[]){
-        prog_lang = str;
+        this.workExp = workex;
     }
 
     public float getWorkExp(){
-        return workExp;
+        return this.workExp;
+    }
+
+    public void setMin_Salary(double min_Sal){
+        this.min_Salary = min_Sal;
     }
 
     public double getMin_Salary(){
-        return min_Salary;
+        return this.min_Salary;
+    }
+
+    public void setProg_lang(String str[]){
+        this.prog_lang = str;
     }
 
     public String[] getProg_lang(){
-        String str[] = {"1","2"};
-        return str;
+        return this.prog_lang;
     }
 
 }

@@ -11,6 +11,7 @@ public class ProjectManager extends Developer {
         pmExp = exp;
     }*/
 
+    // Getter and Setter of the variables
     public void setPmExp(float exp){
         pmExp = exp;
     }
@@ -19,6 +20,7 @@ public class ProjectManager extends Developer {
         return pmExp;
     }
 
+    // Method to check EXP
     public boolean checkExp(){
        return this.getPmExp()<=super.getWorkExp();
     }
