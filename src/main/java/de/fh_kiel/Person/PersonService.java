@@ -2,6 +2,7 @@ package de.fh_kiel.Person;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.TreeSet;
+import java.util.UUID;
 import java.util.function.Predicate;
 
 
@@ -14,12 +15,17 @@ public class PersonService {
 
     public void searchPerson(String fname,String lname,String gender,LocalDate age){
 
+        long uniqueId;
         TreeSet<Person> ts = shortedData();
         Person p = new Person();
         p.setFirst_Name(fname);
         p.setLast_Name(lname);
         p.setD_o_b(age);
         p.setGender(gender);
+        // Added call to generate unique random id
+        uniqueId = UUID.randomUUID().getMostSignificantBits();
+        p.getUniqueId(uniqueId);
+        System.out.println("main : " + p.getUniqueId(uniqueId));
 
         if(ts.contains(p)){
             System.out.println("Person Found");
