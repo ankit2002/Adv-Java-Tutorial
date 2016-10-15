@@ -2,6 +2,7 @@ package de.fh_kiel.Person;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.CompareToBuilder;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -20,23 +21,27 @@ public class Person implements Comparable<Person> , Serializable {
     private String last_Name;
     private LocalDate d_o_b;
     private String gender;
-
-    private static final long serialVersionUID = 1L;
     private long id;
 
-    public Person(){}
 
     // Constructor
-    public Person(String fName,String lName,LocalDate dob,String gen){
+    public Person(String fName,String lName,LocalDate dob,String gen,long id){
         this.first_Name = fName;
         this.last_Name = lName;
         this.d_o_b = dob;
         this.gender = gen;
+        this.id = id;
+    }
+
+    // default constructor
+    public Person(){
+
     }
 
     @Override
-    public int compareTo(Person o) {
-        return this.getFirst_Name().compareTo(o.getFirst_Name());
+    public int compareTo(final Person o) {
+        // return this.getFirst_Name().compareTo(o.getFirst_Name());
+        return new CompareToBuilder().append(this.last_Name, o.last_Name).append(this.first_Name, o.first_Name).toComparison();
     }
 
 
@@ -52,13 +57,13 @@ public class Person implements Comparable<Person> , Serializable {
         this.d_o_b = dob;
     }
 
+    public LocalDate getD_o_b(){
+        return this.d_o_b;
+    }
+
     public void setGender(String gen){
         this.gender = gen;
     }
-
-    //public void setUniqueId(long id){
-      //  this.id = id;
-    //}
 
     // Getter Method for First Name
     public String getFirst_Name(){
@@ -75,11 +80,11 @@ public class Person implements Comparable<Person> , Serializable {
         return this.gender;
     }
 
+    // Another way to do
     public Person firstName(String fName){
         this.first_Name = fName;
         return this;
     }
-
 
     // Getter Method for Age
     public int getAge() {
@@ -90,11 +95,31 @@ public class Person implements Comparable<Person> , Serializable {
             return 0;
         }
     }
+
+    // getter for ID
+    public long getId() {
+        return id;
+    }
+
+    // Setter for ID
+    public void setId(long id) {
+        this.id = id;
+    }
+
+
+    // update personData
+    public Person updatePersonData(String fName,String lName,LocalDate dob,String gen) {
+        this.first_Name = fName;
+        this.last_Name = lName;
+        this.d_o_b = dob;
+        this.gender = gen;
+        return this;
+    }
+
     //getter for unique id
     public long getUniqueId(long id){
         this.id = id;
         System.out.println ("id : " + this.id);
-
         return this.id;
     }
 
@@ -104,7 +129,7 @@ public class Person implements Comparable<Person> , Serializable {
                 append("LastName", getLast_Name()).
                 append("Age", getAge()).
                 append("Gender",getGender()).
-                append("Id" ,id).
+                append("Id" ,getId()).
                 toString();
     }
 
@@ -116,7 +141,7 @@ public class Person implements Comparable<Person> , Serializable {
                 .append(this.getLast_Name())
                 .append(this.getAge())
                 .append(this.getGender())
-                .append(this.id)
+                .append(this.getId())
                 .toHashCode();
     }
 
@@ -135,7 +160,7 @@ public class Person implements Comparable<Person> , Serializable {
                 .append(this.getLast_Name(), otherObject.getLast_Name())
                 .append(this.getAge(), otherObject.getAge())
                 .append(this.getGender(),otherObject.getGender())
-                .append(this.id,otherObject.id)
+                .append(this.getId(),otherObject.getId())
                 .isEquals();
     }
 }
