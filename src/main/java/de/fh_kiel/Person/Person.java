@@ -4,6 +4,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 
+import java.lang.annotation.Documented;
+import java.lang.annotation.Inherited;
 import java.time.LocalDate;
 import java.time.Period;
 import java.io.*;
@@ -14,7 +16,7 @@ import java.util.UUID;
  */
 
 
-
+@Boilerplate(fName = "test", lName = "test", gen = "Female", getAge = 28, workex = 2, min_Sal = 1000, exp = 5)
 public class Person implements Comparable<Person> , Serializable {
 
     private String first_Name;

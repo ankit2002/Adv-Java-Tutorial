@@ -1,5 +1,7 @@
 package de.fh_kiel.PersonTest;
+import de.fh_kiel.*;
 import de.fh_kiel.Exception.PersonNotFound;
+import de.fh_kiel.Person.Boilerplate;
 import de.fh_kiel.Person.Developer;
 import de.fh_kiel.Person.Person;
 import de.fh_kiel.Person.PersonService;
@@ -12,6 +14,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
+import java.lang.annotation.*;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashSet;
@@ -39,11 +42,29 @@ public class PersonServiceTest {
         personService = new PersonService(personDAO);
 
 
-        Developer developer1 = new Developer("Mo", "Farah", LocalDate.of(1983, 10, 10), "Male", 1,1, 100000);
-        developer1.addProgrammingLanguage("Java");
 
-        Developer developer2 = new Developer("Mofdsa", "test", LocalDate.of(1989, 10, 02), "Female", 2,1, 100000);
+       // Developer developer1 = new Developer("Mo", "Farah", LocalDate.of(1983, 10, 10), "Male", 1,1, 100000);
+        //developer1.addProgrammingLanguage("Java");
+        Developer developer1 = new Developer();
+        System.out.println("default: " + developer1);
+        Class pc = developer1.getClass();
+        Annotation ann = pc.getAnnotation(Boilerplate.class);
+        System.out.println("class obj :" + pc);
+        System.out.println("ann obj :" + ann);
+        Boilerplate bl = (Boilerplate) ann;
+        System.out.println("obj1 :" + bl.fName());
+        System.out.println("obj1 :" + bl.lName());
+        System.out.println("obj1 :" + bl.getAge());
+        System.out.println("obj1 :" + bl.exp());
+        System.out.println("obj1 :" + bl.workex());
+        System.out.println("obj1 :" + bl.min_Sal());
+
+
+        Developer developer2 = new Developer(bl.fName(), bl.lName(), LocalDate.of(1989, 10, 02), bl.gen(), 2,bl.workex(), bl.min_Sal());
         developer2.addProgrammingLanguage("CPP");
+        System.out.println("sample: " + developer2);
+
+
 
         all.add(developer1);
         all.add(developer2);
