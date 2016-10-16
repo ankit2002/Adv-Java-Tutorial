@@ -3,6 +3,9 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.CompareToBuilder;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
@@ -15,7 +18,8 @@ import java.util.UUID;
  * Created by Ankit on 10/4/2016.
  */
 
-
+@ToString
+@EqualsAndHashCode
 @Boilerplate(fName = "test", lName = "test", gen = "Female", getAge = 28, workex = 2, min_Sal = 1000, exp = 5)
 public class Person implements Comparable<Person> , Serializable {
 
