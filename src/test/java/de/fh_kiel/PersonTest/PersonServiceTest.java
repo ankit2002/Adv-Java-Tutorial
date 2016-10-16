@@ -43,34 +43,24 @@ public class PersonServiceTest {
 
 
 
-       // Developer developer1 = new Developer("Mo", "Farah", LocalDate.of(1983, 10, 10), "Male", 1,1, 100000);
-        //developer1.addProgrammingLanguage("Java");
-        Developer developer1 = new Developer();
-        System.out.println("default: " + developer1);
-        Class pc = developer1.getClass();
-        Annotation ann = pc.getAnnotation(Boilerplate.class);
-        System.out.println("class obj :" + pc);
-        System.out.println("ann obj :" + ann);
-        Boilerplate bl = (Boilerplate) ann;
-        System.out.println("obj1 :" + bl.fName());
-        System.out.println("obj1 :" + bl.lName());
-        System.out.println("obj1 :" + bl.getAge());
-        System.out.println("obj1 :" + bl.exp());
-        System.out.println("obj1 :" + bl.workex());
-        System.out.println("obj1 :" + bl.min_Sal());
+       Developer developer1 = new Developer("Mo", "Farah", LocalDate.of(1983, 10, 10), "Male", 1,1, 100000);
+        developer1.addProgrammingLanguage("Java");
+
+        //Applying reflection on annotation.
 
 
-        Developer developer2 = new Developer(bl.fName(), bl.lName(), LocalDate.of(1989, 10, 02), bl.gen(), 2,bl.workex(), bl.min_Sal());
-        developer2.addProgrammingLanguage("CPP");
-        System.out.println("sample: " + developer2);
+
+//        Developer developer2 = new Developer(bl.fName(), bl.lName(), LocalDate.of(1989, 10, 02), bl.gen(), 2,bl.workex(), bl.min_Sal());
+  //      developer2.addProgrammingLanguage("CPP");
+     //   System.out.println("sample: " + developer2);
 
 
 
         all.add(developer1);
-        all.add(developer2);
+      //  all.add(developer2);
 
         personService.createPerson(developer1);
-        personService.createPerson(developer2);
+       // personService.createPerson(developer2);
     }
 
 
@@ -111,6 +101,28 @@ public class PersonServiceTest {
         when(test.getAllPersonsSize()).thenReturn(2);
         // use mock in test....
         assertEquals(test.getAllPersonsSize(), 2);
+    }
+
+    @Test
+    public void testannotations(){
+        Developer developer1 = new Developer();
+
+
+        System.out.println("default: " + developer1);
+        Class pc = developer1.getClass();
+        Annotation ann = pc.getAnnotation(Boilerplate.class);
+        System.out.println("class obj :" + pc);
+        System.out.println("ann obj :" + ann);
+        Boilerplate bl = (Boilerplate) ann;
+        System.out.println("obj1 :" + bl.fName());
+        System.out.println("obj1 :" + bl.lName());
+        System.out.println("obj1 :" + bl.getAge());
+        System.out.println("obj1 :" + bl.exp());
+        System.out.println("obj1 :" + bl.workex());
+        System.out.println("obj1 :" + bl.min_Sal());
+        Developer developer2 = new Developer(bl.fName(), bl.lName(), LocalDate.of(1989, 10, 02), bl.gen(), 2,bl.workex(), bl.min_Sal());
+              developer2.addProgrammingLanguage("CPP");
+           System.out.println("sample: " + developer2);
     }
 
 
