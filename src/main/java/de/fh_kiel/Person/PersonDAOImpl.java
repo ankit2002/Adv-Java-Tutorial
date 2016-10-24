@@ -1,8 +1,4 @@
-package de.fh_kiel.PersonDAO;
-import de.fh_kiel.Exception.PersonNotFound;
-import de.fh_kiel.Person.Developer;
-import de.fh_kiel.Person.Person;
-import de.fh_kiel.Person.ProjectManager;
+package de.fh_kiel.Person;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -50,7 +46,7 @@ public class PersonDAOImpl implements PersonDAO {
 
         if( person != null )
         {
-            person.updatePersonData(p.getFirst_Name(),p.getLast_Name(),p.getD_o_b(),p.getGender());
+           // person.updatePersonData(p.getFirst_Name(),p.getLast_Name(),p.getD_o_b(),p.getGender());
             return true;
         }
         else
@@ -113,47 +109,4 @@ public class PersonDAOImpl implements PersonDAO {
             System.out.println(p.toString());
         }
     }
-
-    //Creating Developer
-   /* public Person createDev(String fname, String lname, LocalDate dte, String gender, float workex, double min_Sal, String arr[]){
-        Developer obj = new Developer();
-        obj.firstName(fname);
-        obj.setD_o_b(dte);
-        obj.setGender(gender);
-        obj.setLast_Name(lname);
-        obj.setWorkExp(workex);
-        obj.setMin_Salary(min_Sal);
-        // adding programming langauge to HashSet
-        for(String a:arr){
-            obj.addProgrammingLanguage(a);
-        }
-        this.listPerson.add(obj);
-        return obj;
-    }*/
-
-
-    // Created Project Meanager
-    /*public Person createPM(String fname,String lname,LocalDate dte,String gender,float workex,double min_Sal,String arr[],float pmExp){
-
-        if(pmExp<=workex){
-            ProjectManager obj = new ProjectManager();
-            obj.firstName(fname);
-            obj.setD_o_b(dte);
-            obj.setGender(gender);
-            obj.setLast_Name(lname);
-            obj.setWorkExp(workex);
-            obj.setMin_Salary(min_Sal);
-            obj.setPmExp(pmExp);
-
-            // adding programming langauge to HashSet
-            for(String a:arr){
-                obj.addProgrammingLanguage(a);
-            }
-            this.listPerson.add(obj);
-            return obj;
-        }else {
-            System.out.println("Exp is Greater");
-        }
-        return null;
-    }*/
 }

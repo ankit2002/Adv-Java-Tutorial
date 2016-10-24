@@ -8,29 +8,95 @@
  */
 
 // Apply the java plugin to add support for Java
+
 apply plugin: 'java'
 apply plugin: 'idea'
-
 
 // In this section you declare where to find the dependencies of your project
 repositories {
     // Use 'jcenter' for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+    mavenCentral()
 }
 
-// In this section you declare the dependencies for your production and test code
-dependencies {
-    // The production code uses the SLF4J logging API at compile time
-    compile 'org.slf4j:slf4j-api:1.7.21'
+subprojects{
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    repositories {
+        mavenLocal()
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies{
+
+        compile 'org.apache.commons:commons-lang3:3.4'
+
+        testCompile('junit:junit:4.+') {
+            exclude group: 'org.hamcrest'
+        }
+        testCompile 'org.hamcrest:hamcrest-all:1.+'
+        testCompile "org.mockito:mockito-core:1.+"
+    }
+
+    group 'de.fh_kiel'
+    version '1.0'
+}
+
+project (':BoilerPlate_Processor') {
+
+    dependencies {
+        compile project(':BoilerPlate_Annotation')
+
+        compile 'com.squareup:javapoet:1.7.+'
+    }
+}
+
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/generated', 'src/main/java']
+        }
+    }
+}
+
+
+dependencies{
     compile 'org.apache.commons:commons-lang3:3.4'
-    compile "org.projectlombok:lombok:1.16.2"
 
+    compile project(':BoilerPlate_Annotation')
+    compile project(':BoilerPlate_Processor')
 
-    // Declare the dependency for your favourite test framework you want to use in your tests.
-    // TestNG is also supported by the Gradle Test task. Just change the
-    // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add
-    // 'test.useTestNG()' to your build script.
-    testCompile 'junit:junit:4.12'
-    testCompile "org.mockito:mockito-core:1.+"
+    testCompile('org.mockito:mockito-core:1.10.+') {
+        exclude group: 'org.hamcrest'
+    }
+
+    testCompile('junit:junit:4.+') {
+        exclude group: 'org.hamcrest'
+    }
 }
+
+
+task runProcessor(type: JavaCompile, group: 'build', description: 'generates classes including ' +
+        'the boilerplate code') {
+    source = sourceSets.main.java
+    classpath = configurations.compile
+    options.compilerArgs = [
+            "-proc:only",
+            "-processor", "de.fh_kiel.annotation_processor.BoilerPlateProcessor"
+    ]
+    destinationDir = sourceSets.main.java.srcDirs.iterator().next()
+}
+
+compileJava {
+    dependsOn runProcessor
+}
+
+clean {
+    delete sourceSets.main.java.srcDirs.iterator().next()
+}
+

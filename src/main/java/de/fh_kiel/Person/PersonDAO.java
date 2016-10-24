@@ -1,6 +1,4 @@
-package de.fh_kiel.PersonDAO;
-import de.fh_kiel.Exception.PersonNotFound;
-import de.fh_kiel.Person.Person;
+package de.fh_kiel.Person;
 
 import java.util.Collection;
 

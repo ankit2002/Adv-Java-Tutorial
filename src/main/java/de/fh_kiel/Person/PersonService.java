@@ -1,9 +1,6 @@
 package de.fh_kiel.Person;
-import de.fh_kiel.PersonDAO.PersonDAO;
 
-import java.time.LocalDate;
 import java.util.*;
-import java.util.function.Predicate;
 
 
 /**

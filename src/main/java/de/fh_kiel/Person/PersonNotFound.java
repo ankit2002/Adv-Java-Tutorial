@@ -1,4 +1,4 @@
-package de.fh_kiel.Exception;
+package de.fh_kiel.Person;
 
 /**
  * Created by Ankit on 10/15/2016.
