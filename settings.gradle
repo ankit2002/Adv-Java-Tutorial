@@ -17,5 +17,5 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'Adv Java'
+rootProject.name = 'teamDelta'
 include "BoilerPlate_Annotation","BoilerPlate_Processor"
