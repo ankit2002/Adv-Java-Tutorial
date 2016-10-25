@@ -8,6 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.lang.annotation.Target;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -74,6 +75,7 @@ public class PersonServiceTest {
         projectManager.setProg_lang(new HashSet<>(Arrays.asList("Javascript","VBa","C#")));
     }
 
+
     @Test
     public void listPersons() {
 
@@ -112,5 +114,4 @@ public class PersonServiceTest {
 
         verify(mockPersonDAO, times(3)).getAllPersons();
     }
-
 }

@@ -17,28 +17,27 @@ public interface CompanyDAO {
      *
      * @return
      */
-    public Collection<Company> getAllCompanys();
+    public Collection<Company> getAllCompanies();
 
     /**
      *
      * @param id
      * @return
-     * @throws PersonNotFound
      */
-    public Person getCompany(long id);
+    public Company getCompanyById(long id) throws CompanyNotFound;
 
     /**
      * updatedPerson
      * @param company
      * @return
      */
-    public void updateCompanynfo(Company company) throws Exception;
+    public void updateCompanyInfo(Company company) throws Exception;
 
     /**
      * deletePerson
      * @param company
      * @return
      */
-    public boolean deleteCompany(Company company);
+    public void deleteCompany(Company company);
 
 }
