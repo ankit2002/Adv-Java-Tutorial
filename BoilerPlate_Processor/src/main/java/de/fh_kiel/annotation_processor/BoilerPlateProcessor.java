@@ -74,6 +74,7 @@ public class BoilerPlateProcessor extends AbstractProcessor {
                         .addModifiers(Modifier.PUBLIC)
                         .returns(TypeName.VOID)
                         .addParameter(TypeName.get(elemloop.asType()),fieldSpec.name,Modifier.FINAL)
+                        .addStatement("this.$N = $N", fieldSpec.name, fieldSpec.name)
                         .build();
                 allGettersAndSetters.add(setter);
             }

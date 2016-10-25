@@ -1,6 +1,5 @@
-package de.fh_kiel.Person;
+package de.fh_kiel.person;
 
-import de.fh_kiel.Person;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -10,7 +9,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @Generated("annotation processor")
-public class ProjectManager extends Person.Developer {
+public class ProjectManager extends Developer {
   public float pmExp;
 
   public ProjectManager() {
@@ -25,6 +24,7 @@ public class ProjectManager extends Person.Developer {
   }
 
   public void setPmExp(final float pmExp) {
+    this.pmExp = pmExp;
   }
 
   @Override

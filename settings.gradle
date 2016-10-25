@@ -18,4 +18,4 @@ include 'services:webservice'
 */
 
 rootProject.name = 'Adv Java'
-include "BoilerPlate_Annotation","BoilerPlate_Processor"//,"tsmp"
+include "BoilerPlate_Annotation","BoilerPlate_Processor"

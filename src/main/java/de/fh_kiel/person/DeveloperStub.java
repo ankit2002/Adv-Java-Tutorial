@@ -1,4 +1,4 @@
-package de.fh_kiel.Person;
+package de.fh_kiel.person;
 import de.fh_kiel.annotation.BoilerPlate;
 
 import java.util.HashSet;
@@ -12,7 +12,7 @@ public class DeveloperStub extends PersonStub {
 
     private float workExp;
     private double min_Salary;
-    private final Set<String> prog_lang = new HashSet<>();
+    private Set<String> prog_lang = new HashSet<>();
 
 /*
     public void removeProgrammingLanguage(String programmingLanguage) {

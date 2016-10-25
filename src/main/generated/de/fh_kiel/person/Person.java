@@ -1,4 +1,4 @@
-package de.fh_kiel.Person;
+package de.fh_kiel.person;
 
 import java.io.Serializable;
 import java.lang.Object;
@@ -38,6 +38,7 @@ public class Person implements Serializable {
   }
 
   public void setFirst_Name(final String first_Name) {
+    this.first_Name = first_Name;
   }
 
   public String getLast_Name() {
@@ -45,6 +46,7 @@ public class Person implements Serializable {
   }
 
   public void setLast_Name(final String last_Name) {
+    this.last_Name = last_Name;
   }
 
   public LocalDate getD_o_b() {
@@ -52,6 +54,7 @@ public class Person implements Serializable {
   }
 
   public void setD_o_b(final LocalDate d_o_b) {
+    this.d_o_b = d_o_b;
   }
 
   public String getGender() {
@@ -59,6 +62,7 @@ public class Person implements Serializable {
   }
 
   public void setGender(final String gender) {
+    this.gender = gender;
   }
 
   public long getId() {
@@ -66,6 +70,7 @@ public class Person implements Serializable {
   }
 
   public void setId(final long id) {
+    this.id = id;
   }
 
   @Override

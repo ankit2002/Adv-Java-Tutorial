@@ -1,4 +1,4 @@
-package de.fh_kiel.Person;
+package de.fh_kiel.person;
 
 import java.util.*;
 
@@ -37,6 +37,7 @@ public class PersonService {
     public boolean updatePerson(Person person) {
        return personDAO.updatedPerson(person);
     }
+
 
     // Delete Person
     public boolean deletePerson(Person person){

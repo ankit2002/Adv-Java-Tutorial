@@ -1,6 +1,5 @@
-package de.fh_kiel.Person;
+package de.fh_kiel.person;
 
-import de.fh_kiel.Person;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -11,12 +10,12 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 @Generated("annotation processor")
-public class Developer extends Person.Person {
+public class Developer extends Person {
   private float workExp;
 
   private double min_Salary;
 
-  private final Set<String> prog_lang;
+  private Set<String> prog_lang;
 
   public Developer() {
   }
@@ -32,6 +31,7 @@ public class Developer extends Person.Person {
   }
 
   public void setWorkExp(final float workExp) {
+    this.workExp = workExp;
   }
 
   public double getMin_Salary() {
@@ -39,6 +39,7 @@ public class Developer extends Person.Person {
   }
 
   public void setMin_Salary(final double min_Salary) {
+    this.min_Salary = min_Salary;
   }
 
   public Set<String> getProg_lang() {
@@ -46,6 +47,7 @@ public class Developer extends Person.Person {
   }
 
   public void setProg_lang(final Set<String> prog_lang) {
+    this.prog_lang = prog_lang;
   }
 
   @Override

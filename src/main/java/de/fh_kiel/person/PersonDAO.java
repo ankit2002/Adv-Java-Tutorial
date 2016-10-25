@@ -1,4 +1,4 @@
-package de.fh_kiel.Person;
+package de.fh_kiel.person;
 
 import java.util.Collection;
 

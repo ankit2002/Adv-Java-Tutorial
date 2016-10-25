@@ -1,4 +1,4 @@
-package de.fh_kiel.Person;
+package de.fh_kiel.person;
 import de.fh_kiel.annotation.BoilerPlate;
 import java.time.LocalDate;
 import java.time.Period;
