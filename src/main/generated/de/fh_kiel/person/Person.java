@@ -18,14 +18,14 @@ public class Person implements Serializable {
 
   private LocalDate d_o_b;
 
-  private String gender;
+  private Gender gender;
 
   private long id;
 
   public Person() {
   }
 
-  public Person(final String first_Name, final String last_Name, final LocalDate d_o_b, final String gender, final long id) {
+  public Person(final String first_Name, final String last_Name, final LocalDate d_o_b, final Gender gender, final long id) {
     this.first_Name = first_Name;
     this.last_Name = last_Name;
     this.d_o_b = d_o_b;
@@ -57,11 +57,11 @@ public class Person implements Serializable {
     this.d_o_b = d_o_b;
   }
 
-  public String getGender() {
+  public Gender getGender() {
     return this.gender;
   }
 
-  public void setGender(final String gender) {
+  public void setGender(final Gender gender) {
     this.gender = gender;
   }
 

@@ -78,6 +78,7 @@ dependencies{
     testCompile('junit:junit:4.+') {
         exclude group: 'org.hamcrest'
     }
+    testCompile 'org.hamcrest:hamcrest-all:1.+'
 }
 
 

@@ -46,7 +46,7 @@ public class PersonDAOImpl implements PersonDAO {
 
         if( person != null )
         {
-           // person.updatePersonData(p.getFirst_Name(),p.getLast_Name(),p.getD_o_b(),p.getGender());
+//            person.updatePersonData(p.getFirst_Name(),p.getLast_Name(),p.getD_o_b(),p.getGender());
             return true;
         }
         else
@@ -78,7 +78,7 @@ public class PersonDAOImpl implements PersonDAO {
 
 
     // Searching Method
-    public void searchPerson(String fname,String lname,String gender,LocalDate age){
+    public void searchPerson(String fname,String lname,Gender gender,LocalDate age){
         TreeSet<Person> ts = sortedData();
         Person p = new Person();
         p.setFirst_Name(fname);

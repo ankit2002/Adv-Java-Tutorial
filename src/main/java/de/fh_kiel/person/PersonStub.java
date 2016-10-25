@@ -14,7 +14,7 @@ public class PersonStub implements Serializable {
     private String first_Name;
     private String last_Name;
     private LocalDate d_o_b;
-    private String gender;
+    private Gender gender;
     private long id;
 
     // Getter Method for Age
@@ -28,7 +28,7 @@ public class PersonStub implements Serializable {
     }
 
     // update personData
-    public PersonStub updatePersonData(String fName, String lName, LocalDate dob, String gen) {
+    public PersonStub updatePersonData(String fName, String lName, LocalDate dob, Gender gen) {
         this.first_Name = fName;
         this.last_Name = lName;
         this.d_o_b = dob;
