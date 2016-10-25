@@ -1,5 +1,7 @@
 package de.fh_kiel.person;
 
+import org.apache.commons.lang3.builder.CompareToBuilder;
+
 import java.time.LocalDate;
 import java.util.*;
 
@@ -10,7 +12,6 @@ import java.util.*;
 public class PersonDAOImpl implements PersonDAO {
 
 
-//    ArrayList<Person> listPerson = new ArrayList<>();
     private final HashSet<Person> listPerson = new HashSet<>();
 
     @Override
@@ -35,24 +36,26 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
     @Override
-    public boolean updatedPerson(Person p) {
+    public void updatePerson(Person p) throws Exception {
 
         Person person = null;
         try{
             person = getPerson(p.getId());
         }catch (PersonNotFound personNotFound){
-            System.out.println("Person not Found");
+            throw new Exception(personNotFound.toString());
         }
 
         if( person != null )
         {
-//            person.updatePersonData(p.getFirst_Name(),p.getLast_Name(),p.getD_o_b(),p.getGender());
-            return true;
+            // Updated
+            person.setFirst_Name(p.getFirst_Name());
+            person.setLast_Name(p.getLast_Name());
+            person.setD_o_b(p.getD_o_b());
+            person.setGender(p.getGender());
         }
         else
         {
-            System.out.println("Cant not update");
-            return false;
+            throw new Exception("Person can not updated");
         }
     }
 
@@ -75,16 +78,17 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
 
-
-
-    // Searching Method
-    public void searchPerson(String fname,String lname,Gender gender,LocalDate age){
+    /**
+     * // Search Person using First Name & Last Name
+     * @param fname
+     * @param lname
+     *
+     */
+    public void searchPerson(String fname,String lname){
         TreeSet<Person> ts = sortedData();
         Person p = new Person();
         p.setFirst_Name(fname);
         p.setLast_Name(lname);
-        p.setD_o_b(age);
-        p.setGender(gender);
 
         if(ts.contains(p)){
             System.out.println("Person Found" + p.toString());
@@ -95,7 +99,10 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
 
-    // Sorted Data
+    /**
+     * Sort Data
+     * @return
+     */
     private TreeSet<Person> sortedData(){
         TreeSet<Person> ts = new TreeSet<>();
         if(this.listPerson!=null){
@@ -103,10 +110,45 @@ public class PersonDAOImpl implements PersonDAO {
         }
         return ts;
     }
-    // Display Sorted Data
+
+    /**
+     * Display Sorted Data
+     */
     public void showSortedData(){
         for (Person p:sortedData()) {
             System.out.println(p.toString());
         }
     }
+
+
+    /**
+     * Get Person By Programming Language
+     * @param programmingLanguage
+     * @return
+     */
+    public Collection<Person> getPersonByProgLang(final String programmingLanguage) {
+        final Collection<Person> result = new TreeSet<>(new Comparator<Person>() {
+            @Override
+            public int compare(final Person o1, final Person o2) {
+                return new CompareToBuilder().append(o1.getLast_Name(), o2.getLast_Name()).append
+                        (o1.getFirst_Name(), o2.getFirst_Name()).toComparison();
+            }
+        });
+
+        for (final Person person : getAllPersons()) {
+            if (!(person instanceof Developer)) {
+                continue;
+            }
+
+            final Developer developer = (Developer) person;
+            for (final String currProgrammingLanguage : developer.getProg_lang()) {
+                if (currProgrammingLanguage.equals(programmingLanguage)) {
+                    result.add(developer);
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
 }

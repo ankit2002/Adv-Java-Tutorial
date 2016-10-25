@@ -7,19 +7,37 @@ import java.util.Collection;
  */
 public interface PersonDAO {
 
-
-    // Method to create Person
+    /**
+     *
+     * @param p
+     */
     public void createPerson(Person p);
 
-    // Method to get All Person
+    /**
+     *
+     * @return
+     */
     public Collection<Person> getAllPersons();
 
-    // Method to get Person
+    /**
+     *
+     * @param id
+     * @return
+     * @throws PersonNotFound
+     */
     public Person getPerson(long id) throws PersonNotFound;
 
-    // Method to create Person
-    public boolean updatedPerson(Person p);
+    /**
+     * updatedPerson
+     * @param p
+     * @return
+     */
+    public void updatePerson(Person p) throws Exception;
 
-    // Method to deletePerson
+    /**
+     * deletePerson
+     * @param p
+     * @return
+     */
     public boolean deletePerson(Person p);
 }
