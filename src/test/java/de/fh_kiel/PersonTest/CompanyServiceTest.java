@@ -1,7 +1,6 @@
 package de.fh_kiel.PersonTest;
 
 import de.fh_kiel.person.*;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -9,16 +8,8 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.time.LocalDate;
-import java.util.*;
-
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.empty;
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.mockito.internal.verification.VerificationModeFactory.times;
+import java.util.Collections;
+import java.util.HashSet;
 
 /**
  * Created by Ankit on 10/25/2016.
@@ -33,11 +24,12 @@ public class CompanyServiceTest {
     private CompanyDAO mockCompanyDAO;
 
     private Company company1;
+    private Developer developer1;
 
-    @Before
+    @Test
     public void setup() {
 
-        company1 = new Company(1,"Bidua Comp",new ArrayList<>("Shiv","ankit","tarun"));
+       // company1 = new Company(1,"Bidua Comp",new ArrayList<>("Shiv","ankit","tarun"));
 
         developer1 = new Developer(1, 100000, new HashSet<>(Collections.singleton("Java")));
         developer1.setId(1L);

@@ -7,10 +7,28 @@
  * user guide available at https://docs.gradle.org/3.1/userguide/tutorial_java_projects.html
  */
 
-// Apply the java plugin to add support for Java
 
+buildscript {
+    repositories {
+        jcenter()
+        maven { url "http://repo.spring.io/libs-snapshot" }
+        mavenLocal()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.1.RELEASE")
+    }
+}
+// Apply the java plugin to add support for Java
 apply plugin: 'java'
 apply plugin: 'idea'
+apply plugin: 'spring-boot'
+bootRepackage {
+    mainClass = 'your.app.package.Application'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -18,10 +36,37 @@ repositories {
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
     mavenCentral()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+}
+
+dependencies{
+    compile ('org.apache.commons:commons-lang3:3.4',
+            'org.springframework.boot:spring-boot-starter-actuator')
+
+    compile project(':BoilerPlate_Annotation')
+    compile project(':BoilerPlate_Processor')
+
+    testCompile('org.mockito:mockito-core:1.10.+') {
+        exclude group: 'org.hamcrest'
+    }
+
+    testCompile('junit:junit:4.+') {
+        exclude group: 'org.hamcrest'
+    }
+    testCompile 'org.hamcrest:hamcrest-all:1.+'
 }
 
 subprojects{
 
+    buildscript {
+        repositories {
+            jcenter()
+        }
+
+        dependencies {
+            classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.1.RELEASE")
+        }
+    }
     apply plugin: 'java'
     apply plugin: 'idea'
 
@@ -63,25 +108,6 @@ sourceSets {
         }
     }
 }
-
-
-dependencies{
-    compile 'org.apache.commons:commons-lang3:3.4'
-
-    compile project(':BoilerPlate_Annotation')
-    compile project(':BoilerPlate_Processor')
-
-    testCompile('org.mockito:mockito-core:1.10.+') {
-        exclude group: 'org.hamcrest'
-    }
-
-    testCompile('junit:junit:4.+') {
-        exclude group: 'org.hamcrest'
-    }
-    testCompile 'org.hamcrest:hamcrest-all:1.+'
-}
-
-
 task runProcessor(type: JavaCompile, group: 'build', description: 'generates classes including ' +
         'the boilerplate code') {
     source = sourceSets.main.java
