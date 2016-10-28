@@ -11,21 +11,19 @@
 buildscript {
     repositories {
         jcenter()
-        maven { url "http://repo.spring.io/libs-snapshot" }
-        mavenLocal()
+        maven { url "http://repo.spring.io/snapshot" }
+        maven { url "http://repo.spring.io/milestone" }
     }
-
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.1.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.BUILD-SNAPSHOT")
     }
 }
+
+
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
-bootRepackage {
-    mainClass = 'your.app.package.Application'
-}
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -40,11 +38,17 @@ repositories {
 }
 
 dependencies{
-    compile ('org.apache.commons:commons-lang3:3.4',
-            'org.springframework.boot:spring-boot-starter-actuator')
+    compile ('org.apache.commons:commons-lang3:3.4')
+
+    dependencies {
+        compile("org.springframework.boot:spring-boot-starter-web:1.4.1.RELEASE")
+    }
 
     compile project(':BoilerPlate_Annotation')
     compile project(':BoilerPlate_Processor')
+
+    compile("org.springframework.boot:spring-boot-starter-web")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
 
     testCompile('org.mockito:mockito-core:1.10.+') {
         exclude group: 'org.hamcrest'
@@ -61,10 +65,6 @@ subprojects{
     buildscript {
         repositories {
             jcenter()
-        }
-
-        dependencies {
-            classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.1.RELEASE")
         }
     }
     apply plugin: 'java'
