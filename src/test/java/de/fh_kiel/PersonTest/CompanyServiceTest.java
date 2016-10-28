@@ -26,24 +26,4 @@ import static org.mockito.internal.verification.VerificationModeFactory.times;
 @RunWith(MockitoJUnitRunner.class)
 public class CompanyServiceTest {
 
-    @InjectMocks
-    private CompanyService companyService;
-
-    @Mock
-    private CompanyDAO mockCompanyDAO;
-
-    private Company company1;
-
-    @Before
-    public void setup() {
-
-        company1 = new Company(1,"Bidua Comp",new ArrayList<>("Shiv","ankit","tarun"));
-
-        developer1 = new Developer(1, 100000, new HashSet<>(Collections.singleton("Java")));
-        developer1.setId(1L);
-        developer1.setFirst_Name("Free");
-        developer1.setLast_Name("Farah");
-        developer1.setD_o_b(LocalDate.of(1983, 10, 10));
-        developer1.setGender(Gender.Male);
-    }
 }
