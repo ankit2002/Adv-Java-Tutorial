@@ -20,7 +20,6 @@ import java.util.TreeSet;
  * Created by amit on 07.10.16.
  */
 
-@CheckNull
 @Service
 public class PersonService {
 
@@ -37,6 +36,7 @@ public class PersonService {
      * Create Person
      * @param person
      */
+    @CheckNull
     public void createPerson(Person person){
         personDAO.createPerson(person);
     }
@@ -45,6 +45,7 @@ public class PersonService {
      * Get All Person
      * @return
      */
+    @CheckNull
     public Collection<Person> getAllPersons(){
         return personDAO.getAllPersons();
     }
@@ -54,11 +55,13 @@ public class PersonService {
      * @param id
      * @return
      */
+    @CheckNull
     public Person getPersonById(long id){
         return null;
     }
 
     // Get Person Size
+    @CheckNull
     public int getAllPersonsSize(){
         return personDAO.getAllPersons().size();
     }
@@ -69,6 +72,7 @@ public class PersonService {
      * @param person
      * @return
      */
+    @CheckNull
     public void updatePerson(Person person) {
         try{
             personDAO.updatePerson(person);
@@ -82,6 +86,7 @@ public class PersonService {
      * @param person
      * @return
      */
+    @CheckNull
     public boolean deletePerson(Person person){
         return personDAO.deletePerson(person);
     }

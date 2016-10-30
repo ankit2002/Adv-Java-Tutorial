@@ -13,7 +13,7 @@ import java.util.Collection;
 /**
  * Created by Ankit on 10/25/2016.
  */
-@CheckNull
+
 public class CompanyService {
 
     private final CompanyDAO companyDAO;
@@ -28,6 +28,7 @@ public class CompanyService {
      * Create company
      * @param company
      */
+    @CheckNull
     public void createCompany(Company company){
         companyDAO.createCompany(company);
     }
@@ -36,6 +37,7 @@ public class CompanyService {
      * Get All companies
      * @return
      */
+    @CheckNull
     public Collection<Company> getAllCompanies(){
         return companyDAO.getAllCompanies();
     }
@@ -45,11 +47,13 @@ public class CompanyService {
      * @param id
      * @return
      */
+    @CheckNull
     public Person getPCompanyById(long id){
         return null;
     }
 
     // Get Person Size
+    @CheckNull
     public int getAllCompaniesSize(){
         return companyDAO.getAllCompanies().size();
     }
@@ -60,6 +64,7 @@ public class CompanyService {
      * @param company
      * @return
      */
+    @CheckNull
     public void updateCompany(Company company) {
         try{
             companyDAO.updateCompanyInfo(company);
@@ -73,6 +78,7 @@ public class CompanyService {
      * @param company
      * @return
      */
+    @CheckNull
     public void deleteCompany(Company company){
         companyDAO.deleteCompany(company);
     }

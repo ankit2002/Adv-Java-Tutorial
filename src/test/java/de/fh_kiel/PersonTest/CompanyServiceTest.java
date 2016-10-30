@@ -98,5 +98,5 @@ public class CompanyServiceTest {
         mockCompanyDAO.deleteCompany(company1);
         assertEquals(company1.getCompanyid(), 1L);
     }
-    
+
 }
