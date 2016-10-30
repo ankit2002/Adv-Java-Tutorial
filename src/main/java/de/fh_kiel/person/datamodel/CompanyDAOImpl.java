@@ -1,4 +1,7 @@
-package de.fh_kiel.person;
+package de.fh_kiel.person.datamodel;
+
+import de.fh_kiel.person.Company;
+import de.fh_kiel.person.exception.CompanyNotFound;
 
 import java.util.Collection;
 import java.util.HashSet;

@@ -1,4 +1,4 @@
-package de.fh_kiel.person;
+package de.fh_kiel.person.stubclass;
 
 import de.fh_kiel.annotation.BoilerPlate;
 

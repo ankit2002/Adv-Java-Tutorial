@@ -1,6 +1,8 @@
 package de.fh_kiel.PersonTest;
 
 import de.fh_kiel.person.*;
+import de.fh_kiel.person.model.PersonService;
+import de.fh_kiel.person.stubclass.Gender;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,7 +10,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.lang.annotation.Target;
 import java.time.LocalDate;
 import java.util.*;
 
