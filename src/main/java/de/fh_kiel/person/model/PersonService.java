@@ -1,6 +1,11 @@
-package de.fh_kiel.person;
+package de.fh_kiel.person.model;
 
+import de.fh_kiel.person.Developer;
+import de.fh_kiel.person.Person;
+import de.fh_kiel.person.datamodel.PersonDAO;
 import org.apache.commons.lang3.builder.CompareToBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
@@ -8,12 +13,13 @@ import java.util.*;
 /**
  * Created by amit on 07.10.16.
  */
-
+@Service
 public class PersonService {
 
     private final PersonDAO personDAO;
 
     // Constructor
+    @Autowired
     public PersonService( PersonDAO personDao )
     {
         this.personDAO = personDao;

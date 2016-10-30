@@ -1,14 +1,17 @@
-package de.fh_kiel.person;
+package de.fh_kiel.person.datamodel;
 
-import org.apache.commons.lang3.builder.CompareToBuilder;
+import de.fh_kiel.person.Person;
+import de.fh_kiel.person.exception.PersonNotFound;
+import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
 
 
 /**
  * Created by Ankit on 10/15/2016.
  */
+@Repository
 public class PersonDAOImpl implements PersonDAO {
 
 
@@ -69,7 +72,7 @@ public class PersonDAOImpl implements PersonDAO {
             System.out.println("Person not Found");
         }
         if(person != null) {
-            listPerson.remove(p);
+            listPerson.remove(person);
             return true;
         }
         else {
