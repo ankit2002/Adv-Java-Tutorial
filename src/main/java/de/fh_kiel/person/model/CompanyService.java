@@ -1,10 +1,12 @@
 package de.fh_kiel.person.model;
 
-import de.fh_kiel.person.Company;
-import de.fh_kiel.person.Person;
-import de.fh_kiel.person.datamodel.CompanyDAO;
+//import de.fh_kiel.person.Company;
+//import de.fh_kiel.person.Person;
 
-import de.fh_kiel.checkmethod.CheckNull;
+import de.fh_kiel.person.checkmethod.CheckNull;
+import de.fh_kiel.person.datamodel.CompanyDAO;
+import de.fh_kiel.person.stubclass.Company;
+import de.fh_kiel.person.stubclass.Person;
 
 import java.util.Collection;
 

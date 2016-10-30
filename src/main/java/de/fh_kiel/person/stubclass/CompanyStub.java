@@ -1,10 +1,11 @@
 package de.fh_kiel.person.stubclass;
 
 import de.fh_kiel.annotation.BoilerPlate;
-import de.fh_kiel.person.Person;
 
 import java.util.ArrayList;
 import java.util.List;
+
+//import de.fh_kiel.person.Person;
 
 /**
  * Created by amit on 25.10.16.

@@ -1,8 +1,15 @@
 package de.fh_kiel.PersonTest;
 
-import de.fh_kiel.person.*;
+//import de.fh_kiel.person.Developer;
+//import de.fh_kiel.person.Person;
+//import de.fh_kiel.person.ProjectManager;
+
+import de.fh_kiel.person.datamodel.PersonDAO;
 import de.fh_kiel.person.model.PersonService;
+import de.fh_kiel.person.stubclass.Developer;
 import de.fh_kiel.person.stubclass.Gender;
+import de.fh_kiel.person.stubclass.Person;
+import de.fh_kiel.person.stubclass.ProjectManager;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,14 +20,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.time.LocalDate;
 import java.util.*;
 
-
 import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.empty;
-import static org.hamcrest.Matchers.hasSize;
-
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.internal.verification.VerificationModeFactory.times;

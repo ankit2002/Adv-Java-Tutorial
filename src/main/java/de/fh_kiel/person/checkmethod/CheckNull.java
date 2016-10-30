@@ -1,4 +1,4 @@
-package de.fh_kiel.checkmethod;
+package de.fh_kiel.person.checkmethod;
 
 /**
  * Created by amit on 30.10.16.

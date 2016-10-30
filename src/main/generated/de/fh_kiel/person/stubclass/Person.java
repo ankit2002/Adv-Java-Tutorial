@@ -1,4 +1,4 @@
-package de.fh_kiel.person;
+package de.fh_kiel.person.stubclass;
 
 import java.io.Serializable;
 import java.lang.Object;
@@ -6,8 +6,6 @@ import java.lang.Override;
 import java.lang.String;
 import java.time.LocalDate;
 import javax.annotation.Generated;
-
-import de.fh_kiel.person.stubclass.Gender;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;

@@ -1,6 +1,10 @@
 package de.fh_kiel.PersonTest;
 
-import de.fh_kiel.person.*;
+import de.fh_kiel.person.datamodel.CompanyDAO;
+import de.fh_kiel.person.model.CompanyService;
+import de.fh_kiel.person.stubclass.Company;
+import de.fh_kiel.person.stubclass.Developer;
+import de.fh_kiel.person.stubclass.Gender;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -17,7 +21,7 @@ import java.util.HashSet;
 @RunWith(MockitoJUnitRunner.class)
 public class CompanyServiceTest {
 
-/*
+
     @InjectMocks
     private CompanyService companyService;
 
@@ -39,5 +43,5 @@ public class CompanyServiceTest {
         developer1.setD_o_b(LocalDate.of(1983, 10, 10));
         developer1.setGender(Gender.Male);
     }
-*/
+
 }

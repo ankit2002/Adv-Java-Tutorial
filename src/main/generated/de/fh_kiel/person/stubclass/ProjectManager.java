@@ -1,4 +1,4 @@
-package de.fh_kiel.person;
+package de.fh_kiel.person.stubclass;
 
 import java.lang.Object;
 import java.lang.Override;

@@ -1,12 +1,14 @@
 package de.fh_kiel.person.controller;
 
-import de.fh_kiel.person.Developer;
-import de.fh_kiel.person.Person;
+//import de.fh_kiel.person.Developer;
+//import de.fh_kiel.person.Person;
+
 import de.fh_kiel.person.model.PersonService;
+import de.fh_kiel.person.stubclass.Developer;
 import de.fh_kiel.person.stubclass.Gender;
+import de.fh_kiel.person.stubclass.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorController;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +16,6 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Map;
 
 /**
  * Created by Ankit on 10/28/2016.
