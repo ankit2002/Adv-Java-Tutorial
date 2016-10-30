@@ -10,6 +10,7 @@ import de.fh_kiel.person.stubclass.Developer;
 import de.fh_kiel.person.stubclass.Gender;
 import de.fh_kiel.person.stubclass.Person;
 import de.fh_kiel.person.stubclass.ProjectManager;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

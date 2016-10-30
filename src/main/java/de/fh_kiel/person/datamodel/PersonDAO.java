@@ -16,7 +16,7 @@ public interface PersonDAO {
      *
      * @param p
      */
-    public void createPerson(Person p);
+    public boolean createPerson(Person p);
 
     /**
      *
@@ -37,7 +37,7 @@ public interface PersonDAO {
      * @param p
      * @return
      */
-    public void updatePerson(Person p) throws Exception;
+    public boolean updatePerson(Person p) throws Exception;
 
     /**
      * deletePerson

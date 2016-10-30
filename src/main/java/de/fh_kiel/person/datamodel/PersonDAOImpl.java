@@ -20,8 +20,12 @@ public class PersonDAOImpl implements PersonDAO {
     private final HashSet<Person> listPerson = new HashSet<>();
 
     @Override
-    public void createPerson(Person p) {
-        listPerson.add(p);
+    public boolean createPerson(Person p) {
+        if(p != null) {
+            listPerson.add(p);
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -41,7 +45,7 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
     @Override
-    public void updatePerson(Person p) throws Exception {
+    public boolean updatePerson(Person p) throws Exception {
 
         Person person = null;
         try{
@@ -57,6 +61,7 @@ public class PersonDAOImpl implements PersonDAO {
             person.setLast_Name(p.getLast_Name());
             person.setD_o_b(p.getD_o_b());
             person.setGender(p.getGender());
+            return true;
         }
         else
         {

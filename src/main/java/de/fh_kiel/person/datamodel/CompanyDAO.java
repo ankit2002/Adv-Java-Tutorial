@@ -16,7 +16,7 @@ public interface CompanyDAO {
      *
      * @param company
      */
-    public void createCompany(Company company);
+    public boolean createCompany(Company company);
 
     /**
      *
@@ -36,13 +36,13 @@ public interface CompanyDAO {
      * @param company
      * @return
      */
-    public void updateCompanyInfo(Company company) throws Exception;
+    public boolean updateCompanyInfo(Company company) throws Exception;
 
     /**
      * deletePerson
      * @param company
      * @return
      */
-    public void deleteCompany(Company company);
+    public boolean deleteCompany(Company company);
 
 }

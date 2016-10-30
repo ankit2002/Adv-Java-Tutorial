@@ -19,8 +19,12 @@ public class CompanyDAOImpl implements CompanyDAO {
     private final HashSet<Company> companiesList = new HashSet<>();
 
     @Override
-    public void createCompany(Company company) {
-        companiesList.add(company);
+    public boolean createCompany(Company company) {
+        if(company != null) {
+            companiesList.add(company);
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -39,7 +43,7 @@ public class CompanyDAOImpl implements CompanyDAO {
     }
 
     @Override
-    public void updateCompanyInfo(Company company) throws Exception {
+    public boolean updateCompanyInfo(Company company) throws Exception {
 
         Company newComp = null;
         try{
@@ -53,6 +57,7 @@ public class CompanyDAOImpl implements CompanyDAO {
             // Updated
             newComp.setCompanyName(company.getCompanyName());
             newComp.setCompanyEmpList(company.getCompanyEmpList());
+            return true;
         }
         else
         {
@@ -62,7 +67,7 @@ public class CompanyDAOImpl implements CompanyDAO {
     }
 
     @Override
-    public void deleteCompany(Company company) {
+    public boolean deleteCompany(Company company) {
 
         Company newComp = null;
         try{
@@ -72,6 +77,8 @@ public class CompanyDAOImpl implements CompanyDAO {
         }
         if(newComp != null) {
             companiesList.remove(newComp);
+            return true;
         }
+        return false;
     }
 }
