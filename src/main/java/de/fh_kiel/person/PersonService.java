@@ -1,5 +1,6 @@
 package de.fh_kiel.person;
 
+import de.fh_kiel.checkmethod.CheckNull;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 
 import java.util.*;
@@ -8,7 +9,7 @@ import java.util.*;
 /**
  * Created by amit on 07.10.16.
  */
-
+@CheckNull
 public class PersonService {
 
     private final PersonDAO personDAO;

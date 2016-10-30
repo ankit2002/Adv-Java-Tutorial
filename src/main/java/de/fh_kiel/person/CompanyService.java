@@ -1,10 +1,13 @@
 package de.fh_kiel.person;
 
+import de.fh_kiel.checkmethod.CheckNull;
+
 import java.util.Collection;
 
 /**
  * Created by Ankit on 10/25/2016.
  */
+@CheckNull
 public class CompanyService {
 
     private final CompanyDAO companyDAO;
