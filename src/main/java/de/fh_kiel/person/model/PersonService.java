@@ -37,8 +37,8 @@ public class PersonService {
      * @param person
      */
     @CheckNull
-    public void createPerson(Person person){
-        personDAO.createPerson(person);
+    public boolean createPerson(Person person){
+        return personDAO.createPerson(person);
     }
 
     /**
@@ -57,7 +57,13 @@ public class PersonService {
      */
     @CheckNull
     public Person getPersonById(long id){
-        return null;
+
+        try{
+            return personDAO.getPerson(id);
+        }catch (Exception e){
+            System.out.println(e.toString());
+            return null;
+        }
     }
 
     // Get Person Size
@@ -73,11 +79,12 @@ public class PersonService {
      * @return
      */
     @CheckNull
-    public void updatePerson(Person person) {
+    public boolean updatePerson(Person person) {
         try{
-            personDAO.updatePerson(person);
+           return personDAO.updatePerson(person);
         }catch (Exception e){
             System.out.println(e.toString());
+            return false;
         }
     }
 

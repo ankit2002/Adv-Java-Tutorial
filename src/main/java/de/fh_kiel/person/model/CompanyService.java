@@ -29,8 +29,8 @@ public class CompanyService {
      * @param company
      */
     @CheckNull
-    public void createCompany(Company company){
-        companyDAO.createCompany(company);
+    public boolean createCompany(Company company){
+        return companyDAO.createCompany(company);
     }
 
     /**
@@ -48,8 +48,14 @@ public class CompanyService {
      * @return
      */
     @CheckNull
-    public Person getPCompanyById(long id){
-        return null;
+    public Company getCompanyById(long id){
+
+        try{
+            return companyDAO.getCompanyById(id);
+        }catch (Exception e){
+            System.out.println(e.toString());
+            return null;
+        }
     }
 
     // Get Person Size
@@ -65,11 +71,12 @@ public class CompanyService {
      * @return
      */
     @CheckNull
-    public void updateCompany(Company company) {
+    public boolean updateCompany(Company company) {
         try{
-            companyDAO.updateCompanyInfo(company);
+            return companyDAO.updateCompanyInfo(company);
         }catch (Exception e){
             System.out.println(e.toString());
+            return false;
         }
     }
 
@@ -79,8 +86,8 @@ public class CompanyService {
      * @return
      */
     @CheckNull
-    public void deleteCompany(Company company){
-        companyDAO.deleteCompany(company);
+    public boolean deleteCompany(Company company){
+        return companyDAO.deleteCompany(company);
     }
 
 }
