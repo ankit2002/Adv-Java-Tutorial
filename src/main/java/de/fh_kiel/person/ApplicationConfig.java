@@ -1,10 +1,9 @@
 package de.fh_kiel.person;
 
-import ch.qos.logback.classic.LoggerContext;
-import ch.qos.logback.core.util.StatusPrinter;
 import de.fh_kiel.person.datamodel.PersonDAO;
 import de.fh_kiel.person.datamodel.PersonDAOImpl;
 import de.fh_kiel.person.model.PersonService;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,11 +27,10 @@ public class ApplicationConfig {
     }
 
     public static void main(String[] args) throws Exception {
-       /* Logger logger = LoggerFactory.getLogger(ApplicationConfig.class);
-        logger.debug("Hello world.");
-        logger.trace("tracing");*/
-        LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
-        StatusPrinter.print(lc);
+        Logger logger = LoggerFactory.getLogger(ApplicationConfig.class);
+        logger.debug("Application Started");
+        /*LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
+        StatusPrinter.print(lc);*/
         SpringApplication.run(ApplicationConfig.class, args);
     }
 }

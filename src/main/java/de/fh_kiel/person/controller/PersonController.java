@@ -85,6 +85,18 @@ public class PersonController implements ErrorController {
         return personService.getAllPersons();
     }
     /**
+     * Testing logging for path person/logging
+     * @return
+     */
+    @RequestMapping("/logging")
+    String index(){
+        logger.debug("This is a debug message");
+        logger.info("This is an info message");
+        logger.warn("This is a warn message");
+        logger.error("This is an error message");
+        return "index";
+    }
+    /**
      * Error Handling
      * @return
      */
