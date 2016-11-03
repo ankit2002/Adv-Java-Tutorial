@@ -31,7 +31,10 @@ public class CompanyController implements ErrorController {
     public void createPerson(){;
     }
 
-    //@RequestMapping("/persons")
+    /**
+     * GET METHOD for get companies
+     * @return
+     */
     @RequestMapping(method = RequestMethod.GET)
     public Collection<Company> companyCollection(){
         logger.info("Testing for returning wmpty object");

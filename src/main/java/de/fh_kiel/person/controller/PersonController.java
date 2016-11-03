@@ -1,7 +1,6 @@
 package de.fh_kiel.person.controller;
 
-//import de.fh_kiel.person.Developer;
-//import de.fh_kiel.person.Person;
+
 
 import de.fh_kiel.person.model.PersonService;
 import de.fh_kiel.person.stubclass.Developer;
@@ -28,7 +27,9 @@ import java.util.HashSet;
 public class PersonController implements ErrorController {
     Logger logger = LoggerFactory.getLogger(PersonController.class);;
 
-
+    /**
+     * Injecting dependency
+     */
     @Autowired
     private PersonService personService;
 
@@ -78,7 +79,10 @@ public class PersonController implements ErrorController {
         personService.createPerson(developer5);
     }
 
-    //@RequestMapping("/persons")
+    /**
+     * GET METHOD for array of persons
+     * @return
+     */
     @RequestMapping(method = RequestMethod.GET)
     public Collection<Person> persons(){
         logger.info("inforpersons");
