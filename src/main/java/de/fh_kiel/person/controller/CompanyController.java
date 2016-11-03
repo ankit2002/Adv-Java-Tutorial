@@ -1,5 +1,6 @@
 package de.fh_kiel.person.controller;
 
+import de.fh_kiel.person.model.CompanyService;
 import de.fh_kiel.person.stubclass.Company;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,8 +23,8 @@ public class CompanyController implements ErrorController {
     Logger logger = LoggerFactory.getLogger(CompanyController.class);;
 
 
-    /*@Autowired
-    private CompanyService companyService;*/
+    @Autowired
+    private CompanyService companyService;
 
 
     @Autowired
@@ -33,9 +34,8 @@ public class CompanyController implements ErrorController {
     //@RequestMapping("/persons")
     @RequestMapping(method = RequestMethod.GET)
     public Collection<Company> companyCollection(){
-        logger.info("inforcompanies");
-        //return companyService.getAllCompanies();
-        return null;
+        logger.info("Testing for returning wmpty object");
+        return companyService.getAllCompanies();
     }
 
     /**

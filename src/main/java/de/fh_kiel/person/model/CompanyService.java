@@ -6,14 +6,14 @@ package de.fh_kiel.person.model;
 import de.fh_kiel.person.checkmethod.CheckNull;
 import de.fh_kiel.person.datamodel.CompanyDAO;
 import de.fh_kiel.person.stubclass.Company;
-import de.fh_kiel.person.stubclass.Person;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
 /**
  * Created by Ankit on 10/25/2016.
  */
-
+@Service
 public class CompanyService {
 
     private final CompanyDAO companyDAO;

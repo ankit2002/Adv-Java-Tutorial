@@ -4,12 +4,14 @@ package de.fh_kiel.person.datamodel;
 
 import de.fh_kiel.person.exception.CompanyNotFound;
 import de.fh_kiel.person.stubclass.Company;
+import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 
 /**
  * Created by Ankit on 10/25/2016.
  */
+@Component
 public interface CompanyDAO {
 
     /**
