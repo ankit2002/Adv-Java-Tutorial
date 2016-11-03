@@ -7,9 +7,12 @@ import de.fh_kiel.person.model.PersonService;
 import de.fh_kiel.person.stubclass.Developer;
 import de.fh_kiel.person.stubclass.Gender;
 import de.fh_kiel.person.stubclass.Person;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
@@ -21,14 +24,17 @@ import java.util.HashSet;
  * Created by Ankit on 10/28/2016.
  */
 @RestController
+@RequestMapping("/person")
 public class PersonController implements ErrorController {
+    Logger logger = LoggerFactory.getLogger(PersonController.class);;
+
 
     @Autowired
     private PersonService personService;
 
 
     @Autowired
-    public void createPerson(){
+    public void createPerson(){;
         Developer developer1 = new Developer(1, 100000, new HashSet<>(Collections.singleton("Java")));
         developer1.setId(1L);
         developer1.setFirst_Name("temp");
@@ -72,11 +78,12 @@ public class PersonController implements ErrorController {
         personService.createPerson(developer5);
     }
 
-    @RequestMapping("/persons")
+    //@RequestMapping("/persons")
+    @RequestMapping(method = RequestMethod.GET)
     public Collection<Person> persons(){
+        logger.info("inforpersons");
         return personService.getAllPersons();
     }
-    
     /**
      * Error Handling
      * @return
@@ -90,5 +97,6 @@ public class PersonController implements ErrorController {
     public String getErrorPath() {
         return "/error";
     }
+
 
 }

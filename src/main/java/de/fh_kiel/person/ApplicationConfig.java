@@ -1,7 +1,11 @@
 package de.fh_kiel.person;
 
-import de.fh_kiel.person.datamodel.*;
+import ch.qos.logback.classic.LoggerContext;
+import ch.qos.logback.core.util.StatusPrinter;
+import de.fh_kiel.person.datamodel.PersonDAO;
+import de.fh_kiel.person.datamodel.PersonDAOImpl;
 import de.fh_kiel.person.model.PersonService;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -23,8 +27,12 @@ public class ApplicationConfig {
         return new PersonDAOImpl();
     }
 
-
     public static void main(String[] args) throws Exception {
+       /* Logger logger = LoggerFactory.getLogger(ApplicationConfig.class);
+        logger.debug("Hello world.");
+        logger.trace("tracing");*/
+        LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
+        StatusPrinter.print(lc);
         SpringApplication.run(ApplicationConfig.class, args);
     }
 }
