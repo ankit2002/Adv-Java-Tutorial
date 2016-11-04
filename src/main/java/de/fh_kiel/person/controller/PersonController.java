@@ -108,6 +108,15 @@ public class PersonController implements ErrorController {
     }
 
     /**
+     * GET METHOD for a person by id
+     * @return
+     */
+    /*@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public Person deletePerson(@PathVariable("id") long id){
+        logger.debug("inside single person id");
+        return personService.deletePerson(id);
+    }*/
+    /**
      * Just to test Logger
      * @return
      */
