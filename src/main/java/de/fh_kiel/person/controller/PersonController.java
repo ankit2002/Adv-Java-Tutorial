@@ -10,10 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorController;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.Collection;
@@ -103,11 +101,16 @@ public class PersonController implements ErrorController {
      * POST METHOD to create the Person
      * @return
      */
-   /* @RequestMapping(value ="/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value ="/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public boolean createPerson(@RequestBody Person person){
         logger.debug("Inside create person");
         return personService.createPerson(person);
-    }*/
+    }
+
+    /**
+     * Just to test Logger
+     * @return
+     */
     @RequestMapping("/logging")
     String index(){
         logger.debug("This is a debug message");
