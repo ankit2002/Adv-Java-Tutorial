@@ -45,7 +45,7 @@ public class PersonService {
      * @param person
      */
     @CheckNull
-    public boolean createPerson(Person person){
+    public long createPerson(Person person){
         return personDAO.createPerson(person);
     }
 

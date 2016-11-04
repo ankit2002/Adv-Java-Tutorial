@@ -30,12 +30,14 @@ public class CompanyDAOImpl implements CompanyDAO {
     Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
 
     @Override
-    public boolean createCompany(Company company) {
-        if(company != null) {
+    public long createCompany(Company company) {
+
+        if(company.getCompanyid() != 0L && company != null) {
             companiesList.add(company);
-            return true;
+            return company.getCompanyid();
         }
-        return false;
+        logger.error("Company is null cannot be created");
+        return 0L;
     }
 
     @Override

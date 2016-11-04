@@ -18,7 +18,7 @@ public interface CompanyDAO {
      * Create Company
      * @param company
      */
-    public boolean createCompany(Company company);
+    public long createCompany(Company company);
 
     /**
      * Get list of All Companies

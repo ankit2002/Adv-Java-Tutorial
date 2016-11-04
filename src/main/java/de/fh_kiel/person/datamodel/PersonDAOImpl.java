@@ -26,12 +26,13 @@ public class PersonDAOImpl implements PersonDAO {
     private final Set<Person> listPerson = new HashSet<>();
 
     @Override
-    public boolean createPerson(Person p) {
-        if(p != null) {
+    public long createPerson(Person p) {
+        if(p.getId() != 0L && p != null) {
             listPerson.add(p);
-            return true;
+            return p.getId();
         }
-        return false;
+        logger.error("Person is null cannot be created");
+        return 0L;
     }
 
     @Override

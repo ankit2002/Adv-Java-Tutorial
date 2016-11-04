@@ -16,7 +16,7 @@ public interface PersonDAO {
      *
      * @param p
      */
-    public boolean createPerson(Person p);
+    public long createPerson(Person p);
 
     /**
      *

@@ -55,8 +55,14 @@ public class CompanyController implements ErrorController {
      * @return
      */
     @RequestMapping(value ="/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public boolean createCompany(@RequestBody Company company){
-        return companyService.createCompany(company);
+    public long createCompany(@RequestBody Company company){
+
+        long id = companyService.createCompany(company);
+        if(id == 0L){
+            throw new IllegalArgumentException("Company ID should not be 0");
+        }else {
+            return id;
+        }
     }
 
 

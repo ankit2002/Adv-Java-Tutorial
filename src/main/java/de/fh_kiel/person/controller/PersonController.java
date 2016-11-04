@@ -56,10 +56,14 @@ public class PersonController implements ErrorController {
      * @return
      */
     @RequestMapping(value ="/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public boolean createPerson(@RequestBody Person person){
-        return personService.createPerson(person);
+    public long createPerson(@RequestBody Person person){
+        long id = personService.createPerson(person);
+        if(id == 0L){
+            throw new IllegalArgumentException("Person ID should not be 0");
+        }else {
+            return id;
+        }
     }
-
 
     /**
      * Updation Method

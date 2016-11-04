@@ -39,7 +39,7 @@ public class CompanyService {
      * @param company
      */
     @CheckNull
-    public boolean createCompany(Company company){
+    public long createCompany(Company company){
         return companyDAO.createCompany(company);
     }
 
