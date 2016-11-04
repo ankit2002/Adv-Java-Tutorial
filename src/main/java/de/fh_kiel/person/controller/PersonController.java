@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorController;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +29,7 @@ public class PersonController implements ErrorController {
     Logger logger = LoggerFactory.getLogger(PersonController.class);;
 
     /**
-     * Injecting dependency
+     * Injecting dependency for Person Service
      */
     @Autowired
     private PersonService personService;
@@ -85,13 +86,28 @@ public class PersonController implements ErrorController {
      */
     @RequestMapping(method = RequestMethod.GET)
     public Collection<Person> persons(){
-        logger.info("inforpersons");
+        logger.debug("info all persons");
         return personService.getAllPersons();
     }
+
     /**
-     * Testing logging for path person/logging
+     * GET METHOD for a person by id
      * @return
      */
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public Person getPersonById(@PathVariable("id") long id){
+        logger.debug("inside single person id");
+        return personService.getPersonById(id);
+    }
+    /**
+     * POST METHOD to create the Person
+     * @return
+     */
+   /* @RequestMapping(value ="/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public boolean createPerson(@RequestBody Person person){
+        logger.debug("Inside create person");
+        return personService.createPerson(person);
+    }*/
     @RequestMapping("/logging")
     String index(){
         logger.debug("This is a debug message");

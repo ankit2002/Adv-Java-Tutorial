@@ -23,6 +23,10 @@ import java.util.TreeSet;
 @Service
 public class PersonService {
 
+    /**
+     * Injecting dependency for Person DAO
+     */
+    @Autowired
     private final PersonDAO personDAO;
 
     // Constructor
