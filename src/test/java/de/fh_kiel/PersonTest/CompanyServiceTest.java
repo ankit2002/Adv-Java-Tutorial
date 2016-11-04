@@ -78,25 +78,6 @@ public class CompanyServiceTest {
         verify(mockCompanyDAO, times(1)).getAllCompanies();
     }
 
-    @Test
-    public void testUpdateCompany(){
 
-        try {
-            when(mockCompanyDAO.updateCompanyInfo(company1)).thenReturn(true);
-            mockCompanyDAO.updateCompanyInfo(company1);
-            assertEquals(company1.getCompanyid(), 1L);
-
-        }catch (Exception e){
-            System.out.println("Error in update");
-        }
-    }
-
-    @Test
-    public void testDeleteCompany(){
-
-        when(mockCompanyDAO.deleteCompany(company1)).thenReturn(true);
-        mockCompanyDAO.deleteCompany(company1);
-        assertEquals(company1.getCompanyid(), 1L);
-    }
 
 }

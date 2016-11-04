@@ -4,10 +4,14 @@ package de.fh_kiel.person.datamodel;
 
 import de.fh_kiel.person.exception.CompanyNotFound;
 import de.fh_kiel.person.stubclass.Company;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Ankit on 10/25/2016.
@@ -18,7 +22,12 @@ public class CompanyDAOImpl implements CompanyDAO {
     /**
      * HashSet to store Companies
      */
-    private final HashSet<Company> companiesList = new HashSet<>();
+    private final Set<Company> companiesList = new HashSet<>();
+
+    /**
+     * Logger Variable
+     */
+    Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
 
     @Override
     public boolean createCompany(Company company) {
@@ -31,7 +40,7 @@ public class CompanyDAOImpl implements CompanyDAO {
 
     @Override
     public Collection<Company> getAllCompanies() {
-        return companiesList;
+        return new ArrayList<>(companiesList);
     }
 
     @Override
@@ -45,13 +54,13 @@ public class CompanyDAOImpl implements CompanyDAO {
     }
 
     @Override
-    public boolean updateCompanyInfo(Company company) throws Exception {
+    public void updateCompanyInfo(Company company) throws Exception {
 
         Company newComp = null;
         try{
-            newComp = getCompanyById(newComp.getCompanyid());
+            newComp = getCompanyById(company.getCompanyid());
         }catch (CompanyNotFound companyNotFound){
-            throw new Exception(companyNotFound.toString());
+            throw new CompanyNotFound(companyNotFound.toString());
         }
 
         if( newComp != null )
@@ -59,28 +68,20 @@ public class CompanyDAOImpl implements CompanyDAO {
             // Updated
             newComp.setCompanyName(company.getCompanyName());
             newComp.setCompanyEmpList(company.getCompanyEmpList());
-            return true;
-        }
-        else
-        {
-            throw new Exception("Company cannot be updated");
         }
 
     }
 
     @Override
-    public boolean deleteCompany(Company company) {
+    public void deleteCompany(Long id) {
 
         Company newComp = null;
         try{
-            newComp = getCompanyById(company.getCompanyid());
+            newComp = getCompanyById(id);
         }catch (CompanyNotFound companyNotFound){
-            System.out.println("Company not Found");
+            logger.warn("Company not Found");
         }
-        if(newComp != null) {
+        if(newComp != null)
             companiesList.remove(newComp);
-            return true;
-        }
-        return false;
     }
 }

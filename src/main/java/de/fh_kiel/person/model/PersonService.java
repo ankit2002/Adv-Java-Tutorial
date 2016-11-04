@@ -5,6 +5,7 @@ package de.fh_kiel.person.model;
 
 import de.fh_kiel.person.checkmethod.CheckNull;
 import de.fh_kiel.person.datamodel.PersonDAO;
+import de.fh_kiel.person.exception.PersonNotFound;
 import de.fh_kiel.person.stubclass.Developer;
 import de.fh_kiel.person.stubclass.Person;
 import org.apache.commons.lang3.builder.CompareToBuilder;
@@ -67,8 +68,8 @@ public class PersonService {
 
         try{
             return personDAO.getPerson(id);
-        }catch (Exception e){
-            System.out.println(e.toString());
+        }catch (PersonNotFound e){
+            logger.warn(e.toString());
             return null;
         }
     }

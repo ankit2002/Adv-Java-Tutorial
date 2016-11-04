@@ -5,7 +5,10 @@ package de.fh_kiel.person.model;
 
 import de.fh_kiel.person.checkmethod.CheckNull;
 import de.fh_kiel.person.datamodel.CompanyDAO;
+import de.fh_kiel.person.exception.CompanyNotFound;
 import de.fh_kiel.person.stubclass.Company;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +22,11 @@ public class CompanyService {
 
     @Autowired
     private final CompanyDAO companyDAO;
+
+    /**
+     * Logger Variable
+     */
+    Logger logger = LoggerFactory.getLogger(PersonService.class);
 
     // Constructor
     public CompanyService( CompanyDAO companyDAO )
@@ -54,8 +62,8 @@ public class CompanyService {
 
         try{
             return companyDAO.getCompanyById(id);
-        }catch (Exception e){
-            System.out.println(e.toString());
+        }catch (CompanyNotFound e){
+            logger.warn(e.toString());
             return null;
         }
     }
@@ -73,23 +81,22 @@ public class CompanyService {
      * @return
      */
     @CheckNull
-    public boolean updateCompany(Company company) {
+    public void updateCompany(Company company) {
         try{
-            return companyDAO.updateCompanyInfo(company);
+            companyDAO.updateCompanyInfo(company);
         }catch (Exception e){
-            System.out.println(e.toString());
-            return false;
+            logger.warn(e.toString());
         }
     }
 
     /**
      * Delete company
-     * @param company
+     * @param id
      * @return
      */
     @CheckNull
-    public boolean deleteCompany(Company company){
-        return companyDAO.deleteCompany(company);
+    public void deleteCompany(Long id){
+        companyDAO.deleteCompany(id);
     }
 
 }

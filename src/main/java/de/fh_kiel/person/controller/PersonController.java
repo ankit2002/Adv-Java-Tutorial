@@ -71,7 +71,7 @@ public class PersonController implements ErrorController {
         if(person.getId() == id){
             personService.updatePerson(person);
         }else {
-            logger.warn("Person's ID is not same for updation");
+            logger.error("Person's ID is not same for updation");
         }
 
     }

@@ -15,36 +15,34 @@ import java.util.Collection;
 public interface CompanyDAO {
 
     /**
-     *
+     * Create Company
      * @param company
      */
     public boolean createCompany(Company company);
 
     /**
-     *
-     * @return
+     * Get list of All Companies
+     * @return ArrayList
      */
     public Collection<Company> getAllCompanies();
 
     /**
-     *
+     * Get Company by ID
      * @param id
-     * @return
+     * @return company
      */
     public Company getCompanyById(long id) throws CompanyNotFound;
 
     /**
-     * updatedPerson
+     * update Company
      * @param company
-     * @return
      */
-    public boolean updateCompanyInfo(Company company) throws Exception;
+    public void updateCompanyInfo(Company company) throws Exception;
 
     /**
-     * deletePerson
-     * @param company
-     * @return
+     * delete Company
+     * @param id
      */
-    public boolean deleteCompany(Company company);
+    public void deleteCompany(Long id);
 
 }

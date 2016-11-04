@@ -68,10 +68,6 @@ public class PersonDAOImpl implements PersonDAO {
             person.setD_o_b(p.getD_o_b());
             person.setGender(p.getGender());
         }
-        else
-        {
-            throw new Exception("Person can not updated");
-        }
     }
 
     @Override
