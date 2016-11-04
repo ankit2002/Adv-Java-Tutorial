@@ -6,9 +6,7 @@ package de.fh_kiel.person.model;
 import de.fh_kiel.person.checkmethod.CheckNull;
 import de.fh_kiel.person.datamodel.CompanyDAO;
 import de.fh_kiel.person.stubclass.Company;
-import de.fh_kiel.person.stubclass.Person;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;

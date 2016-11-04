@@ -5,7 +5,7 @@ import de.fh_kiel.annotation.BoilerPlate;
 import java.util.ArrayList;
 import java.util.List;
 
-//import de.fh_kiel.person.Person;
+
 
 /**
  * Created by amit on 25.10.16.

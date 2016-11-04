@@ -4,6 +4,7 @@ package de.fh_kiel.person.datamodel;
 
 import de.fh_kiel.person.exception.CompanyNotFound;
 import de.fh_kiel.person.stubclass.Company;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -11,6 +12,7 @@ import java.util.HashSet;
 /**
  * Created by Ankit on 10/25/2016.
  */
+@Repository
 public class CompanyDAOImpl implements CompanyDAO {
 
     /**
