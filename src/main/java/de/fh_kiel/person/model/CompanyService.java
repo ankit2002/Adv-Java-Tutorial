@@ -7,15 +7,19 @@ import de.fh_kiel.person.checkmethod.CheckNull;
 import de.fh_kiel.person.datamodel.CompanyDAO;
 import de.fh_kiel.person.stubclass.Company;
 import de.fh_kiel.person.stubclass.Person;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
 /**
  * Created by Ankit on 10/25/2016.
  */
-
+@Service
 public class CompanyService {
 
+    @Autowired
     private final CompanyDAO companyDAO;
 
     // Constructor

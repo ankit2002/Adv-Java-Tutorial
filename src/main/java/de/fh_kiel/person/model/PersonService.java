@@ -23,10 +23,10 @@ import java.util.TreeSet;
 @Service
 public class PersonService {
 
+    @Autowired
     private final PersonDAO personDAO;
 
     // Constructor
-    @Autowired
     public PersonService( PersonDAO personDao )
     {
         this.personDAO = personDao;
