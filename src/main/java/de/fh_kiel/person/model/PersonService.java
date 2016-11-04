@@ -8,6 +8,8 @@ import de.fh_kiel.person.datamodel.PersonDAO;
 import de.fh_kiel.person.stubclass.Developer;
 import de.fh_kiel.person.stubclass.Person;
 import org.apache.commons.lang3.builder.CompareToBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +24,12 @@ import java.util.TreeSet;
 
 @Service
 public class PersonService {
-    
+
     /**
      * Injecting dependency for Person DAO
      */
+    Logger logger = LoggerFactory.getLogger(PersonService.class);
+
     @Autowired
     private final PersonDAO personDAO;
 
@@ -78,27 +82,27 @@ public class PersonService {
 
     /**
      * Update Person
-     * @param person
+     * @param p
      * @return
      */
     @CheckNull
-    public boolean updatePerson(Person person) {
+    public void updatePerson(Person p) {
         try{
-           return personDAO.updatePerson(person);
+            personDAO.updatePerson(p);
         }catch (Exception e){
-            System.out.println(e.toString());
-            return false;
+            logger.warn(e.toString());
         }
     }
 
     /**
      * Delete Person
-     * @param person
+     * @param id
      * @return
      */
     @CheckNull
-    public boolean deletePerson(Person person){
-        return personDAO.deletePerson(person);
+    public void deletePerson(Long id){
+        if(id != null)
+            personDAO.deletePerson(id);
     }
 
 

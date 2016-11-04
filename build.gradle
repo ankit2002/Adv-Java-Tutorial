@@ -76,6 +76,9 @@ dependencies{
         exclude group: 'org.hamcrest'
     }
     testCompile 'org.hamcrest:hamcrest-all:1.+'
+
+    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.3.0-rc1'
+
 }
 
 subprojects{

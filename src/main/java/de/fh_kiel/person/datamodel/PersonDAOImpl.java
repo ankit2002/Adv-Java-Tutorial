@@ -1,13 +1,16 @@
 package de.fh_kiel.person.datamodel;
 
 
-
+import org.slf4j.Logger;
 import de.fh_kiel.person.exception.PersonNotFound;
 import de.fh_kiel.person.stubclass.Person;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Set;
 
 
 /**
@@ -16,8 +19,11 @@ import java.util.HashSet;
 @Repository
 public class PersonDAOImpl implements PersonDAO {
 
+    Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
 
-    private final HashSet<Person> listPerson = new HashSet<>();
+
+
+    private final Set<Person> listPerson = new HashSet<>();
 
     @Override
     public boolean createPerson(Person p) {
@@ -30,7 +36,7 @@ public class PersonDAOImpl implements PersonDAO {
 
     @Override
     public Collection<Person> getAllPersons() {
-        return listPerson;
+        return new ArrayList<>(listPerson);
     }
 
     @Override
@@ -45,7 +51,7 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
     @Override
-    public boolean updatePerson(Person p) throws Exception {
+    public void updatePerson(Person p) throws Exception {
 
         Person person = null;
         try{
@@ -61,7 +67,6 @@ public class PersonDAOImpl implements PersonDAO {
             person.setLast_Name(p.getLast_Name());
             person.setD_o_b(p.getD_o_b());
             person.setGender(p.getGender());
-            return true;
         }
         else
         {
@@ -70,20 +75,16 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
     @Override
-    public boolean deletePerson(Person p) {
+    public void deletePerson(Long id) {
 
         Person person = null;
         try{
-            person = getPerson(p.getId());
+            person = getPerson(id);
         }catch (PersonNotFound personNotFound){
-            System.out.println("Person not Found");
+            logger.warn(personNotFound.getLocalizedMessage());
         }
         if(person != null) {
             listPerson.remove(person);
-            return true;
-        }
-        else {
-            return false;
         }
     }
 }
