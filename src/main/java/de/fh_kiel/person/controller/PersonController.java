@@ -37,7 +37,7 @@ public class PersonController implements ErrorController {
     @RequestMapping(method = RequestMethod.GET)
     public Collection<Person> persons(HttpServletRequest request, HttpServletResponse response){
         if (personService.getAllPersons() !=null) {
-            System.out.println("acceptingexception");
+            logger.info("acceptingexception");
             response.setStatus( HttpServletResponse.SC_OK);
         }
         else {
@@ -66,11 +66,12 @@ public class PersonController implements ErrorController {
      * @return
      */
     @RequestMapping(value ="/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public long createPerson(@RequestBody Person person){
+    public long createPerson(@RequestBody Person person, HttpServletRequest request, HttpServletResponse response){
         long id = personService.createPerson(person);
         if(id == 0L){
             throw new IllegalArgumentException("Person ID should not be 0");
         }else {
+            response.setStatus( HttpServletResponse.SC_OK);
             return id;
         }
     }
@@ -81,8 +82,9 @@ public class PersonController implements ErrorController {
      * @param person
      */
     @RequestMapping(value ="/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void updatePerson(@PathVariable("id") long id,@RequestBody Person person){
+    public void updatePerson(@PathVariable("id") long id,@RequestBody Person person, HttpServletRequest request, HttpServletResponse response){
         if(person.getId() == id){
+            response.setStatus( HttpServletResponse.SC_OK);
             personService.updatePerson(person);
         }else {
             logger.error("Person's ID is not same for updation");
@@ -95,7 +97,8 @@ public class PersonController implements ErrorController {
      * @param id
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deletePerson(@PathVariable("id") long id) {
+    public void deletePerson(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response) {
+        response.setStatus( HttpServletResponse.SC_OK);
         personService.deletePerson(id);
     }
 

@@ -2,9 +2,6 @@ package de.fh_kiel.person.controller;
 
 import de.fh_kiel.person.model.CompanyService;
 import de.fh_kiel.person.stubclass.Company;
-import de.fh_kiel.person.stubclass.Developer;
-import de.fh_kiel.person.stubclass.Gender;
-import de.fh_kiel.person.stubclass.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +9,9 @@ import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.util.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Collection;
 
 /**
  * Created by amit on 03.11.16.
@@ -36,7 +34,13 @@ public class CompanyController implements ErrorController {
      * @return list of companies
      */
     @RequestMapping(method = RequestMethod.GET)
-    public Collection<Company> companies(){
+    public Collection<Company> companies(HttpServletRequest request, HttpServletResponse response){
+        if (companyService.getAllCompanies() !=null) {
+            logger.info("acceptingexception");
+            response.setStatus(HttpServletResponse.SC_OK);
+        }else {
+            response.setStatus( HttpServletResponse.SC_NOT_FOUND);
+        }
         return companyService.getAllCompanies();
     }
 
@@ -46,7 +50,14 @@ public class CompanyController implements ErrorController {
      * @return company
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Company getCompanyById(@PathVariable("id") long id){
+    public Company getCompanyById(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response){
+        ;
+        if (companyService.getCompanyById(id) !=null) {
+            logger.info("acceptingexception");
+            response.setStatus(HttpServletResponse.SC_OK);
+        }else {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        }
         return companyService.getCompanyById(id);
     }
 
@@ -55,12 +66,13 @@ public class CompanyController implements ErrorController {
      * @return
      */
     @RequestMapping(value ="/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public long createCompany(@RequestBody Company company){
+    public long createCompany(@RequestBody Company company, HttpServletRequest request, HttpServletResponse response){
 
         long id = companyService.createCompany(company);
         if(id == 0L){
             throw new IllegalArgumentException("Company ID should not be 0");
         }else {
+            response.setStatus(HttpServletResponse.SC_OK);
             return id;
         }
     }
@@ -72,8 +84,9 @@ public class CompanyController implements ErrorController {
      * @param company
      */
     @RequestMapping(value ="/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void updateCompany(@PathVariable("id") long id,@RequestBody Company company){
+    public void updateCompany(@PathVariable("id") long id,@RequestBody Company company, HttpServletRequest request, HttpServletResponse response){
         if(company.getCompanyid() == id){
+            response.setStatus(HttpServletResponse.SC_OK);
             companyService.updateCompany(company);
         }else {
             logger.error("Companies ID is not same for updation");
@@ -86,7 +99,8 @@ public class CompanyController implements ErrorController {
      * @param id
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deleteCompany(@PathVariable("id") long id){
+    public void deleteCompany(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response){
+        response.setStatus(HttpServletResponse.SC_OK);
         companyService.deleteCompany(id);
     }
 
