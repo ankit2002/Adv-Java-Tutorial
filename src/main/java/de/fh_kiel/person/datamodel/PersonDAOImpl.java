@@ -1,12 +1,14 @@
 package de.fh_kiel.person.datamodel;
 
 
-import org.slf4j.Logger;
 import de.fh_kiel.person.exception.PersonNotFound;
+import de.fh_kiel.person.stubclass.Gender;
 import de.fh_kiel.person.stubclass.Person;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -23,7 +25,13 @@ public class PersonDAOImpl implements PersonDAO {
 
 
 
-    private final Set<Person> listPerson = new HashSet<>();
+    private static final Set<Person> listPerson = new HashSet<>();
+    static {
+        listPerson.add(new Person("Amit", "Nagar", LocalDate.of(1988,10,10), Gender.Male, 1));
+        listPerson.add(new Person("A", "Nagar1", LocalDate.of(1988,10,10), Gender.Male, 2));
+        listPerson.add(new Person("m", "Nagar2", LocalDate.of(1988,10,10), Gender.Male, 3));
+        listPerson.add(new Person("it", "Nagar3", LocalDate.of(1988,10,10), Gender.Male, 4));
+    }
 
     @Override
     public long createPerson(Person p) {
