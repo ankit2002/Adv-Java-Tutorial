@@ -22,7 +22,6 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -82,7 +81,7 @@ public class PersonDAOTest {
         assertThat("wrong order of developers in result", list, contains(dev, dev2));
     }
 
-    @Test
+ /*   @Test
     public void testUpdatePerson(){
 
         try {
@@ -110,6 +109,6 @@ public class PersonDAOTest {
         when(mockPersonDAO.deletePerson(dev2)).thenReturn(true);
         mockPersonDAO.deletePerson(dev2);
         assertEquals(dev2.getId(), 2L);
-    }
+    }*/
 
 }

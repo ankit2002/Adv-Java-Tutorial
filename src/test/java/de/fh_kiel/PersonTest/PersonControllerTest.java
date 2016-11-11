@@ -1,70 +1,66 @@
 package de.fh_kiel.PersonTest;
 
 import de.fh_kiel.person.model.PersonService;
-import de.fh_kiel.person.stubclass.Developer;
+import de.fh_kiel.person.controller.*;
 import de.fh_kiel.person.stubclass.Gender;
-import de.fh_kiel.person.stubclass.ProjectManager;
-import org.junit.Before;
+import de.fh_kiel.person.stubclass.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
+
+import static org.mockito.BDDMockito.given;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * Created by Ankit on 10/30/2016.
  */
-@RunWith(MockitoJUnitRunner.class)
+
+@RunWith(SpringRunner.class)
+@WebMvcTest(PersonController.class)
+//@SpringBootTest(classes=PersonController.class)
 public class PersonControllerTest {
 
-    private Developer developer1, developer2, developer3;
-    private ProjectManager projectManager;
+
+    private static final long id = 1L;
+    private static final String first_Name = "Amit";
+
+    private static final String last_Name = "Nagar";
+
+    private static final LocalDate d_o_b = LocalDate.of(1988,10,10);
+
+    private static final Gender gender = Gender.Male;
+
+
 
     @Autowired
+    MockMvc mvc;
+
+    @MockBean
     PersonService personService;
 
-
-    @Before
-    public void setup() {
-        developer1 = new Developer(1, 100000, new HashSet<>(Collections.singleton("Java")));
-        developer1.setId(1L);
-        developer1.setFirst_Name("Free");
-        developer1.setLast_Name("Farah");
-        developer1.setD_o_b(LocalDate.of(1983, 10, 10));
-        developer1.setGender(Gender.Male);
-
-        developer2 = new Developer(5, 43000, new HashSet<>(Collections.singleton("F#")));
-        developer2.setId(2L);
-        developer2.setFirst_Name("Kevin");
-        developer2.setLast_Name("Volland");
-        developer2.setD_o_b(LocalDate.of(1987, 5, 22));
-        developer2.setGender(Gender.Male);
-
-        developer3 = new Developer(7, 79919, new HashSet<>(Arrays.asList("F#", "C#")));
-        developer3.setId(3L);
-        developer3.setFirst_Name("Steven");
-        developer3.setLast_Name("Gerrad");
-        developer3.setD_o_b(LocalDate.of(2005, 8, 9));
-        developer3.setGender(Gender.Male);
-
-        projectManager= new ProjectManager(3);
-        projectManager.setId(4L);
-        projectManager.setFirst_Name("Birgit");
-        projectManager.setLast_Name("Prinz");
-        projectManager.setD_o_b(LocalDate.of(1989, 11, 8));
-        projectManager.setGender(Gender.Female);
-        projectManager.setPmExp(10);
-        projectManager.setMin_Salary(60000);
-        projectManager.setProg_lang(new HashSet<>(Arrays.asList("Javascript","VBa","C#")));
-    }
-
     @Test
-    public void testController(){
+    public void getPersonByIdTest() throws Exception {
+        given(personService.getPersonById(id))
+                .willReturn(new Person(first_Name, last_Name, d_o_b, gender, id));
+        this.mvc.perform(get("/person/" + id)
+                .accept(MediaType.APPLICATION_JSON)
+        )
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.firstname").value(first_Name))
+                .andExpect(jsonPath("$.lastname").value(last_Name))
+                .andExpect(jsonPath("$.age").value(d_o_b))
+                .andExpect(jsonPath("$.gender").value(gender))
+                .andExpect(jsonPath("$.id").value(id));
+
 
     }
-
 }
