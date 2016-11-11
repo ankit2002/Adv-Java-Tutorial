@@ -1,8 +1,6 @@
 package de.fh_kiel.person.controller;
 
 import de.fh_kiel.person.model.PersonService;
-import de.fh_kiel.person.stubclass.Developer;
-import de.fh_kiel.person.stubclass.Gender;
 import de.fh_kiel.person.stubclass.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,10 +9,9 @@ import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
 
 /**
  * Created by Ankit on 10/28/2016.
@@ -38,7 +35,14 @@ public class PersonController implements ErrorController {
      * @return
      */
     @RequestMapping(method = RequestMethod.GET)
-    public Collection<Person> persons(){
+    public Collection<Person> persons(HttpServletRequest request, HttpServletResponse response){
+        if (personService.getAllPersons() !=null) {
+            System.out.println("acceptingexception");
+            response.setStatus( HttpServletResponse.SC_OK);
+        }
+        else {
+            response.setStatus( HttpServletResponse.SC_NOT_FOUND);
+        }
         return personService.getAllPersons();
     }
 
@@ -47,7 +51,13 @@ public class PersonController implements ErrorController {
      * @return
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Person getPersonById(@PathVariable("id") long id){
+    public Person getPersonById(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response){
+        if (personService.getPersonById(id) !=null) {
+            response.setStatus( HttpServletResponse.SC_OK);
+        }
+        else {
+            response.setStatus( HttpServletResponse.SC_NOT_FOUND);
+        }
         return personService.getPersonById(id);
     }
 
@@ -85,7 +95,7 @@ public class PersonController implements ErrorController {
      * @param id
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deletePerson(@PathVariable("id") long id){
+    public void deletePerson(@PathVariable("id") long id) {
         personService.deletePerson(id);
     }
 
