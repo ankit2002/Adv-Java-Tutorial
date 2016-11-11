@@ -81,9 +81,9 @@ public class CompanyService {
      * @return
      */
     @CheckNull
-    public void updateCompany(Company company) {
+    public void updateCompany(Company company, long id) {
         try{
-            companyDAO.updateCompanyInfo(company);
+            companyDAO.updateCompanyInfo(company, id);
         }catch (Exception e){
             logger.warn(e.toString());
         }

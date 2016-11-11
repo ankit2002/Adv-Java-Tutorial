@@ -37,12 +37,12 @@ public interface PersonDAO {
      * @param p
      * @return
      */
-    public void updatePerson(Person p) throws Exception;
+    public void updatePerson(Person p, long id) throws Exception;
 
     /**
      * deletePerson
      * @param id
      * @return
      */
-    public void deletePerson(Long id);
+    public void deletePerson(long id);
 }

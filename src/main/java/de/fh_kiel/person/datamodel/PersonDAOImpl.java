@@ -60,11 +60,11 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
     @Override
-    public void updatePerson(Person p) throws Exception {
+    public void updatePerson(Person p, long id) throws Exception {
 
         Person person = null;
         try{
-            person = getPerson(p.getId());
+            person = getPerson(id);
         }catch (PersonNotFound personNotFound){
             throw new Exception(personNotFound.toString());
         }
@@ -80,7 +80,7 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
     @Override
-    public void deletePerson(Long id) {
+    public void deletePerson(long id) {
 
         Person person = null;
         try{

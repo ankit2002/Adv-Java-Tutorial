@@ -85,7 +85,7 @@ public class PersonController implements ErrorController {
     public void updatePerson(@PathVariable("id") long id,@RequestBody Person person, HttpServletRequest request, HttpServletResponse response){
         if(person.getId() == id){
             response.setStatus( HttpServletResponse.SC_OK);
-            personService.updatePerson(person);
+            personService.updatePerson(person, id);
         }else {
             logger.error("Person's ID is not same for updation");
         }

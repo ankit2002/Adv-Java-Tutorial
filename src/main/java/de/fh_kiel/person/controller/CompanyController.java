@@ -87,7 +87,7 @@ public class CompanyController implements ErrorController {
     public void updateCompany(@PathVariable("id") long id,@RequestBody Company company, HttpServletRequest request, HttpServletResponse response){
         if(company.getCompanyid() == id){
             response.setStatus(HttpServletResponse.SC_OK);
-            companyService.updateCompany(company);
+            companyService.updateCompany(company, id);
         }else {
             logger.error("Companies ID is not same for updation");
         }

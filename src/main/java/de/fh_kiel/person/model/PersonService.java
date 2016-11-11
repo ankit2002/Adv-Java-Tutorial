@@ -87,9 +87,9 @@ public class PersonService {
      * @return
      */
     @CheckNull
-    public void updatePerson(Person p) {
+    public void updatePerson(Person p, long id) {
         try{
-            personDAO.updatePerson(p);
+            personDAO.updatePerson(p, id);
         }catch (Exception e){
             logger.warn(e.toString());
         }
@@ -101,8 +101,7 @@ public class PersonService {
      * @return
      */
     @CheckNull
-    public void deletePerson(Long id){
-        if(id != null)
+    public void deletePerson(long id){
             personDAO.deletePerson(id);
     }
 

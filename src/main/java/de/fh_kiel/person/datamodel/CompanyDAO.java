@@ -37,7 +37,7 @@ public interface CompanyDAO {
      * update Company
      * @param company
      */
-    public void updateCompanyInfo(Company company) throws Exception;
+    public void updateCompanyInfo(Company company, long id) throws Exception;
 
     /**
      * delete Company

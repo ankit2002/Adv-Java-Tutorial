@@ -80,11 +80,11 @@ public class CompanyDAOImpl implements CompanyDAO {
     }
 
     @Override
-    public void updateCompanyInfo(Company company) throws Exception {
+    public void updateCompanyInfo(Company company, long id) throws Exception {
 
         Company newComp = null;
         try{
-            newComp = getCompanyById(company.getCompanyid());
+            newComp = getCompanyById(id);
         }catch (CompanyNotFound companyNotFound){
             throw new CompanyNotFound(companyNotFound.toString());
         }
