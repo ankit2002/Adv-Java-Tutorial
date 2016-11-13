@@ -69,19 +69,21 @@ public class PersonDAOImpl implements PersonDAO {
             throw new Exception(personNotFound.toString());
         }
 
-        if( person != null )
-        {
-            // Updated
-            person.setFirst_Name(p.getFirst_Name());
+        if( person != null ) {
+            /**
+             * having problem in deletion after updation.
+             */
+            /*person.setFirst_Name(p.getFirst_Name());
             person.setLast_Name(p.getLast_Name());
             person.setD_o_b(p.getD_o_b());
-            person.setGender(p.getGender());
+            person.setGender(p.getGender());*/
+            this.deletePerson(id);
+            this.createPerson(p);
         }
     }
 
     @Override
     public void deletePerson(long id) {
-
         Person person = null;
         try{
             person = getPerson(id);

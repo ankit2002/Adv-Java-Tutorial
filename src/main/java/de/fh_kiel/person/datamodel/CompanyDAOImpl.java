@@ -92,8 +92,10 @@ public class CompanyDAOImpl implements CompanyDAO {
         if( newComp != null )
         {
             // Updated
-            newComp.setCompanyName(company.getCompanyName());
-            newComp.setCompanyEmpList(company.getCompanyEmpList());
+            /*newComp.setCompanyName(company.getCompanyName());
+            newComp.setCompanyEmpList(company.getCompanyEmpList());*/
+            this.deleteCompany(id);
+            this.createCompany(company);
         }
 
     }

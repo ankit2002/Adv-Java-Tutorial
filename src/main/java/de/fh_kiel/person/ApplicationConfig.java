@@ -64,8 +64,6 @@ public class ApplicationConfig {
     public static void main(String[] args) throws Exception {
         Logger logger = LoggerFactory.getLogger(ApplicationConfig.class);
         logger.debug("Application Started");
-        /*LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
-        StatusPrinter.print(lc);*/
         SpringApplication.run(ApplicationConfig.class, args);
     }
 }

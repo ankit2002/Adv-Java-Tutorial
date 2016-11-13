@@ -22,6 +22,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(PersonController.class)
@@ -31,35 +32,29 @@ public class PersonControllerTest {
 
     private static final long id = 1L;
     private static final String first_Name = "Amit";
-
     private static final String last_Name = "Nagar";
-
     private static final LocalDate dob = LocalDate.of(1988,10,10);
-
     private static final Gender gender =  Gender.Male;
 
 
 
     @Autowired
-    MockMvc mvc;
+    private MockMvc mvc;
 
     @MockBean
-    PersonService personService;
+    private PersonService personService;
 
     @Test
     public void getPersonByIdTest() throws Exception {
 
-        String dobstring = dob.toString();
-        String genderstring = gender.toString();
-
-        given(this.personService.getPersonById(id))
-                .willReturn(new Person(first_Name, last_Name, dob, gender, id));
+        given(this.personService.getPersonById(id)).willReturn(new Person(first_Name, last_Name, dob, gender, id));
         this.mvc.perform(get("/person/" + id).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.first_Name").value(first_Name))
                 .andExpect(jsonPath("$.last_Name").value(last_Name))
-                .andExpect(jsonPath("$.d_o_b").value(dobstring))
-                .andExpect(jsonPath("$.gender").value(genderstring))
+                .andExpect(jsonPath("$.d_o_b").value(dob.toString()))
+                .andExpect(jsonPath("$.gender").value(gender.toString()))
                 .andExpect(jsonPath("$.id").value(id))
                 .andDo(print());
     }
