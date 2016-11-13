@@ -37,7 +37,7 @@ public class PersonController implements ErrorController {
     @RequestMapping(method = RequestMethod.GET)
     public Collection<Person> persons(HttpServletRequest request, HttpServletResponse response){
         if (personService.getAllPersons() !=null) {
-            logger.info("acceptingexception");
+            logger.debug("To get all persons");
             response.setStatus( HttpServletResponse.SC_OK);
         }
         else {
@@ -53,6 +53,7 @@ public class PersonController implements ErrorController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Person getPersonById(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response){
         if (personService.getPersonById(id) !=null) {
+            logger.debug("To get person by id");
             response.setStatus( HttpServletResponse.SC_OK);
         }
         else {
@@ -72,6 +73,7 @@ public class PersonController implements ErrorController {
             throw new IllegalArgumentException("Person ID should not be 0");
         }else {
             response.setStatus( HttpServletResponse.SC_OK);
+            logger.debug("To create a person");
             return id;
         }
     }
@@ -86,6 +88,7 @@ public class PersonController implements ErrorController {
         if(person.getId() == id){
             response.setStatus( HttpServletResponse.SC_OK);
             personService.updatePerson(person, id);
+            logger.debug("To update a person");
         }else {
             logger.error("Person's ID is not same for updation");
         }
@@ -99,6 +102,7 @@ public class PersonController implements ErrorController {
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deletePerson(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response) {
         response.setStatus( HttpServletResponse.SC_OK);
+        logger.debug("To delete a person by id");
         personService.deletePerson(id);
     }
 

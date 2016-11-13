@@ -36,7 +36,7 @@ public class CompanyController implements ErrorController {
     @RequestMapping(method = RequestMethod.GET)
     public Collection<Company> companies(HttpServletRequest request, HttpServletResponse response){
         if (companyService.getAllCompanies() !=null) {
-            logger.info("acceptingexception");
+            logger.debug("To get all companies");
             response.setStatus(HttpServletResponse.SC_OK);
         }else {
             response.setStatus( HttpServletResponse.SC_NOT_FOUND);
@@ -53,7 +53,7 @@ public class CompanyController implements ErrorController {
     public Company getCompanyById(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response){
         ;
         if (companyService.getCompanyById(id) !=null) {
-            logger.info("acceptingexception");
+            logger.debug("To get company by id");
             response.setStatus(HttpServletResponse.SC_OK);
         }else {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
@@ -73,6 +73,7 @@ public class CompanyController implements ErrorController {
             throw new IllegalArgumentException("Company ID should not be 0");
         }else {
             response.setStatus(HttpServletResponse.SC_OK);
+            logger.debug("To create a company");
             return id;
         }
     }
@@ -87,6 +88,7 @@ public class CompanyController implements ErrorController {
     public void updateCompany(@PathVariable("id") long id,@RequestBody Company company, HttpServletRequest request, HttpServletResponse response){
         if(company.getCompanyid() == id){
             response.setStatus(HttpServletResponse.SC_OK);
+            logger.debug("To update a company");
             companyService.updateCompany(company, id);
         }else {
             logger.error("Companies ID is not same for updation");
@@ -101,6 +103,7 @@ public class CompanyController implements ErrorController {
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteCompany(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response){
         response.setStatus(HttpServletResponse.SC_OK);
+        logger.debug("To delete a company by id");
         companyService.deleteCompany(id);
     }
 
