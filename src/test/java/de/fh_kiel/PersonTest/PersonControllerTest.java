@@ -19,12 +19,9 @@ import java.time.LocalDate;
 
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-
-/**
- * Created by Ankit on 10/30/2016.
- */
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(PersonController.class)
@@ -37,9 +34,9 @@ public class PersonControllerTest {
 
     private static final String last_Name = "Nagar";
 
-    private static final String dob = "1988-10-10";
+    private static final LocalDate dob = LocalDate.of(1988,10,10);
 
-    private static final String gender = "Male";
+    private static final Gender gender =  Gender.Male;
 
 
 
@@ -51,17 +48,19 @@ public class PersonControllerTest {
 
     @Test
     public void getPersonByIdTest() throws Exception {
+
+        String dobstring = dob.toString();
+        String genderstring = gender.toString();
+
         given(this.personService.getPersonById(id))
-                .willReturn(new Person(first_Name, last_Name, LocalDate.of(1988,10,10), Gender.Male, id));
+                .willReturn(new Person(first_Name, last_Name, dob, gender, id));
         this.mvc.perform(get("/person/" + id).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(jsonPath("$.first_Name").value(first_Name))
                 .andExpect(jsonPath("$.last_Name").value(last_Name))
-                .andExpect(jsonPath("$.d_o_b").value(dob))
-                .andExpect(jsonPath("$.gender").value(gender))
-                .andExpect(jsonPath("$.id").value(id));
-
-
-
+                .andExpect(jsonPath("$.d_o_b").value(dobstring))
+                .andExpect(jsonPath("$.gender").value(genderstring))
+                .andExpect(jsonPath("$.id").value(id))
+                .andDo(print());
     }
 }

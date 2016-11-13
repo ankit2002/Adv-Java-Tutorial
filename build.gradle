@@ -22,7 +22,7 @@ buildscript {
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 apply plugin: 'idea'
-apply plugin: 'spring-boot'
+apply plugin: 'org.springframework.boot'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -51,8 +51,8 @@ dependencies{
 
     //For file logger
     compile group: 'org.slf4j', name:'slf4j-api', version: '1.7.2'
-    compile group: 'ch.qos.logback', name:'logback-classic', version: '1.0.9'
-    compile group: 'ch.qos.logback', name:'logback-core', version: '1.0.9'
+    compile group: 'ch.qos.logback', name:'logback-classic', version: '1.+'
+    compile group: 'ch.qos.logback', name:'logback-core', version: '1.+'
 
     //For AspectJ
     aspectjweaver "org.aspectj:aspectjweaver:1.+"
