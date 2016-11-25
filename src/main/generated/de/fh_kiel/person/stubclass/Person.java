@@ -1,6 +1,7 @@
 package de.fh_kiel.person.stubclass;
 
 import java.io.Serializable;
+import java.lang.Long;
 import java.lang.Object;
 import java.lang.Override;
 import java.lang.String;
@@ -20,12 +21,12 @@ public class Person implements Serializable {
 
   private Gender gender;
 
-  private long id;
+  private Long id;
 
   public Person() {
   }
 
-  public Person(final String first_Name, final String last_Name, final LocalDate d_o_b, final Gender gender, final long id) {
+  public Person(final String first_Name, final String last_Name, final LocalDate d_o_b, final Gender gender, final Long id) {
     this.first_Name = first_Name;
     this.last_Name = last_Name;
     this.d_o_b = d_o_b;
@@ -65,11 +66,11 @@ public class Person implements Serializable {
     this.gender = gender;
   }
 
-  public long getId() {
+  public Long getId() {
     return this.id;
   }
 
-  public void setId(final long id) {
+  public void setId(final Long id) {
     this.id = id;
   }
 

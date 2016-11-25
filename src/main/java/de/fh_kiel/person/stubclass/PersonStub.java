@@ -15,7 +15,7 @@ public class PersonStub implements Serializable {
     private String last_Name;
     private LocalDate d_o_b;
     private Gender gender;
-    private long id;
+    private Long id;
 
     // Getter Method for Age
     public int getAge() {
