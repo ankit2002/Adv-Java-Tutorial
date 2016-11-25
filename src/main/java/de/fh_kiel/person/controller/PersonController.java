@@ -73,14 +73,6 @@ public class PersonController implements ErrorController {
      */
     @RequestMapping(value ="/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Person> createPerson(@RequestBody final Person person, HttpServletRequest request, HttpServletResponse response){
-//        long id = personService.createPerson(person);
-//        if(id == 0L){
-//            throw new IllegalArgumentException("Person ID should not be 0");
-//        }else {
-//            response.setStatus( HttpServletResponse.SC_OK);
-//            logger.debug("To create a person");
-//            return id;
-//        }
 
         try {
             this.personService.createPerson(person);
@@ -92,7 +84,6 @@ public class PersonController implements ErrorController {
         } catch (IllegalArgumentException e) {
             throw new EntityMalformedException("Person could not be created", e);
         }
-
     }
 
     /**

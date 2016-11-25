@@ -28,17 +28,17 @@ public class PersonDAOImpl implements PersonDAO {
     @Override
     public long createPerson(Person p) {
 
+
         if (p.getId() != null) {
             throw new IllegalArgumentException("Passed person is not new");
         }
 
         final Long maxId = listPerson.isEmpty() ? 0L : Collections.max(listPerson.keySet(), (o1, o2) ->
-                new CompareToBuilder().append(o1, o2).toComparison()
-        );
+                new CompareToBuilder().append(o1, o2).toComparison());
 
         // saving data
-        p.setId(maxId);
-        listPerson.put(maxId,p);
+        p.setId(maxId + 1L);
+        listPerson.put(p.getId(),p);
         return maxId;
     }
 
