@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.Optional;
 import java.util.TreeSet;
 
 
@@ -58,20 +59,17 @@ public class PersonService {
         return personDAO.getAllPersons();
     }
 
+
+
+
     /**
      * get Person by ID
      * @param id
      * @return
      */
     @CheckNull
-    public Person getPersonById(long id){
-
-        try{
-            return personDAO.getPerson(id);
-        }catch (PersonNotFound e){
-            logger.warn(e.toString());
-            return null;
-        }
+    public Optional<Person> getPersonById(long id){
+        return personDAO.getPerson(id);
     }
 
     // Get Person Size
@@ -136,6 +134,10 @@ public class PersonService {
      * @return
      */
     public Collection<Person> getPersonByProgLang(final String programmingLanguage) {
+
+
+
+
         final Collection<Person> result = new TreeSet<>(new Comparator<Person>() {
             @Override
             public int compare(final Person o1, final Person o2) {
@@ -160,4 +162,6 @@ public class PersonService {
         return result;
     }
 
+
+    // refactor programming
 }

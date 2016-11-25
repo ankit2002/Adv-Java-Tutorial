@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Collection;
+import java.util.Optional;
 
 /**
  * Created by amit on 03.11.16.
@@ -58,7 +59,7 @@ public class CompanyController implements ErrorController {
         }else {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
-        return companyService.getCompanyById(id);
+        return companyService.getCompanyById(id).get();
     }
 
     /**

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Optional;
 
 /**
  * Created by Ankit on 10/25/2016.
@@ -58,14 +59,8 @@ public class CompanyService {
      * @return
      */
     @CheckNull
-    public Company getCompanyById(long id){
-
-        try{
+    public Optional<Company> getCompanyById(long id){
             return companyDAO.getCompanyById(id);
-        }catch (CompanyNotFound e){
-            logger.warn(e.toString());
-            return null;
-        }
     }
 
     // Get Person Size

@@ -7,6 +7,7 @@ import de.fh_kiel.person.stubclass.Company;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
+import java.util.Optional;
 
 /**
  * Created by Ankit on 10/25/2016.
@@ -31,7 +32,7 @@ public interface CompanyDAO {
      * @param id
      * @return company
      */
-    public Company getCompanyById(long id) throws CompanyNotFound;
+    public Optional<Company> getCompanyById(long id);
 
     /**
      * update Company

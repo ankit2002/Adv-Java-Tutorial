@@ -6,6 +6,7 @@ import de.fh_kiel.person.exception.PersonNotFound;
 import de.fh_kiel.person.stubclass.Person;
 
 import java.util.Collection;
+import java.util.Optional;
 
 /**
  * Created by Ankit on 10/11/2016.
@@ -30,7 +31,7 @@ public interface PersonDAO {
      * @return
      * @throws PersonNotFound
      */
-    public Person getPerson(long id) throws PersonNotFound;
+    public Optional<Person> getPerson(long id);
 
     /**
      * updatedPerson

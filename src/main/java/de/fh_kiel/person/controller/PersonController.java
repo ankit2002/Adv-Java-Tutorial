@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
 import java.util.Collection;
+import java.util.Optional;
 
 /**
  * Created by Ankit on 10/28/2016.
@@ -64,7 +65,8 @@ public class PersonController implements ErrorController {
         else {
             response.setStatus( HttpServletResponse.SC_NOT_FOUND);
         }
-        return personService.getPersonById(id);
+
+        return personService.getPersonById(id).get();
     }
 
     /**

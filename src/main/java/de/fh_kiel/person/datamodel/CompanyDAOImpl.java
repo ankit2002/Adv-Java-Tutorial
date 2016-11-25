@@ -20,9 +20,9 @@ import java.util.*;
 public class CompanyDAOImpl implements CompanyDAO {
 
     /**
-     * HashSet to store Companies
+     * HashMap to store Companies
      */
-    private static final Set<Company> companiesList = new HashSet<>();
+    private static final Map<Long, Company> companiesList = new HashMap<>();
 
     static {
         Person person = new Person();
@@ -43,9 +43,9 @@ public class CompanyDAOImpl implements CompanyDAO {
         person3.setLast_Name("guys");
         person3.setD_o_b(LocalDate.of(1983, 10, 10));
         person3.setGender(Gender.Male);
-        companiesList.add(new Company(1, "Company1", new ArrayList<Person>(Arrays.asList(person))));
-        companiesList.add(new Company(2, "Company2", new ArrayList<Person>(Arrays.asList(person1))));
-        companiesList.add(new Company(3, "Company3", new ArrayList<Person>(Arrays.asList(person3))));
+        companiesList.put(1L,new Company(1, "Company1", new ArrayList<Person>(Arrays.asList(person))));
+        companiesList.put(2L,new Company(2, "Company2", new ArrayList<Person>(Arrays.asList(person1))));
+        companiesList.put(3L,new Company(3, "Company3", new ArrayList<Person>(Arrays.asList(person3))));
     }
 
     /**
@@ -53,63 +53,74 @@ public class CompanyDAOImpl implements CompanyDAO {
      */
     Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
 
+    /**
+     * createCompany
+     * @param company
+     * @return
+     */
     @Override
     public long createCompany(Company company) {
 
         if(company.getCompanyid() != 0L && company != null) {
-            companiesList.add(company);
+            companiesList.put(1L,company);
             return company.getCompanyid();
         }
         logger.error("Company is null cannot be created");
         return 0L;
     }
 
+    /**
+     * getAllCompanies
+     * @return
+     */
     @Override
     public Collection<Company> getAllCompanies() {
-        return new ArrayList<>(companiesList);
+        return new ArrayList<>(companiesList.values());
     }
 
+    /**
+     * getCompanyById
+     * @param id
+     * @return
+     */
     @Override
-    public Company getCompanyById(long id) throws CompanyNotFound{
-        for (Company company:companiesList) {
-            if(company.getCompanyid()==id){
-                return company;
-            }
-        }
-        throw new CompanyNotFound("Company Not Found");
+    public Optional<Company> getCompanyById(long id){
+
+        Company company = companiesList.get(id);
+        return Optional.of(company); // can be null; used for debugging
+
     }
 
+    /**
+     * updateCompanyInfo
+     * @param company
+     * @param id
+     * @throws Exception
+     */
     @Override
     public void updateCompanyInfo(Company company, long id) throws Exception {
 
-        Company newComp = null;
-        try{
-            newComp = getCompanyById(id);
-        }catch (CompanyNotFound companyNotFound){
-            throw new CompanyNotFound(companyNotFound.toString());
-        }
+        Optional<Company> newComp;
+        newComp = getCompanyById(id);
 
-        if( newComp != null )
+        if( newComp.isPresent() )
         {
-            // Updated
-            /*newComp.setCompanyName(company.getCompanyName());
-            newComp.setCompanyEmpList(company.getCompanyEmpList());*/
             this.deleteCompany(id);
-            this.createCompany(company);
+            companiesList.put(id,company);
         }
-
     }
 
+    /**
+     * deleteCompany
+     * @param id
+     */
     @Override
     public void deleteCompany(Long id) {
 
-        Company newComp = null;
-        try{
-            newComp = getCompanyById(id);
-        }catch (CompanyNotFound companyNotFound){
-            logger.warn("Company not Found");
-        }
-        if(newComp != null)
+        Optional<Company> newComp;
+        newComp = getCompanyById(id);
+        if(newComp.isPresent()) {
             companiesList.remove(newComp);
+        }
     }
 }

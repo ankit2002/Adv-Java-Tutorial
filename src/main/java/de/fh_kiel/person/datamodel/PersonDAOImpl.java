@@ -25,6 +25,11 @@ public class PersonDAOImpl implements PersonDAO {
     // changing Set to Map
     private static final Map<Long, Person> listPerson = new HashMap<>();
 
+    /**
+     * createPerson
+     * @param p
+     * @return
+     */
     @Override
     public long createPerson(Person p) {
 
@@ -42,53 +47,54 @@ public class PersonDAOImpl implements PersonDAO {
         return maxId;
     }
 
+    /**
+     * getAllPersons
+     * @return
+     */
     @Override
     public Collection<Person> getAllPersons() {
         return new ArrayList<>(listPerson.values());
     }
 
+    /**
+     * getPerson by id
+     * @param id
+     * @return
+     */
     @Override
-    public Person getPerson(long id) throws PersonNotFound  {
-
+    public Optional<Person> getPerson(long id) {
         Person p = listPerson.get(id);
-        if (p == null)
-            throw new PersonNotFound("Person Not Found with id - " + id);
-        return p;
+        return Optional.of(p); // can be null; used for debugging
     }
 
+    /**
+     * updatePerson
+     * @param p
+     * @param id
+     * @throws Exception
+     */
     @Override
     public void updatePerson(Person p, long id) throws Exception {
 
-        Person person = null;
-        try{
-            person = getPerson(id);
-        }catch (PersonNotFound personNotFound){
-            throw new Exception(personNotFound.toString());
-        }
-
-        if( person != null ) {
-            /**
-             * having problem in deletion after updation.
-             */
-            /*person.setFirst_Name(p.getFirst_Name());
-            person.setLast_Name(p.getLast_Name());
-            person.setD_o_b(p.getD_o_b());
-            person.setGender(p.getGender());*/
+        Optional<Person> person;
+        person = getPerson(id);
+        if(person.isPresent()){
             this.deletePerson(id);
-            this.createPerson(p);
+            listPerson.put(id,p);
         }
     }
 
+    /**
+     * Delete Person
+     * @param id
+     */
     @Override
     public void deletePerson(long id) {
-        Person person = null;
-        try{
-            person = getPerson(id);
-        }catch (PersonNotFound personNotFound){
-            logger.warn(personNotFound.getLocalizedMessage());
-        }
-        if(person != null) {
-            listPerson.remove(person);
+
+        Optional<Person> person;
+        person = getPerson(id);
+        if(person.isPresent()) {
+            listPerson.remove(id);
         }
     }
 }
