@@ -1,15 +1,12 @@
 package de.fh_kiel.person.datamodel;
 
 
-import de.fh_kiel.person.exception.PersonNotFound;
-import de.fh_kiel.person.stubclass.Gender;
 import de.fh_kiel.person.stubclass.Person;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
 import java.util.*;
 
 
@@ -64,7 +61,7 @@ public class PersonDAOImpl implements PersonDAO {
     @Override
     public Optional<Person> getPerson(long id) {
         Person p = listPerson.get(id);
-        return Optional.of(p); // can be null; used for debugging
+        return Optional.ofNullable(p); // can be null; used for debugging
     }
 
     /**

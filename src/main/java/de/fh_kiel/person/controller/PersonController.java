@@ -1,8 +1,8 @@
 package de.fh_kiel.person.controller;
 
 import de.fh_kiel.person.exception.EntityMalformedException;
-import de.fh_kiel.person.exception.PersonNotFound;
 import de.fh_kiel.person.model.PersonService;
+import de.fh_kiel.person.stubclass.Gender;
 import de.fh_kiel.person.stubclass.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -58,15 +59,20 @@ public class PersonController implements ErrorController {
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Person getPersonById(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response){
-        if (personService.getPersonById(id) !=null) {
-            logger.debug("To get person by id");
-            response.setStatus( HttpServletResponse.SC_OK);
-        }
-        else {
-            response.setStatus( HttpServletResponse.SC_NOT_FOUND);
-        }
 
-        return personService.getPersonById(id).get();
+        Optional<Person> p = personService.getPersonById(id);
+        if (p.isPresent()){
+            logger.debug("Object is not Null");
+            response.setStatus( HttpServletResponse.SC_OK);
+            return personService.getPersonById(id).get();
+        }
+        else{
+            logger.error("Object is NULLABLE, Default object set to : " + (new Person("Default", "User", LocalDate.of(1900,1,1), Gender.Male, 0L)));
+            response.setStatus( HttpServletResponse.SC_NOT_FOUND);
+            return personService.getPersonById(id)
+                    .orElse(new Person("Default", "User", LocalDate.of(1900,1,1), Gender.Male, 0L));
+
+        }
     }
 
     /**
