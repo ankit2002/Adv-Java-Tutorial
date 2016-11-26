@@ -2,6 +2,8 @@ package de.fh_kiel.person.controller;
 
 import de.fh_kiel.person.model.CompanyService;
 import de.fh_kiel.person.stubclass.Company;
+import de.fh_kiel.person.stubclass.Gender;
+import de.fh_kiel.person.stubclass.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -52,14 +57,22 @@ public class CompanyController implements ErrorController {
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Company getCompanyById(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response){
-        ;
-        if (companyService.getCompanyById(id) !=null) {
-            logger.debug("To get company by id");
-            response.setStatus(HttpServletResponse.SC_OK);
-        }else {
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+
+        Optional<Company> p = companyService.getCompanyById(id);
+        if (p.isPresent()){
+            logger.debug("Object is not Null");
+            response.setStatus( HttpServletResponse.SC_OK);
+            return companyService.getCompanyById(id).get();
         }
-        return companyService.getCompanyById(id).get();
+        else{
+            logger.error("Object is NULLABLE, Default object set to : " + (new Company(0L, "Default Company",new ArrayList<Person>())));
+            response.setStatus( HttpServletResponse.SC_NOT_FOUND);
+            return companyService.getCompanyById(id)
+                    .orElse(new Company(0L, "Default Company", new ArrayList<Person>(Arrays.asList(new Person ("Default", "User", LocalDate.of(1900,1,1), Gender.Male, 0L)))));
+
+        }
+
+
     }
 
     /**

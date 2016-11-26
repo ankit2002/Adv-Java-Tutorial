@@ -1,12 +1,14 @@
 package de.fh_kiel.person.datamodel;
 
 
+import de.fh_kiel.person.stubclass.Gender;
 import de.fh_kiel.person.stubclass.Person;
 import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.*;
 
 
@@ -21,6 +23,9 @@ public class PersonDAOImpl implements PersonDAO {
 
     // changing Set to Map
     private static final Map<Long, Person> listPerson = new HashMap<>();
+    static {
+        listPerson.put(1L,new Person("Amit", "Nagar", LocalDate.of(1988,10,10), Gender.Male, 1L));
+    }
 
     /**
      * createPerson

@@ -2,7 +2,6 @@ package de.fh_kiel.person.datamodel;
 
 //import de.fh_kiel.person.Company;
 
-import de.fh_kiel.person.exception.CompanyNotFound;
 import de.fh_kiel.person.stubclass.Company;
 import de.fh_kiel.person.stubclass.Gender;
 import de.fh_kiel.person.stubclass.Person;
@@ -87,7 +86,7 @@ public class CompanyDAOImpl implements CompanyDAO {
     public Optional<Company> getCompanyById(long id){
 
         Company company = companiesList.get(id);
-        return Optional.of(company); // can be null; used for debugging
+        return Optional.ofNullable(company); // can be null; used for debugging
 
     }
 
