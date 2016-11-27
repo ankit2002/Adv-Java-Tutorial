@@ -64,14 +64,12 @@ public class PersonController implements ErrorController {
         if (p.isPresent()){
             logger.debug("Object is not Null");
             response.setStatus( HttpServletResponse.SC_OK);
-            return personService.getPersonById(id).get();
+            return p.get();
         }
         else{
             logger.error("Object is NULLABLE, Default object set to : " + (new Person("Default", "User", LocalDate.of(1900,1,1), Gender.Male, 0L)));
             response.setStatus( HttpServletResponse.SC_NOT_FOUND);
-            return personService.getPersonById(id)
-                    .orElse(new Person("Default", "User", LocalDate.of(1900,1,1), Gender.Male, 0L));
-
+            return p.orElse(new Person("Default", "User", LocalDate.of(1900,1,1), Gender.Male, 0L));
         }
     }
 

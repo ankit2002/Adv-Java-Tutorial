@@ -58,21 +58,17 @@ public class CompanyController implements ErrorController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Company getCompanyById(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response){
 
-        Optional<Company> p = companyService.getCompanyById(id);
-        if (p.isPresent()){
+        Optional<Company> company = companyService.getCompanyById(id);
+        if (company.isPresent()){
             logger.debug("Object is not Null");
             response.setStatus( HttpServletResponse.SC_OK);
-            return companyService.getCompanyById(id).get();
+            return company.get();
         }
         else{
             logger.error("Object is NULLABLE, Default object set to : " + (new Company(0L, "Default Company",new ArrayList<Person>())));
             response.setStatus( HttpServletResponse.SC_NOT_FOUND);
-            return companyService.getCompanyById(id)
-                    .orElse(new Company(0L, "Default Company", new ArrayList<Person>(Arrays.asList(new Person ("Default", "User", LocalDate.of(1900,1,1), Gender.Male, 0L)))));
-
+            return company.orElse(new Company(0L, "Default Company", new ArrayList<Person>(Arrays.asList(new Person ("Default", "User", LocalDate.of(1900,1,1), Gender.Male, null)))));
         }
-
-
     }
 
     /**
