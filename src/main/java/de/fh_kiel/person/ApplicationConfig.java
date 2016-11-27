@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JSR310Module;
 import de.fh_kiel.person.datamodel.PersonDAO;
 import de.fh_kiel.person.datamodel.PersonDAOImpl;
-import de.fh_kiel.person.model.PersonService;
+import de.fh_kiel.person.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;

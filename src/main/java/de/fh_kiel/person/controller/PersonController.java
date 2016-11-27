@@ -1,7 +1,7 @@
 package de.fh_kiel.person.controller;
 
 import de.fh_kiel.person.exception.EntityMalformedException;
-import de.fh_kiel.person.model.PersonService;
+import de.fh_kiel.person.service.PersonService;
 import de.fh_kiel.person.stubclass.Gender;
 import de.fh_kiel.person.stubclass.Person;
 import org.slf4j.Logger;

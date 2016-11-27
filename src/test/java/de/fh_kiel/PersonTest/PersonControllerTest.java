@@ -2,7 +2,7 @@ package de.fh_kiel.PersonTest;
 
 import de.fh_kiel.person.ApplicationConfig;
 import de.fh_kiel.person.controller.PersonController;
-import de.fh_kiel.person.model.PersonService;
+import de.fh_kiel.person.service.PersonService;
 import de.fh_kiel.person.stubclass.Gender;
 import de.fh_kiel.person.stubclass.Person;
 import org.junit.Test;

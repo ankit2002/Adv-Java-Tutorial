@@ -1,11 +1,10 @@
-package de.fh_kiel.person.model;
+package de.fh_kiel.person.service;
 
 //import de.fh_kiel.person.Developer;
 //import de.fh_kiel.person.Person;
 
 import de.fh_kiel.person.checkmethod.CheckNull;
 import de.fh_kiel.person.datamodel.PersonDAO;
-import de.fh_kiel.person.exception.PersonNotFound;
 import de.fh_kiel.person.stubclass.Developer;
 import de.fh_kiel.person.stubclass.Person;
 import org.apache.commons.lang3.builder.CompareToBuilder;

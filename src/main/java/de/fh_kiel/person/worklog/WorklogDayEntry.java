@@ -1,4 +1,4 @@
-package de.fh_kiel.person.WorkLog;
+package de.fh_kiel.person.worklog;
 
 import java.time.LocalDate;
 import java.util.List;
