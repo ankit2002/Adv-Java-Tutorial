@@ -155,7 +155,7 @@ task runProcessor(type: JavaCompile, group: 'build', description: 'generates cla
 }
 
 compileJava {
-    dependsOn runProcessor
+    //dependsOn runProcessor
 }
 
 clean {
