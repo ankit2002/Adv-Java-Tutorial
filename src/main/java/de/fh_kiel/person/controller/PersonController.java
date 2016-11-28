@@ -1,5 +1,6 @@
 package de.fh_kiel.person.controller;
 
+import de.fh_kiel.person.datamodel.filterValues;
 import de.fh_kiel.person.exception.EntityMalformedException;
 import de.fh_kiel.person.model.PersonService;
 import de.fh_kiel.person.stubclass.Gender;
@@ -17,7 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.net.URI;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -28,7 +31,16 @@ import java.util.Optional;
 @RequestMapping("/person")
 public class PersonController implements ErrorController {
 
-    Logger logger = LoggerFactory.getLogger(PersonController.class);;
+    Logger logger = LoggerFactory.getLogger(PersonController.class);
+    static final List<Person> inventory = new ArrayList<>();
+    static {
+        inventory.add(new Person("Amit", "Nagar", LocalDate.of(1988, 10, 10), Gender.Female, 5L));
+        inventory.add(new Person("Rimi", "Tina", LocalDate.of(1988, 10, 10), Gender.Female, 6L));
+        inventory.add(new Person("Niki", "Mili", LocalDate.of(1988, 10, 10), Gender.Female, 2L));
+        inventory.add(new Person("Brian", "Kris", LocalDate.of(1988, 10, 10), Gender.Male, 4L));
+        inventory.add(new Person("Mr", "Nathan", LocalDate.of(1988, 10, 10), Gender.Male, 3L));
+        inventory.add(new Person("Miss", "Kat", LocalDate.of(1988, 10, 10), Gender.Female, 1L));
+    }
 
     /**
      * Injecting dependency for Person Service
@@ -128,6 +140,23 @@ public class PersonController implements ErrorController {
     @RequestMapping(value = "/error")
     public String error() {
         return "Error handling";
+    }
+
+
+    /**
+     *To handle the Static method for implementing the Standard functional Interfaces using lambdas
+     *
+     * @return
+     */
+    @RequestMapping(value = "/filter")
+    public List<String> getfilterValuescont(HttpServletRequest request, HttpServletResponse response) {
+        List<String > newUpdatedList = filterValues.getfilterValues(inventory,
+                person -> Gender.Female.equals(person.getGender()),
+                (Person p1, Person p2) -> p1.getId().compareTo(p2.getId()), person -> person.getFirst_Name() + " " + person.getLast_Name());
+        response.setStatus( HttpServletResponse.SC_OK);
+        logger.debug("Converted List");
+        return newUpdatedList;
+
     }
 
     @Override
