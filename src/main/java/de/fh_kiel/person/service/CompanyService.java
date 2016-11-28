@@ -1,17 +1,17 @@
-package de.fh_kiel.person.model;
+package de.fh_kiel.person.service;
 
 //import de.fh_kiel.person.Company;
 //import de.fh_kiel.person.Person;
 
 import de.fh_kiel.person.checkmethod.CheckNull;
 import de.fh_kiel.person.datamodel.CompanyDAO;
-import de.fh_kiel.person.exception.CompanyNotFound;
 import de.fh_kiel.person.stubclass.Company;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -92,6 +92,16 @@ public class CompanyService {
     @CheckNull
     public void deleteCompany(Long id){
         companyDAO.deleteCompany(id);
+    }
+
+    /**
+     * calculates all the working hours of all employees of that company
+     * @param company
+     * @param date1
+     * @param date2
+     */
+    public void getWorkingHours(Company company, LocalDate date1,LocalDate date2){
+        //  calculates all the working hours of all employees of that company in the given date range as a long value.
     }
 
 }

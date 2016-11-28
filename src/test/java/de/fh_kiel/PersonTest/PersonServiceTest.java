@@ -5,12 +5,11 @@ package de.fh_kiel.PersonTest;
 //import de.fh_kiel.person.ProjectManager;
 
 import de.fh_kiel.person.datamodel.PersonDAO;
-import de.fh_kiel.person.model.PersonService;
+import de.fh_kiel.person.service.PersonService;
 import de.fh_kiel.person.stubclass.Developer;
 import de.fh_kiel.person.stubclass.Gender;
 import de.fh_kiel.person.stubclass.Person;
 import de.fh_kiel.person.stubclass.ProjectManager;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

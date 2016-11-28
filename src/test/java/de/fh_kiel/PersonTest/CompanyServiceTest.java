@@ -1,11 +1,10 @@
 package de.fh_kiel.PersonTest;
 
 import de.fh_kiel.person.datamodel.CompanyDAO;
-import de.fh_kiel.person.model.CompanyService;
+import de.fh_kiel.person.service.CompanyService;
 import de.fh_kiel.person.stubclass.Company;
 import de.fh_kiel.person.stubclass.Developer;
 import de.fh_kiel.person.stubclass.Gender;
-import de.fh_kiel.person.stubclass.Person;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,7 +12,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.*;
 

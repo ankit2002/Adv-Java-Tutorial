@@ -1,6 +1,6 @@
 package de.fh_kiel.person.controller;
 
-import de.fh_kiel.person.model.CompanyService;
+import de.fh_kiel.person.service.CompanyService;
 import de.fh_kiel.person.stubclass.Company;
 import de.fh_kiel.person.stubclass.Gender;
 import de.fh_kiel.person.stubclass.Person;
