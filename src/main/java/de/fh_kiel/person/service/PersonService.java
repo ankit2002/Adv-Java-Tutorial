@@ -7,7 +7,6 @@ import de.fh_kiel.person.checkmethod.CheckNull;
 import de.fh_kiel.person.datamodel.PersonDAO;
 import de.fh_kiel.person.stubclass.Developer;
 import de.fh_kiel.person.stubclass.Person;
-import org.apache.commons.lang3.builder.CompareToBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -138,13 +137,23 @@ public class PersonService {
 
 
 
-        final Collection<Person> result = new TreeSet<>(new Comparator<Person>() {
+        /*final Collection<Person> result = new TreeSet<>(new Comparator<Person>() {
             @Override
             public int compare(final Person o1, final Person o2) {
                 return new CompareToBuilder().append(o1.getLast_Name(), o2.getLast_Name()).append
                         (o1.getFirst_Name(), o2.getFirst_Name()).toComparison();
             }
+        });*/
+
+        /**
+         * Refactored Listpersons mEthod using Lambdas and Method refrences
+         */
+        final Collection<Person> result = new TreeSet<>((Person o1, Person o2)->{
+           return Comparator.comparing(Person::getLast_Name)
+                   .thenComparing(Person::getFirst_Name)
+                   .compare(o1,o2);
         });
+
 
         for (final Person person : getAllPersons()) {
             if (!(person instanceof Developer)) {
@@ -159,6 +168,7 @@ public class PersonService {
                 }
             }
         }
+        System.out.println("Listperson after comparing:" + result);
         return result;
     }
 
