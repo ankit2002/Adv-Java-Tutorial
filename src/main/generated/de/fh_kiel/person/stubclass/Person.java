@@ -1,18 +1,14 @@
 package de.fh_kiel.person.stubclass;
 
-import java.io.Serializable;
-import java.lang.Long;
-import java.lang.Object;
-import java.lang.Override;
-import java.lang.String;
-import java.time.LocalDate;
-import java.util.Collection;
-import javax.annotation.Generated;
-
 import de.fh_kiel.person.worklog.WorklogDayEntry;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+
+import javax.annotation.Generated;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Collection;
 
 @Generated("annotation processor")
 public class Person implements Serializable {
