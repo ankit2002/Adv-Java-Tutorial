@@ -101,7 +101,10 @@ public class CompanyService {
      * @param date2
      */
     public void getWorkingHours(Company company, LocalDate date1,LocalDate date2){
-        //  calculates all the working hours of all employees of that company in the given date range as a long value.
+
+
+
+
     }
 
 }

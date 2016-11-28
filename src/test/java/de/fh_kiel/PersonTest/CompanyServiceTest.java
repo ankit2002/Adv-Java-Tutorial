@@ -50,6 +50,7 @@ public class CompanyServiceTest {
         developer1.setFirst_Name("Free");
         developer1.setLast_Name("Farah");
         developer1.setD_o_b(LocalDate.of(1983, 10, 10));
+
         developer1.setGender(Gender.Male);
 
         developer2 = new Developer(1, 100000, new HashSet<>(Collections.singleton("Java")));

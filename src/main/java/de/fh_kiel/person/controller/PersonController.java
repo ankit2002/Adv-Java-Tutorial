@@ -32,6 +32,7 @@ import java.util.Optional;
 public class PersonController implements ErrorController {
 
     Logger logger = LoggerFactory.getLogger(PersonController.class);
+
     static final List<Person> inventory = new ArrayList<>();
     static {
         inventory.add(new Person("Amit", "Nagar", LocalDate.of(1988, 10, 10), Gender.Female, 5L));
@@ -156,7 +157,6 @@ public class PersonController implements ErrorController {
         response.setStatus( HttpServletResponse.SC_OK);
         logger.debug("Converted List");
         return newUpdatedList;
-
     }
 
     @Override

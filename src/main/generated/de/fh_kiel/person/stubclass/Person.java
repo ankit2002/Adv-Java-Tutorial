@@ -1,6 +1,8 @@
 package de.fh_kiel.person.stubclass;
 
+import com.sun.corba.se.spi.orbutil.threadpool.Work;
 import de.fh_kiel.person.worklog.WorklogDayEntry;
+import de.fh_kiel.person.worklog.WorklogTimeEntry;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -8,7 +10,9 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import javax.annotation.Generated;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Generated("annotation processor")
 public class Person implements Serializable {
@@ -74,6 +78,23 @@ public class Person implements Serializable {
   public void setId(final Long id) {
     this.id = id;
   }
+
+    /**
+     *
+     * @param day
+     * @param entry
+     */
+  public void addWorkLog(LocalDate day, List<WorklogTimeEntry> entry){
+        if(worklogs == null){
+            worklogs = new ArrayList<>();
+        }
+
+      WorklogDayEntry worklogDayEntry = new WorklogDayEntry();
+      worklogDayEntry.setDay(day);
+      worklogDayEntry.setEntries(entry);
+      worklogs.add(worklogDayEntry);
+  }
+
 
   @Override
   public boolean equals(final Object o) {
