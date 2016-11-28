@@ -10,6 +10,7 @@ import de.fh_kiel.person.stubclass.Developer;
 import de.fh_kiel.person.stubclass.Gender;
 import de.fh_kiel.person.stubclass.Person;
 import de.fh_kiel.person.stubclass.ProjectManager;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,6 +47,8 @@ public class PersonServiceTest {
 
     @Before
     public void setup() {
+        System.out.println("in before Person Service test");
+
         developer1 = new Developer(1, 100000, new HashSet<>(Collections.singleton("Java")));
         developer1.setId(1L);
         developer1.setFirst_Name("Free");
@@ -79,7 +82,7 @@ public class PersonServiceTest {
     }
 
 
-    @Test
+  /*  @Test
     public void listPersons() {
 
         when(mockPersonDAO.getAllPersons()).thenReturn(Arrays.asList(developer1, developer2,
@@ -93,7 +96,7 @@ public class PersonServiceTest {
 
         verify(mockPersonDAO, times(1)).getAllPersons();
     }
-
+*/
 
     @Test
     public void listPersonsProgrammingLanguage() {
@@ -116,5 +119,10 @@ public class PersonServiceTest {
         assertThat("list should have correct order", list, contains(developer3, developer2));
 
         verify(mockPersonDAO, times(3)).getAllPersons();
+    }
+
+    @After
+    public void after() {
+        System.out.println("in after Person Serfvice test");
     }
 }

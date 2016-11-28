@@ -22,7 +22,7 @@ public class filterValuesTest {
 
     @Before
     public void setUp() {
-        System.out.println("in before");
+        System.out.println("in before Filtervalue test");
         inventory.add(new Person("Amit", "Nagar", LocalDate.of(1988, 10, 10), Gender.Female, 5L));
         inventory.add(new Person("Rimi", "Tina", LocalDate.of(1988, 10, 10), Gender.Female, 6L));
         inventory.add(new Person("Niki", "Mili", LocalDate.of(1988, 10, 10), Gender.Female, 2L));
@@ -46,6 +46,6 @@ public class filterValuesTest {
 
     @After
     public void after() {
-        System.out.println("in after");
+        System.out.println("in after Filter Value test");
     }
 }
