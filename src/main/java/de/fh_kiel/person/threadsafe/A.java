@@ -15,11 +15,11 @@ public class A {
      * @param p
      * @param f
      */
-     public synchronized void applyIf(Predicate<Integer> p, Function<Integer, Integer> f){
-        if (p.test(x)){
-            x = f.apply(x);
-            System.out.println("Threading value x:" + x);
+     public void applyIf(Predicate<Integer> p, Function<Integer, Integer> f) {
+         if (p.test(x)) {
+             x = f.apply(x);
+             System.out.println("Threading value x:" + x);
+         }
+         System.out.println("Threading value after if x:" + x);
         }
-        System.out.println("Threading value after if x:" + x);
     }
-}
