@@ -6,6 +6,7 @@ package de.fh_kiel.person.service;
 import de.fh_kiel.person.checkmethod.CheckNull;
 import de.fh_kiel.person.datamodel.CompanyDAO;
 import de.fh_kiel.person.stubclass.Company;
+import de.fh_kiel.person.stubclass.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,11 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 /**
  * Created by Ankit on 10/25/2016.
@@ -97,14 +102,24 @@ public class CompanyService {
     /**
      * calculates all the working hours of all employees of that company
      * @param company
-     * @param date1
-     * @param date2
+     * @param startDate
+     * @param endDate
      */
-    public void getWorkingHours(Company company, LocalDate date1,LocalDate date2){
+    public void getWorkingHours(Company company, LocalDate startDate,LocalDate endDate){
 
+        LocalDate dateBefore;
+        LocalDate dateAfter;
+        long daysBetween = DAYS.between(startDate, endDate);
 
+        List<Person> companyEmpList = company.getCompanyEmpList();
 
+//        companyEmpList
+//                .stream()
+//                .filter(p ->  p.get &&   p.getIncome() > 5000.0)
+//                .map(Employee::getName)
+//                .forEach(System.out::println);
+//
+//        System.out.println(collect); //output : {2=heroku.com}
 
     }
-
 }
