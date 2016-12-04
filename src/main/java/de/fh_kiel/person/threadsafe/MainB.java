@@ -13,23 +13,19 @@ public class MainB {
 
     public static void main(String[] args) {
         final B b = new B();
-        System.out.println("inside main");
         IntStream ints = new Random().ints(50000, 1, 10);
-        System.out.println("insts:" + ints);
         List<CompletableFuture<Void>> collect = ints.mapToObj(i -> doSth(b, i)).collect(Collectors.toList());
-
         CompletableFuture.allOf((CompletableFuture[])collect.toArray(new CompletableFuture[0]));
-
         System.out.println(b.getInts().size());
-        System.out.println("collect:" + collect.size());
-        System.out.println("insts 2:" + ints);
+        System.out.println("Collect:" + collect.size());
     }
 
     private static CompletableFuture<Void> doSth(final B b, final int i) {
-        //System.out.println("inside void");
+
         return CompletableFuture.runAsync(() -> {
             synchronized (b) {
                 if (!b.getInts().contains(i)) {
+
                     b.addInt(i);
                 }
             }
