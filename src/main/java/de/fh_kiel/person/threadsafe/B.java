@@ -6,12 +6,16 @@ package de.fh_kiel.person.threadsafe;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+
 public class B {
     private final List<Integer> ints = new ArrayList<>();
 
     public List<Integer> getInts() {
         return ints;
     }
+
 
     public void addInt(final Integer intt) {
         try {

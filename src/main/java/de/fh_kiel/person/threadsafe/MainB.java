@@ -13,7 +13,6 @@ import java.util.stream.IntStream;
 public class MainB {
 
     public static void main(String[] args) {
-
         final B b = new B();
         IntStream ints = new Random().ints(50000, 1, 10);
 
@@ -29,10 +28,14 @@ public class MainB {
         }
     }
 
+
+
     private static CompletableFuture<Void> doSth(final B b, final int i) {
         return CompletableFuture.runAsync(() -> {
-            if (!b.getInts().contains(i)) {
-                b.addInt(i);
+            synchronized (b) {
+                if (!b.getInts().contains(i)) {
+                    b.addInt(i);
+                }
             }
         });
     }
