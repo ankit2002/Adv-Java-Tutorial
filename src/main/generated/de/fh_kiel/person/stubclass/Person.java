@@ -26,6 +26,8 @@ public class Person implements Serializable {
 
   private Long id;
 
+  Collection<WorklogDayEntry> worklogs;
+
   public Person() {
   }
 
@@ -76,6 +78,24 @@ public class Person implements Serializable {
   public void setId(final Long id) {
     this.id = id;
   }
+
+    /**
+     *
+     * @param day
+     * @param entry
+     */
+  public void addWorkLog(LocalDate day, List<WorklogTimeEntry> entry){
+        if(worklogs == null){
+            worklogs = new ArrayList<>();
+        }
+
+      WorklogDayEntry worklogDayEntry = new WorklogDayEntry();
+      worklogDayEntry.setDay(day);
+      worklogDayEntry.setEntries(entry);
+
+      worklogs.add(worklogDayEntry);
+  }
+
 
   @Override
   public boolean equals(final Object o) {
