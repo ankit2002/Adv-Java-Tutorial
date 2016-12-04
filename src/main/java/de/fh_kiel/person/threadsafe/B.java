@@ -10,13 +10,12 @@ public class B {
     private final List<Integer> ints = new ArrayList<>();
 
     public synchronized List<Integer> getInts() {
-        //System.out.println("inside get");
+        System.out.println("inside getInts");
         return ints;
     }
 
     public synchronized void addInt(final Integer intt) {
-        //System.out.println("inside add");
-
+        System.out.println("inside addInt");
         try {
             Thread.sleep(intt);
         } catch (InterruptedException e) {
