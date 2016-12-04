@@ -37,7 +37,7 @@ public class CompanyDAOImpl implements CompanyDAO {
         worklogTimeEntry.setBegin(LocalTime.of(8,0,0));
         worklogTimeEntry.setEnd(LocalTime.of(16,00,0));
         tempList.add(worklogTimeEntry);
-       // person.addWorkLog(LocalDate.of(2016,28,11),tempList);
+        person.addWorkLog(LocalDate.of(2016,2,11),tempList);
 
         Person person1 = new Person();
         person1.setId(2L);
@@ -49,9 +49,9 @@ public class CompanyDAOImpl implements CompanyDAO {
         worklogTimeEntry1.setBegin(LocalTime.of(8,0,0));
         worklogTimeEntry1.setEnd(LocalTime.of(16,00,0));
         tempList1.add(worklogTimeEntry);
-        /*person.addWorkLog(LocalDate.of(2016,28,11),tempList1);
-        person.addWorkLog(LocalDate.of(2016,29,11),tempList1);
-        person.addWorkLog(LocalDate.of(2016,30,11),tempList1);*/
+        person.addWorkLog(LocalDate.of(2016,8,11),tempList1);
+        person.addWorkLog(LocalDate.of(2016,9,11),tempList1);
+        person.addWorkLog(LocalDate.of(2016,1,11),tempList1);
 
         person1.setGender(Gender.Male);
 

@@ -155,10 +155,10 @@ task runProcessor(type: JavaCompile, group: 'build', description: 'generates cla
 }
 
 compileJava {
-    dependsOn runProcessor
+   // dependsOn runProcessor
 }
 
 clean {
-    delete sourceSets.main.java.srcDirs.iterator().next()
+  //  delete sourceSets.main.java.srcDirs.iterator().next()
 }
 
