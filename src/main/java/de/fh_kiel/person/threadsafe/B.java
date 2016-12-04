@@ -9,13 +9,11 @@ import java.util.List;
 public class B {
     private final List<Integer> ints = new ArrayList<>();
 
-    public synchronized List<Integer> getInts() {
-        System.out.println("inside getInts");
+    public List<Integer> getInts() {
         return ints;
     }
 
-    public synchronized void addInt(final Integer intt) {
-        System.out.println("inside addInt");
+    public void addInt(final Integer intt) {
         try {
             Thread.sleep(intt);
         } catch (InterruptedException e) {
