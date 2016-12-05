@@ -1,4 +1,4 @@
-package de.fh_kiel.person.threadsafe;
+package de.fh_kiel.person.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
