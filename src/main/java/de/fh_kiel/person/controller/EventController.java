@@ -1,11 +1,16 @@
 package de.fh_kiel.person.controller;
 
 import de.fh_kiel.person.service.EventBookingService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by amit on 04.12.16.
  */
 public class EventController {
+
+    Logger logger = LoggerFactory.getLogger(EventController.class);
+
     public static void main(String[] args) {
         //EventBookingService RunnableInstance = new EventBookingService();
 
