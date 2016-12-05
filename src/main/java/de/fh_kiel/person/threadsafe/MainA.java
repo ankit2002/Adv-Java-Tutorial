@@ -28,7 +28,6 @@ public class MainA {
                 a.applyIf(x -> x < 5, x -> x + x);
                 System.out.println("Inside Thread 2 after apply:" + a.x);
             }
-
         });
 
         t1.start();
