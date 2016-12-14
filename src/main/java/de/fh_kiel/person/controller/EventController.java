@@ -1,6 +1,5 @@
 package de.fh_kiel.person.controller;
 
-import de.fh_kiel.person.service.EventBookingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,7 +10,7 @@ public class EventController {
 
     Logger logger = LoggerFactory.getLogger(EventController.class);
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         //EventBookingService RunnableInstance = new EventBookingService();
 
         Thread thread1 = new Thread(new EventBookingService(),"Booking1-");
@@ -26,6 +25,6 @@ public class EventController {
         }catch (InterruptedException e){
 
         }
-    }
+    }*/
 
 }

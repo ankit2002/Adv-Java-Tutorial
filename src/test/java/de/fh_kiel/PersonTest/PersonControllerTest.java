@@ -46,7 +46,7 @@ public class PersonControllerTest {
     @Test
     public void getPersonByIdTest() throws Exception {
 
-        given(this.personService.getPersonById(id)).willReturn(Optional.ofNullable(new Person(first_Name, last_Name, dob, gender, id)));
+        given(personService.getPersonById(id)).willReturn(Optional.ofNullable(new Person(first_Name, last_Name, dob, gender, id)));
         this.mvc.perform(get("/person/" + id).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
