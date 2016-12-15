@@ -1,32 +1,37 @@
 package de.fh_kiel.person.stubclass;
 
-import com.sun.corba.se.spi.orbutil.threadpool.Work;
-import de.fh_kiel.person.worklog.WorklogDayEntry;
-import de.fh_kiel.person.worklog.WorklogTimeEntry;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import javax.annotation.Generated;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 
-@Generated("annotation processor")
+//@Generated("annotation processor")
+@Entity(name = "PERSON_DETAILS")
 public class Person implements Serializable {
+
+  @Column(name ="FIRST_NAME")
   private String first_Name;
 
+  @Column(name ="LAST_NAME")
   private String last_Name;
 
+  @Column(name ="DATE_OF_BIRTH")
   private LocalDate d_o_b;
 
+  @Column(name ="GENDER")
+  @Enumerated(EnumType.STRING)
   private Gender gender;
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
-  Collection<WorklogDayEntry> worklogs;
+  /*@ElementCollection
+  @JoinTable(name = "PERSON_WORKLOG_DAY_ENTRY")
+  Collection<WorklogDayEntry> worklogs = new ArrayList<>();*/
 
   public Person() {
   }
@@ -79,12 +84,7 @@ public class Person implements Serializable {
     this.id = id;
   }
 
-    /**
-     *
-     * @param day
-     * @param entry
-     */
-  public void addWorkLog(LocalDate day, List<WorklogTimeEntry> entry){
+/* public void addWorkLog(LocalDate day, List<WorklogTimeEntry> entry){
         if(worklogs == null){
             worklogs = new ArrayList<>();
         }
@@ -94,7 +94,7 @@ public class Person implements Serializable {
       worklogDayEntry.setEntries(entry);
 
       worklogs.add(worklogDayEntry);
-  }
+  }*/
 
 
   @Override
