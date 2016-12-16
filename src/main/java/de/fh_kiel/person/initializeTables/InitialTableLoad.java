@@ -1,7 +1,9 @@
 package de.fh_kiel.person.initializeTables;
 
+import de.fh_kiel.person.repositories.CompanyRepository;
 import de.fh_kiel.person.repositories.PersonRepository;
 import de.fh_kiel.person.repositories.WorkLogRepository;
+import de.fh_kiel.person.stubclass.Company;
 import de.fh_kiel.person.stubclass.Gender;
 import de.fh_kiel.person.stubclass.ProjectManager;
 import de.fh_kiel.person.worklog.WorklogDayEntry;
@@ -19,7 +21,7 @@ import java.time.LocalTime;
  */
 @Component
 @Order(1)
-public class PersonInitializeData implements CommandLineRunner {
+public class InitialTableLoad implements CommandLineRunner {
 
     @Autowired
     private PersonRepository personRepository;
@@ -27,16 +29,12 @@ public class PersonInitializeData implements CommandLineRunner {
     @Autowired
     private WorkLogRepository workLogRepository;
 
+    @Autowired
+    private CompanyRepository companyRepository;
+
 
     @Override
     public void run(String... args) throws Exception {
-
-       /* Person p1 = new Person();
-        Person p2 = new Person();*/
-
-        /*Developer p1 = new Developer();
-        Developer p2 = new Developer();*/
-
 
         ProjectManager p1 = new ProjectManager();
         ProjectManager p2 = new ProjectManager();
@@ -99,6 +97,12 @@ public class PersonInitializeData implements CommandLineRunner {
         p2.getWorklogs().add(w4);
 
 
+        Company cm1 = new Company();
+        cm1.setCompanyName("Bosch");
+        cm1.getCompanyEmpList().add(p1);
+        cm1.getCompanyEmpList().add(p2);
+
+
         workLogRepository.save(w1);
         workLogRepository.save(w2);
         workLogRepository.save(w3);
@@ -106,6 +110,8 @@ public class PersonInitializeData implements CommandLineRunner {
 
         personRepository.save(p1);
         personRepository.save(p2);
+
+        companyRepository.save(cm1);
 
 
 

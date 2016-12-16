@@ -1,21 +1,26 @@
 package de.fh_kiel.person.stubclass;
 
-import java.lang.Object;
-import java.lang.Override;
-import java.lang.String;
-import java.util.List;
-import javax.annotation.Generated;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-@Generated("annotation processor")
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+//@Generated("annotation processor")
+@Entity
 public class Company {
+  @Id
+  @GeneratedValue(strategy = GenerationType.TABLE)
+  @Column(name = "COMPANY_ID")
   private long companyid;
 
+  @Column(name = "COMPANY_NAME")
   private String companyName;
 
-  private List<Person> companyEmpList;
+  @OneToMany
+  private List<Person> companyEmpList = new ArrayList<>();
 
   public Company() {
   }
