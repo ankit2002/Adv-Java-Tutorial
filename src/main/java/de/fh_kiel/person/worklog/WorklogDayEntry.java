@@ -9,7 +9,6 @@ import java.util.List;
  * Created by Ankit on 11/27/2016.
  */
 @Entity
-@Table(name = "PERSON_WORKLOG_DAY_ENTRY")
 public class WorklogDayEntry {
 
     @Id
