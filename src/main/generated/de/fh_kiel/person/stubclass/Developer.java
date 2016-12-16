@@ -6,6 +6,9 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import java.util.ArrayList;
+import java.util.Collection;
 
 //@Generated("annotation processor")
 @Entity
@@ -17,17 +20,17 @@ public class Developer extends Person {
   @Column(name = "DEV_MIN_SALARY")
   private double min_Salary;
 
-  /*@ManyToMany
-  private Collection<ProgLanguage> proglanglist = new ArrayList<>();*/
+  @ManyToMany(mappedBy = "developerlist")
+  private Collection<ProgLanguage> proglanglist = new ArrayList<>();
 
   public Developer() {
   }
 
-  /*public Developer(final float workExp, final double min_Salary, Collection<ProgLanguage> proglanglist) {
+  public Developer(final float workExp, final double min_Salary, Collection<ProgLanguage> proglanglist) {
     this.workExp = workExp;
     this.min_Salary = min_Salary;
     this.proglanglist = proglanglist;
-  }*/
+  }
 
   public float getWorkExp() {
     return this.workExp;
@@ -45,13 +48,13 @@ public class Developer extends Person {
     this.min_Salary = min_Salary;
   }
 
- /* public Collection<ProgLanguage> getProglanglist() {
+  public Collection<ProgLanguage> getProglanglist() {
     return proglanglist;
   }
 
   public void setProglanglist(Collection<ProgLanguage> proglanglist) {
     this.proglanglist = proglanglist;
-  }*/
+  }
 
   @Override
   public boolean equals(final Object o) {
