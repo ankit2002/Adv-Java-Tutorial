@@ -10,7 +10,8 @@ import java.time.LocalDate;
 
 //@Generated("annotation processor")
 @Entity(name = "PERSON_DETAILS")
-public class Person implements Serializable {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class Person implements Serializable{
 
   @Column(name ="FIRST_NAME")
   private String first_Name;
@@ -26,7 +27,7 @@ public class Person implements Serializable {
   private Gender gender;
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.TABLE)
   private Long id;
 
   /*@ElementCollection
