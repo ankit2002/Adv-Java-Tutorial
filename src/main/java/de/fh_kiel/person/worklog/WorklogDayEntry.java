@@ -12,7 +12,7 @@ import java.util.List;
 public class WorklogDayEntry {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long workLogId;
 
     @Column(name = "WORKLOG_DAY")

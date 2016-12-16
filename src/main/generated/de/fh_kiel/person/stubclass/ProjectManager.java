@@ -1,15 +1,16 @@
 package de.fh_kiel.person.stubclass;
 
-import java.lang.Object;
-import java.lang.Override;
-import java.lang.String;
-import javax.annotation.Generated;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-@Generated("annotation processor")
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+//@Generated("annotation processor")
+@Entity
 public class ProjectManager extends Developer {
+  @Column(name = "PROJ_MANAGER_EXP")
   public float pmExp;
 
   public ProjectManager() {
