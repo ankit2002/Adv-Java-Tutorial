@@ -4,14 +4,17 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 //@Generated("annotation processor")
 @Entity
 public class Developer extends Person {
 
+  @Column(name = "DEV_WORK_EXP")
   private float workExp;
 
+  @Column(name = "DEV_MIN_SALARY")
   private double min_Salary;
 
   //private Set<String> prog_lang;

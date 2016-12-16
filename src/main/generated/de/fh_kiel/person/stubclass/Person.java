@@ -1,5 +1,6 @@
 package de.fh_kiel.person.stubclass;
 
+import de.fh_kiel.person.worklog.WorklogDayEntry;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -7,12 +8,18 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
 
 //@Generated("annotation processor")
 @Entity(name = "PERSON_DETAILS")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Person implements Serializable{
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.TABLE)
+  private Long id;
+  
   @Column(name ="FIRST_NAME")
   private String first_Name;
 
@@ -26,13 +33,8 @@ public class Person implements Serializable{
   @Enumerated(EnumType.STRING)
   private Gender gender;
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.TABLE)
-  private Long id;
-
-  /*@ElementCollection
-  @JoinTable(name = "PERSON_WORKLOG_DAY_ENTRY")
-  Collection<WorklogDayEntry> worklogs = new ArrayList<>();*/
+  @OneToMany
+  Collection<WorklogDayEntry> worklogs = new ArrayList<>();
 
   public Person() {
   }
@@ -43,6 +45,14 @@ public class Person implements Serializable{
     this.d_o_b = d_o_b;
     this.gender = gender;
     this.id = id;
+  }
+
+  public Collection<WorklogDayEntry> getWorklogs() {
+    return worklogs;
+  }
+
+  public void setWorklogs(Collection<WorklogDayEntry> worklogs) {
+    this.worklogs = worklogs;
   }
 
   public String getFirst_Name() {
