@@ -19,7 +19,7 @@ public class Person implements Serializable{
   @Id
   @GeneratedValue(strategy = GenerationType.TABLE)
   private Long id;
-  
+
   @Column(name ="FIRST_NAME")
   private String first_Name;
 
@@ -33,8 +33,12 @@ public class Person implements Serializable{
   @Enumerated(EnumType.STRING)
   private Gender gender;
 
-  @OneToMany
+  @OneToMany(mappedBy = "person")
   Collection<WorklogDayEntry> worklogs = new ArrayList<>();
+
+  @ManyToOne
+  @JoinColumn(name = "COMPANY_ID")
+  private Company company;
 
   public Person() {
   }
@@ -125,5 +129,13 @@ public class Person implements Serializable{
   @Override
   public String toString() {
     return ToStringBuilder.reflectionToString(this);
+  }
+
+  public Company getCompany() {
+    return company;
+  }
+
+  public void setCompany(Company company) {
+    this.company = company;
   }
 }

@@ -17,16 +17,17 @@ public class Developer extends Person {
   @Column(name = "DEV_MIN_SALARY")
   private double min_Salary;
 
-  //private Set<String> prog_lang;
+  /*@ManyToMany
+  private Collection<ProgLanguage> proglanglist = new ArrayList<>();*/
 
   public Developer() {
   }
 
-  public Developer(final float workExp, final double min_Salary) {
+  /*public Developer(final float workExp, final double min_Salary, Collection<ProgLanguage> proglanglist) {
     this.workExp = workExp;
     this.min_Salary = min_Salary;
-   // this.prog_lang = prog_lang;
-  }
+    this.proglanglist = proglanglist;
+  }*/
 
   public float getWorkExp() {
     return this.workExp;
@@ -44,12 +45,12 @@ public class Developer extends Person {
     this.min_Salary = min_Salary;
   }
 
-  /*public Set<String> getProg_lang() {
-    return this.prog_lang;
-  }*/
+ /* public Collection<ProgLanguage> getProglanglist() {
+    return proglanglist;
+  }
 
- /* public void setProg_lang(final Set<String> prog_lang) {
-    this.prog_lang = prog_lang;
+  public void setProglanglist(Collection<ProgLanguage> proglanglist) {
+    this.proglanglist = proglanglist;
   }*/
 
   @Override

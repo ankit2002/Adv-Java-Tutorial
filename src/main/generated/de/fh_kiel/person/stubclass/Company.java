@@ -19,7 +19,7 @@ public class Company {
   @Column(name = "COMPANY_NAME")
   private String companyName;
 
-  @OneToMany
+  @OneToMany(mappedBy = "company")
   private List<Person> companyEmpList = new ArrayList<>();
 
   public Company() {

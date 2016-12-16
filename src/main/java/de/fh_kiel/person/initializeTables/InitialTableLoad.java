@@ -32,6 +32,9 @@ public class InitialTableLoad implements CommandLineRunner {
     @Autowired
     private CompanyRepository companyRepository;
 
+    /*@Autowired
+    private ProgLangRepository progLangRepository;
+*/
 
     @Override
     public void run(String... args) throws Exception {
@@ -91,27 +94,58 @@ public class InitialTableLoad implements CommandLineRunner {
         w3.getEntries().add(wt3);
         w4.getEntries().add(wt4);
 
+        w1.setPerson(p1);
+        w2.setPerson(p1);
+        w3.setPerson(p2);
+        w4.setPerson(p2);
+
+       /* ProgLanguage pl1 = new ProgLanguage();
+        ProgLanguage pl2 = new ProgLanguage();
+        ProgLanguage pl3 = new ProgLanguage();
+        ProgLanguage pl4 = new ProgLanguage();
+        pl1.setName("JAVA");
+        pl2.setName("C++");
+        pl3.setName("COBOL");
+        pl4.setName("SAS");
+
+        p1.getProglanglist().add(pl1);
+        p1.getProglanglist().add(pl2);
+        p1.getProglanglist().add(pl3);
+        p1.getProglanglist().add(pl4);*/
+
+
+
+        Company cm1 = new Company();
+        cm1.setCompanyName("Bosch");
+        Company cm2 = new Company();
+        cm2.setCompanyName("Google");
+        cm1.getCompanyEmpList().add(p1);
+        cm1.getCompanyEmpList().add(p2);
+
+        companyRepository.save(cm1);
+        companyRepository.save(cm2);
+
+        p1.setCompany(cm1);
+        p2.setCompany(cm1);
+
         p1.getWorklogs().add(w1);
         p1.getWorklogs().add(w2);
         p2.getWorklogs().add(w3);
         p2.getWorklogs().add(w4);
 
-
-        Company cm1 = new Company();
-        cm1.setCompanyName("Bosch");
-        cm1.getCompanyEmpList().add(p1);
-        cm1.getCompanyEmpList().add(p2);
-
+        personRepository.save(p1);
+        personRepository.save(p2);
 
         workLogRepository.save(w1);
         workLogRepository.save(w2);
         workLogRepository.save(w3);
         workLogRepository.save(w4);
 
-        personRepository.save(p1);
-        personRepository.save(p2);
 
-        companyRepository.save(cm1);
+       /* progLangRepository.save(pl1);
+        progLangRepository.save(pl2);
+        progLangRepository.save(pl3);
+        progLangRepository.save(pl4);*/
 
 
 
