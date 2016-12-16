@@ -1,5 +1,7 @@
 package de.fh_kiel.person.worklog;
 
+import de.fh_kiel.person.stubclass.Person;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -21,6 +23,10 @@ public class WorklogDayEntry {
     @ElementCollection
     @JoinTable(name = "PERSON_WORKLOG_TIME_ENTRY")
     List<WorklogTimeEntry> entries = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "PERSON_ID")
+    private Person person;
 
 
     public List<WorklogTimeEntry> getEntries() {
@@ -45,6 +51,14 @@ public class WorklogDayEntry {
 
     public void setWorkLogId(Long workLogId) {
         this.workLogId = workLogId;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
 }

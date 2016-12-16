@@ -18,6 +18,7 @@ public class Person implements Serializable{
 
   @Id
   @GeneratedValue(strategy = GenerationType.TABLE)
+  @Column(name = "PERSON_ID_MAIN")
   private Long id;
 
   @Column(name ="FIRST_NAME")
