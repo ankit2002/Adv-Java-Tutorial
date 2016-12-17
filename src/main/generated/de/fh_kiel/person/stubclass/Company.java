@@ -1,16 +1,18 @@
 package de.fh_kiel.person.stubclass;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 //@Generated("annotation processor")
 @Entity
-public class Company {
+public class Company implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.TABLE)
   @Column(name = "COMPANY_ID")
@@ -20,6 +22,7 @@ public class Company {
   private String companyName;
 
   @OneToMany(mappedBy = "company")
+  @JsonBackReference
   private List<Person> companyEmpList = new ArrayList<>();
 
   public Company() {

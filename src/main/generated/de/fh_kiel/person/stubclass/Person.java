@@ -1,5 +1,7 @@
 package de.fh_kiel.person.stubclass;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import de.fh_kiel.person.worklog.WorklogDayEntry;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -35,10 +37,12 @@ public class Person implements Serializable{
   private Gender gender;
 
   @OneToMany(mappedBy = "person")
+  @JsonBackReference
   Collection<WorklogDayEntry> worklogs = new ArrayList<>();
 
   @ManyToOne
   @JoinColumn(name = "COMPANY_ID")
+  @JsonManagedReference
   private Company company;
 
   public Person() {

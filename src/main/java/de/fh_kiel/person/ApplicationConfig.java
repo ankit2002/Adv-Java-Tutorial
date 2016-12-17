@@ -4,9 +4,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JSR310Module;
-import de.fh_kiel.person.datamodel.PersonDAO;
-import de.fh_kiel.person.datamodel.PersonDAOImpl;
-import de.fh_kiel.person.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -25,7 +22,7 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 public class ApplicationConfig {
 
 
-    @Bean
+    /*@Bean
     public PersonService personService() {
         return new PersonService(personDAO());
     }
@@ -33,7 +30,7 @@ public class ApplicationConfig {
     @Bean
     public PersonDAO personDAO() {
         return new PersonDAOImpl();
-    }
+    }*/
 
     @Bean(name = "OBJECT_MAPPER_BEAN")
     public ObjectMapper jsonObjectMapper() {

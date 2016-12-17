@@ -1,6 +1,12 @@
 package de.fh_kiel.person.stubclass;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -8,12 +14,13 @@ import java.util.Collection;
  * Created by amit on 16.12.16.
  */
 @Entity
-public class ProgLanguage {
+public class ProgLanguage implements Serializable {
     @Id
     @Column(name = "PROG_LANG_NAME")
     private String name;
 
     @ManyToMany
+    @JsonManagedReference
     private Collection<Developer> developerlist = new ArrayList<>();
 
     public String getName() {
