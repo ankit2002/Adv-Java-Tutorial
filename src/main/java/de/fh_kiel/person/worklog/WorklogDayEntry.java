@@ -1,6 +1,5 @@
 package de.fh_kiel.person.worklog;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import de.fh_kiel.person.stubclass.Person;
 
 import javax.persistence.*;
@@ -13,6 +12,9 @@ import java.util.List;
  * Created by Ankit on 11/27/2016.
  */
 @Entity
+/*@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "workLogId")*/
 public class WorklogDayEntry implements Serializable {
 
     @Id
@@ -28,7 +30,7 @@ public class WorklogDayEntry implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "PERSON_ID")
-    @JsonManagedReference
+    //@JsonManagedReference
     private Person person;
 
 

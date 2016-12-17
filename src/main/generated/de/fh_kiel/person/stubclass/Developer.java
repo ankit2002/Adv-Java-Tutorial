@@ -1,6 +1,6 @@
 package de.fh_kiel.person.stubclass;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -22,7 +22,8 @@ public class Developer extends Person {
   private double min_Salary;
 
   @ManyToMany(mappedBy = "developerlist")
-  @JsonBackReference
+  //@JsonBackReference
+  @JsonIgnore
   private Collection<ProgLanguage> proglanglist = new ArrayList<>();
 
   public Developer() {

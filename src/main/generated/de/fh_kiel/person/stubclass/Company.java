@@ -1,6 +1,6 @@
 package de.fh_kiel.person.stubclass;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -12,6 +12,9 @@ import java.util.List;
 
 //@Generated("annotation processor")
 @Entity
+/*@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "companyid")*/
 public class Company implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.TABLE)
@@ -22,7 +25,8 @@ public class Company implements Serializable {
   private String companyName;
 
   @OneToMany(mappedBy = "company")
-  @JsonBackReference
+  //@JsonBackReference
+  @JsonIgnore
   private List<Person> companyEmpList = new ArrayList<>();
 
   public Company() {

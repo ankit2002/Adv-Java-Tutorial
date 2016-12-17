@@ -1,7 +1,6 @@
 package de.fh_kiel.person.stubclass;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.fh_kiel.person.worklog.WorklogDayEntry;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -16,6 +15,9 @@ import java.util.Collection;
 //@Generated("annotation processor")
 @Entity(name = "PERSON_DETAILS")
 @Inheritance(strategy = InheritanceType.JOINED)
+/*@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")*/
 public class Person implements Serializable{
 
   @Id
@@ -37,12 +39,13 @@ public class Person implements Serializable{
   private Gender gender;
 
   @OneToMany(mappedBy = "person")
-  @JsonBackReference
+  //@JsonBackReference
+  @JsonIgnore
   Collection<WorklogDayEntry> worklogs = new ArrayList<>();
 
   @ManyToOne
   @JoinColumn(name = "COMPANY_ID")
-  @JsonManagedReference
+  //@JsonManagedReference
   private Company company;
 
   public Person() {

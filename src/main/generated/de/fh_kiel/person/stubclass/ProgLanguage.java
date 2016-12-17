@@ -1,7 +1,5 @@
 package de.fh_kiel.person.stubclass;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,13 +12,16 @@ import java.util.Collection;
  * Created by amit on 16.12.16.
  */
 @Entity
+/*@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "name")*/
 public class ProgLanguage implements Serializable {
     @Id
     @Column(name = "PROG_LANG_NAME")
     private String name;
 
     @ManyToMany
-    @JsonManagedReference
+    //@JsonManagedReference
     private Collection<Developer> developerlist = new ArrayList<>();
 
     public String getName() {
