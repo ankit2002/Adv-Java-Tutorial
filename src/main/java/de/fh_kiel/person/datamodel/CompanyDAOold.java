@@ -13,7 +13,7 @@ import java.util.Optional;
  * Created by Ankit on 10/25/2016.
  */
 @Component
-public interface CompanyDAO {
+public interface CompanyDAOold {
 
     /**
      * Create Company

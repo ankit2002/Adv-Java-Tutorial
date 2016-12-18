@@ -16,9 +16,9 @@ import java.util.*;
  * Created by Ankit on 10/15/2016.
  */
 @Repository
-public class PersonDAOImpl implements PersonDAO {
+public class PersonDAOoldImpl implements PersonDAOold {
 
-    Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
+    Logger logger = LoggerFactory.getLogger(PersonDAOoldImpl.class);
 
 
     // changing Set to Map

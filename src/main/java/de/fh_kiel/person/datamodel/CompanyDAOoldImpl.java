@@ -18,7 +18,7 @@ import java.util.*;
  * Created by Ankit on 10/25/2016.
  */
 @Repository
-public class CompanyDAOImpl implements CompanyDAO {
+public class CompanyDAOoldImpl implements CompanyDAOold {
 
     /**
      * HashMap to store Companies
@@ -70,7 +70,7 @@ public class CompanyDAOImpl implements CompanyDAO {
     /**
      * Logger Variable
      */
-    Logger logger = LoggerFactory.getLogger(PersonDAOImpl.class);
+    Logger logger = LoggerFactory.getLogger(PersonDAOoldImpl.class);
 
     /**
      * createCompany
