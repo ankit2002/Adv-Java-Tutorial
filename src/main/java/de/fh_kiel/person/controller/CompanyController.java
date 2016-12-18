@@ -101,21 +101,21 @@ public class CompanyController implements ErrorController {
         }
 
     }
-//
-//    /**
-//     * Delete Company
-//     * @param id
-//     */
-//    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-//    public void deleteCompany(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response){
-//        logger.debug("To delete a company by id");
-//        try{
-//            companyService.deleteCompany(id);
-//            response.setStatus(HttpServletResponse.SC_OK);
-//        }catch (Exception e){
-//            logger.error("Exception during delete: " + e);
-//        }
-//    }
+
+    /**
+     * Delete Company
+     * @param id
+     */
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    public void deleteCompany(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response){
+        logger.debug("To delete a company by id");
+        try{
+            companyService.deleteCompany(id);
+            response.setStatus(HttpServletResponse.SC_OK);
+        }catch (Exception e){
+            logger.error("Exception during delete: " + e);
+        }
+    }
 
     /**
      * Error Handling

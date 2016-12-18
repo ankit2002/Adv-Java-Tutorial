@@ -77,18 +77,18 @@ public class CompanyService {
     }
 
 
-//    /**
-//     * Delete company
-//     * @param id
-//     * @return
-//     */
-//    @CheckNull
-//    public void deleteCompany(Long id) throws Exception{
-//        if(companyDAO.findOne(id).getCompanyid()==id) {
-//            System.out.print("amitcompanydelete: + " + id + "hellodi: " + companyDAO.findOne(id));
-//            companyDAO.delete(id);
-//        }
-//    }
+    /**
+     * Delete company
+     * @param id
+     * @return
+     */
+    @CheckNull
+    public void deleteCompany(Long id) throws Exception{
+        if(companyDAO.findOne(id).getCompanyid()==id) {
+            System.out.print("amitcompanydelete: + " + id + "hellodi: " + companyDAO.findOne(id));
+            companyDAO.delete(id);
+        }
+    }
 
     // Get Person Size
 //    @CheckNull
