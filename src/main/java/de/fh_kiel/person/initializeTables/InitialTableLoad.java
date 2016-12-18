@@ -41,7 +41,7 @@ public class InitialTableLoad implements CommandLineRunner {
          * Project Manager details loaded
          */
 
-
+        // Person created
         ProjectManager p1 = new ProjectManager();
         ProjectManager p2 = new ProjectManager();
 
@@ -50,7 +50,6 @@ public class InitialTableLoad implements CommandLineRunner {
         p1.setLast_Name("Nagar");
         p1.setD_o_b(LocalDate.of(1900,10,10));
         p1.setGender(Gender.Male);
-
         p1.setWorkExp(3);
         p1.setMin_Salary(1000.00);
 
@@ -114,6 +113,7 @@ public class InitialTableLoad implements CommandLineRunner {
         wt8.setBegin(LocalTime.MIN);
         wt8.setEnd(LocalTime.MAX);
 
+        // Day Entry
         w5.setDay(LocalDate.now());
         w6.setDay(LocalDate.now());
 

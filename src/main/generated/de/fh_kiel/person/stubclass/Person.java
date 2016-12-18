@@ -43,7 +43,7 @@ public class Person implements Serializable{
   @JsonIgnore
   Collection<WorklogDayEntry> worklogs = new ArrayList<>();
 
-  @ManyToOne
+  @ManyToOne(cascade = {CascadeType.REMOVE})
   @JoinColumn(name = "COMPANY_ID")
   //@JsonManagedReference
   private Company company;

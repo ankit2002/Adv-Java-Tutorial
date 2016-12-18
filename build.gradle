@@ -50,7 +50,7 @@ dependencies{
     compile "org.aspectj:aspectjrt:1.+"
     compile "org.springframework:spring-aop:4.+"
 
-    //For JPA support
+    //For JPA support and H2 Database
     compile("org.springframework.boot:spring-boot-starter-data-jpa:2.+")
     compile("com.h2database:h2:1.+")
 

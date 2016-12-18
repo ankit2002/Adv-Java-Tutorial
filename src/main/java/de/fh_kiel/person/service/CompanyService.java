@@ -90,34 +90,4 @@ public class CompanyService {
         }
     }
 
-    // Get Person Size
-//    @CheckNull
-//    public int getAllCompaniesSize(){
-//        return companyDAOold.getAllCompanies().size();
-//    }
-
-
-//    /**
-//     * calculates all the working hours of all employees of that company
-//     * @param company
-//     * @param startDate
-//     * @param endDate
-//     */
-//    public void getWorkingHours(Company company, LocalDate startDate,LocalDate endDate){
-//
-//        LocalDate dateBefore;
-//        LocalDate dateAfter;
-//        long daysBetween = DAYS.between(startDate, endDate);
-//
-//        List<Person> companyEmpList = company.getCompanyEmpList();
-
-//        companyEmpList
-//                .stream()
-//                .filter(p ->  p.get &&   p.getIncome() > 5000.0)
-//                .map(Employee::getName)
-//                .forEach(System.out::println);
-//
-//        System.out.println(collect); //output : {2=heroku.com}
-
-    //}
 }
