@@ -1,49 +1,12 @@
-package de.fh_kiel.person.datamodel;
+package de.fh_kiel.person.repositories;
 
-
-
-import de.fh_kiel.person.exception.CompanyNotFound;
 import de.fh_kiel.person.stubclass.Company;
-import org.springframework.stereotype.Component;
-
-import java.util.Collection;
-import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
- * Created by Ankit on 10/25/2016.
+ * Created by amit on 16.12.16.
  */
-@Component
-public interface CompanyDAO {
-
-    /**
-     * Create Company
-     * @param company
-     */
-    public long createCompany(Company company);
-
-    /**
-     * Get list of All Companies
-     * @return ArrayList
-     */
-    public Collection<Company> getAllCompanies();
-
-    /**
-     * Get Company by ID
-     * @param id
-     * @return company
-     */
-    public Optional<Company> getCompanyById(long id);
-
-    /**
-     * update Company
-     * @param company
-     */
-    public void updateCompanyInfo(Company company, long id) throws Exception;
-
-    /**
-     * delete Company
-     * @param id
-     */
-    public void deleteCompany(Long id);
-
+@Repository
+public interface CompanyRepository extends JpaRepository<Company, Long>{
 }

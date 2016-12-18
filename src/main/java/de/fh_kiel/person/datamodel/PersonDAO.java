@@ -1,49 +1,12 @@
-package de.fh_kiel.person.datamodel;
+package de.fh_kiel.person.repositories;
 
-
-
-import de.fh_kiel.person.exception.PersonNotFound;
 import de.fh_kiel.person.stubclass.Person;
-
-import java.util.Collection;
-import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
- * Created by Ankit on 10/11/2016.
+ * Created by amit on 15.12.16.
  */
-public interface PersonDAO {
-
-    /**
-     *
-     * @param p
-     */
-    public long createPerson(Person p);
-
-    /**
-     *
-     * @return
-     */
-    public Collection<Person> getAllPersons();
-
-    /**
-     *
-     * @param id
-     * @return
-     * @throws PersonNotFound
-     */
-    public Optional<Person> getPerson(long id);
-
-    /**
-     * updatedPerson
-     * @param p
-     * @return
-     */
-    public void updatePerson(Person p, long id) throws Exception;
-
-    /**
-     * deletePerson
-     * @param id
-     * @return
-     */
-    public void deletePerson(long id);
+@Repository
+public interface PersonRepository extends JpaRepository<Person, Long>{
 }

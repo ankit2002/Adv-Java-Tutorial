@@ -5,6 +5,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -13,6 +14,7 @@ import java.util.Collection;
 
 //@Generated("annotation processor")
 @Entity
+//@OnDelete(action = OnDeleteAction.CASCADE)
 public class Developer extends Person {
 
   @Column(name = "DEV_WORK_EXP")
@@ -21,7 +23,7 @@ public class Developer extends Person {
   @Column(name = "DEV_MIN_SALARY")
   private double min_Salary;
 
-  @ManyToMany(mappedBy = "developerlist")
+  @ManyToMany(mappedBy = "developerlist", cascade = CascadeType.ALL)
   //@JsonBackReference
   @JsonIgnore
   private Collection<ProgLanguage> proglanglist = new ArrayList<>();

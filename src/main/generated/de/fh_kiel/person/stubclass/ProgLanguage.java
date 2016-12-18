@@ -1,10 +1,6 @@
 package de.fh_kiel.person.stubclass;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import java.io.Serializable;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -15,12 +11,12 @@ import java.util.Collection;
 /*@JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "name")*/
-public class ProgLanguage implements Serializable {
+public class ProgLanguage{
     @Id
     @Column(name = "PROG_LANG_NAME")
     private String name;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     //@JsonManagedReference
     private Collection<Developer> developerlist = new ArrayList<>();
 

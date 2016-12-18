@@ -3,7 +3,6 @@ package de.fh_kiel.person.worklog;
 import de.fh_kiel.person.stubclass.Person;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +11,7 @@ import java.util.List;
  * Created by Ankit on 11/27/2016.
  */
 @Entity
-/*@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "workLogId")*/
-public class WorklogDayEntry implements Serializable {
+public class WorklogDayEntry {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -30,7 +26,6 @@ public class WorklogDayEntry implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "PERSON_ID")
-    //@JsonManagedReference
     private Person person;
 
 

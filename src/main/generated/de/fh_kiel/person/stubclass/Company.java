@@ -6,7 +6,6 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +14,7 @@ import java.util.List;
 /*@JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "companyid")*/
-public class Company implements Serializable {
+public class Company  {
   @Id
   @GeneratedValue(strategy = GenerationType.TABLE)
   @Column(name = "COMPANY_ID")
@@ -24,7 +23,7 @@ public class Company implements Serializable {
   @Column(name = "COMPANY_NAME")
   private String companyName;
 
-  @OneToMany(mappedBy = "company")
+  @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
   //@JsonBackReference
   @JsonIgnore
   private List<Person> companyEmpList = new ArrayList<>();

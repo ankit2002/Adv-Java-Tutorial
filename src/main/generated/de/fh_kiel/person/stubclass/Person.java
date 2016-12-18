@@ -38,7 +38,7 @@ public class Person implements Serializable{
   @Enumerated(EnumType.STRING)
   private Gender gender;
 
-  @OneToMany(mappedBy = "person")
+  @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
   //@JsonBackReference
   @JsonIgnore
   Collection<WorklogDayEntry> worklogs = new ArrayList<>();
