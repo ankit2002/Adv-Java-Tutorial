@@ -44,12 +44,12 @@ public class CompanyGetAllTest {
         this.entityManager.persist(cm1);
         this.entityManager.persist(cm2);
         Company assert1 = companyDAO.findOne(1L);
-//        assertThat(assert1.getCompanyid(),equalTo(1L));
-//        assertThat(assert1.getCompanyName(),equalTo("Bosch"));
-//
-//        Company assert2 = companyDAO.findOne(2L);
-//        assertThat(assert2.getCompanyid(),equalTo(2L));
-//        assertThat(assert2.getCompanyName(),equalTo("Google"));
+        assertThat(assert1.getCompanyid(),equalTo(1L));
+        assertThat(assert1.getCompanyName(),equalTo("Bosch"));
+
+        Company assert2 = companyDAO.findOne(2L);
+        assertThat(assert2.getCompanyid(),equalTo(2L));
+        assertThat(assert2.getCompanyName(),equalTo("Google"));
         assertThat(companyDAO.findAll(), hasSize(2));
         assertThat(companyDAO.count(), equalTo(2L));
 

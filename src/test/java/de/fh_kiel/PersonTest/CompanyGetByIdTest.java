@@ -42,8 +42,8 @@ public class CompanyGetByIdTest {
         this.entityManager.persist(cm1);
         this.entityManager.persist(cm2);
         Company assert1 = companyDAO.findOne(1L);
-        //System.out.println("id:" + assert1.getCompanyid());
-        //assertThat(assert1.getCompanyid() ,equalTo(1L));
+        System.out.println("id:" + assert1.getCompanyid());
+        assertThat(assert1.getCompanyid() ,equalTo(1L));
         assertThat(assert1.getCompanyName(),equalTo("Bosch"));
 
         Company assert2 = companyDAO.findOne(2L);
