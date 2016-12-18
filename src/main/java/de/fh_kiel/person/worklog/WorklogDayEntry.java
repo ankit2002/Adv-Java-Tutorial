@@ -1,5 +1,6 @@
 package de.fh_kiel.person.worklog;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.fh_kiel.person.stubclass.Person;
 
 import javax.persistence.*;
@@ -28,7 +29,8 @@ public class WorklogDayEntry {
     @JoinColumn(name = "PERSON_ID")
     private Person person;
 
-
+    @JsonIgnore
+    @OneToMany(mappedBy = "worklogDayEntry", cascade = CascadeType.ALL)
     public List<WorklogTimeEntry> getEntries() {
         return entries;
     }

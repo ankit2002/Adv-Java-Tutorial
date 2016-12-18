@@ -70,8 +70,7 @@ public class InitialTableLoad implements CommandLineRunner {
          */
         WorklogDayEntry w1 = new WorklogDayEntry();
         WorklogDayEntry w2 = new WorklogDayEntry();
-        WorklogDayEntry w3 = new WorklogDayEntry();
-        WorklogDayEntry w4 = new WorklogDayEntry();
+
 
 
         WorklogTimeEntry wt1 = new WorklogTimeEntry();
@@ -82,28 +81,31 @@ public class InitialTableLoad implements CommandLineRunner {
 
         wt1.setBegin(LocalTime.MIN);
         wt1.setEnd(LocalTime.MAX);
+        wt1.setWorklogDayEntry(w1);
         wt2.setBegin(LocalTime.MIN);
         wt2.setEnd(LocalTime.MAX);
+        wt2.setWorklogDayEntry(w2);
         wt3.setBegin(LocalTime.MIN);
         wt3.setEnd(LocalTime.MAX);
+        wt3.setWorklogDayEntry(w1);
         wt4.setBegin(LocalTime.MIN);
         wt4.setEnd(LocalTime.MAX);
+        wt4.setWorklogDayEntry(w2);
 
         w1.setDay(LocalDate.now());
         w2.setDay(LocalDate.now());
-        w3.setDay(LocalDate.now());
-        w4.setDay(LocalDate.now());
+
 
 
         w1.getEntries().add(wt1);
         w2.getEntries().add(wt2);
-        w3.getEntries().add(wt3);
-        w4.getEntries().add(wt4);
+        w1.getEntries().add(wt1);
+        w2.getEntries().add(wt2);
+
 
         w1.setPerson(p1);
         w2.setPerson(p1);
-        w3.setPerson(p2);
-        w4.setPerson(p2);
+
 
         /**
          * Developer details loaded
@@ -135,8 +137,7 @@ public class InitialTableLoad implements CommandLineRunner {
 
         WorklogDayEntry w5 = new WorklogDayEntry();
         WorklogDayEntry w6 = new WorklogDayEntry();
-        WorklogDayEntry w7 = new WorklogDayEntry();
-        WorklogDayEntry w8 = new WorklogDayEntry();
+
 
 
         WorklogTimeEntry wt5 = new WorklogTimeEntry();
@@ -147,28 +148,30 @@ public class InitialTableLoad implements CommandLineRunner {
 
         wt5.setBegin(LocalTime.MIN);
         wt5.setEnd(LocalTime.MAX);
+        wt5.setWorklogDayEntry(w5);
         wt6.setBegin(LocalTime.MIN);
         wt6.setEnd(LocalTime.MAX);
+        wt6.setWorklogDayEntry(w6);
         wt7.setBegin(LocalTime.MIN);
         wt7.setEnd(LocalTime.MAX);
+        wt7.setWorklogDayEntry(w5);
         wt8.setBegin(LocalTime.MIN);
         wt8.setEnd(LocalTime.MAX);
+        wt8.setWorklogDayEntry(w6);
 
         w5.setDay(LocalDate.now());
         w6.setDay(LocalDate.now());
-        w7.setDay(LocalDate.now());
-        w8.setDay(LocalDate.now());
+
 
 
         w5.getEntries().add(wt5);
         w6.getEntries().add(wt6);
-        w7.getEntries().add(wt7);
-        w8.getEntries().add(wt8);
+        w5.getEntries().add(wt7);
+        w6.getEntries().add(wt8);
 
         w5.setPerson(d1);
         w6.setPerson(d1);
-        w7.setPerson(d2);
-        w8.setPerson(d2);
+
 
 
         /**
@@ -221,13 +224,11 @@ public class InitialTableLoad implements CommandLineRunner {
 
         p1.getWorklogs().add(w1);
         p1.getWorklogs().add(w2);
-        p2.getWorklogs().add(w3);
-        p2.getWorklogs().add(w4);
+
 
         d1.getWorklogs().add(w5);
         d1.getWorklogs().add(w6);
-        d2.getWorklogs().add(w7);
-        d2.getWorklogs().add(w8);
+
 
         personDAO.save(p1);
         personDAO.save(p2);
@@ -236,12 +237,10 @@ public class InitialTableLoad implements CommandLineRunner {
 
         workLogDAO.save(w1);
         workLogDAO.save(w2);
-        workLogDAO.save(w3);
-        workLogDAO.save(w4);
+
         workLogDAO.save(w5);
         workLogDAO.save(w6);
-        workLogDAO.save(w7);
-        workLogDAO.save(w8);
+
 
 
         progLangDAO.save(pl1);
