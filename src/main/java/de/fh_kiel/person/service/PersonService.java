@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.List;
 
 
 /**
@@ -57,13 +58,13 @@ public class PersonService {
      * @param person
      * @return
      */
-//
-//    @CheckNull
-//    public List<Person> createPerson(Person person) {
-//        personDAO.save(person);
-//        return personDAO.findAll();
-//    }
-//
+
+    @CheckNull
+    public List<Person> createPerson(Person person) {
+        personDAO.save(person);
+        return personDAO.findAll();
+    }
+
 //    /**
 //     * Delete Person by id
 //     *

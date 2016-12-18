@@ -6,14 +6,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorController;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Ankit on 10/28/2016.
@@ -65,28 +64,28 @@ public class PersonController implements ErrorController {
         return p;
     }
 
-//
-//    /**
-//     * Create Person
-//     * @param person
-//     * @param request
-//     * @param response
-//     * @return
-//     */
-//    @RequestMapping(value ="/create", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public List<Person> createPerson(@RequestBody final Person person, HttpServletRequest request, HttpServletResponse response){
-//
-//        if(person != null){
-//            logger.debug("Person Created");
-//            response.setStatus( HttpServletResponse.SC_OK);
-//        }
-//        else {
-//        logger.error("Person was null and cant be created");
-//        response.setStatus( HttpServletResponse.SC_NOT_FOUND);
-//        }
-//        return this.personService.createPerson(person);
-//    }
-//
+
+    /**
+     * Create Person
+     * @param person
+     * @param request
+     * @param response
+     * @return
+     */
+    @RequestMapping(value ="/create", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public List<Person> createPerson(@RequestBody final Person person, HttpServletRequest request, HttpServletResponse response){
+
+        if(person != null){
+            logger.debug("Person Created");
+            response.setStatus( HttpServletResponse.SC_OK);
+        }
+        else {
+        logger.error("Person was null and cant be created");
+        response.setStatus( HttpServletResponse.SC_NOT_FOUND);
+        }
+        return this.personService.createPerson(person);
+    }
+
 //    /**
 //     * Delete a person based on the ID
 //     * @param id
@@ -140,7 +139,7 @@ public class PersonController implements ErrorController {
     public String getErrorPath() {
         return "/error";
     }
-    
+
     /**
 
     *
