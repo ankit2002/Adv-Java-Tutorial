@@ -5,7 +5,6 @@ package de.fh_kiel.person.service;
 
 import de.fh_kiel.person.checkmethod.CheckNull;
 import de.fh_kiel.person.datamodel.PersonDAO;
-import de.fh_kiel.person.stubclass.Developer;
 import de.fh_kiel.person.stubclass.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,9 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.Comparator;
-import java.util.Optional;
-import java.util.TreeSet;
 
 
 /**
@@ -31,45 +27,79 @@ public class PersonService {
     Logger logger = LoggerFactory.getLogger(PersonService.class);
 
     @Autowired
-    private final PersonDAO personDAO;
-
-    // Constructor
-    public PersonService( PersonDAO personDao )
-    {
-        this.personDAO = personDao;
-    }
-
-    /**
-     * Create Person
-     * @param person
-     */
-    @CheckNull
-    public long createPerson(Person person){
-        return personDAO.createPerson(person);
-    }
+    private PersonDAO personDAO;
 
     /**
      * Get All Person
+     *
      * @return
      */
+
     @CheckNull
-    public Collection<Person> getAllPersons(){
-        return personDAO.getAllPersons();
+    public Collection<Person> getAllPersons() {
+        return this.personDAO.findAll();
     }
-
-
-
 
     /**
      * get Person by ID
+     *
      * @param id
      * @return
      */
     @CheckNull
-    public Optional<Person> getPersonById(long id){
-        return personDAO.getPerson(id);
+    public Person getPersonById(long id) {
+        return personDAO.findOne(id);
     }
 
+    /**
+     * Create Person
+     *
+     * @param person
+     * @return
+     */
+//
+//    @CheckNull
+//    public List<Person> createPerson(Person person) {
+//        personDAO.save(person);
+//        return personDAO.findAll();
+//    }
+//
+//    /**
+//     * Delete Person by id
+//     *
+//     * @param id
+//     * @return
+//     */
+//    @CheckNull
+//    public void deletePerson(long id) throws Exception {
+//        if (personDAO.findOne(id).getId() == id) {
+//            System.out.print("amitisinsidedelete: + " + id + "hellodi: " + personDAO.findOne(id));
+//            personDAO.delete(id);
+//        }
+//    }
+//
+//
+//    /**
+//     * Update a Person based on id
+//     * @param person
+//     */
+//    @CheckNull
+//    public void updatePerson(Person person) {
+//        if (personDAO.findOne(person.getId()).getId() == person.getId()) {
+//            System.out.print("amitisinside: + " + person);
+//            personDAO.save(person);
+//        }
+//    }
+//     /* public void updatePerson(Long id) {
+//        Person p = personRepository.findOne(id);
+//        p.setLast_Name("i am changed");
+//        personRepository.save(p);
+//    }*/
+}
+
+
+
+/*
     // Get Person Size
     @CheckNull
     public int getAllPersonsSize(){
@@ -77,36 +107,11 @@ public class PersonService {
     }
 
 
-    /**
-     * Update Person
-     * @param p
-     * @return
-     */
-    @CheckNull
-    public void updatePerson(Person p, long id) {
-        try{
-            personDAO.updatePerson(p, id);
-        }catch (Exception e){
-            logger.warn(e.toString());
-        }
-    }
 
-    /**
-     * Delete Person
-     * @param id
-     * @return
-     */
-    @CheckNull
-    public void deletePerson(long id){
-            personDAO.deletePerson(id);
-    }
-
-
-
-    /**
+    *//**
      * Sort Data
      * @return
-     */
+     *//*
     private TreeSet<Person> sortedData(){
         TreeSet<Person> ts = new TreeSet<>();
         if(personDAO.getAllPersons()!=null){
@@ -115,9 +120,9 @@ public class PersonService {
         return ts;
     }
 
-    /**
+    *//**
      * Display Sorted Data
-     */
+     *//*
     public void showSortedData(){
         for (Person p:sortedData()) {
             System.out.println("Ankit");
@@ -126,29 +131,29 @@ public class PersonService {
     }
 
 
-    /**
+    *//**
      * listPersons
      * Get Person By Programming Language
      * @param programmingLanguage
      * @return
-     */
+     *//*
     public Collection<Person> getPersonByProgLang(final String programmingLanguage) {
 
 
 
 
-        /*final Collection<Person> result = new TreeSet<>(new Comparator<Person>() {
+        *//*final Collection<Person> result = new TreeSet<>(new Comparator<Person>() {
             @Override
             public int compare(final Person o1, final Person o2) {
                 return new CompareToBuilder().append(o1.getLast_Name(), o2.getLast_Name()).append
                         (o1.getFirst_Name(), o2.getFirst_Name()).toComparison();
             }
-        });*/
+        });*//*
 
-        /**
+        *//**
          * Refactored Listpersons mEthod using Lambdas and Method refrences
-         */
-        final Collection<Person> result = new TreeSet<>((Person o1, Person o2)->{
+         *//*
+       *//* final Collection<Person> result = new TreeSet<>((Person o1, Person o2)->{
            return Comparator.comparing(Person::getLast_Name)
                    .thenComparing(Person::getFirst_Name)
                    .compare(o1,o2);
@@ -168,10 +173,9 @@ public class PersonService {
                 }
             }
         }
-        System.out.println("Listperson after comparing:" + result);
-        return result;
+        System.out.println("Listperson after comparing:" + result);*//*
+        return null;
     }
-
+*/
 
     // refactor programming
-}

@@ -28,8 +28,8 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public PersonDAO personDAO() {
-        return new PersonDAOImpl();
+    public PersonDAOold personDAO() {
+        return new PersonDAOoldImpl();
     }*/
 
     @Bean(name = "OBJECT_MAPPER_BEAN")

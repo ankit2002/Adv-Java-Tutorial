@@ -1,9 +1,9 @@
 package de.fh_kiel.person.initializeTables;
 
-import de.fh_kiel.person.repositories.CompanyRepository;
-import de.fh_kiel.person.repositories.PersonRepository;
-import de.fh_kiel.person.repositories.ProgLangRepository;
-import de.fh_kiel.person.repositories.WorkLogRepository;
+import de.fh_kiel.person.datamodel.CompanyDAO;
+import de.fh_kiel.person.datamodel.PersonDAO;
+import de.fh_kiel.person.datamodel.ProgLangDAO;
+import de.fh_kiel.person.datamodel.WorkLogDAO;
 import de.fh_kiel.person.stubclass.*;
 import de.fh_kiel.person.worklog.WorklogDayEntry;
 import de.fh_kiel.person.worklog.WorklogTimeEntry;
@@ -23,16 +23,16 @@ import java.time.LocalTime;
 public class InitialTableLoad implements CommandLineRunner {
 
     @Autowired
-    private PersonRepository personRepository;
+    private PersonDAO personDAO;
 
     @Autowired
-    private WorkLogRepository workLogRepository;
+    private WorkLogDAO workLogDAO;
 
     @Autowired
-    private CompanyRepository companyRepository;
+    private CompanyDAO companyDAO;
 
     @Autowired
-    private ProgLangRepository progLangRepository;
+    private ProgLangDAO progLangDAO;
 
     @Override
     public void run(String... args) throws Exception {
@@ -210,8 +210,8 @@ public class InitialTableLoad implements CommandLineRunner {
         cm2.getCompanyEmpList().add(d1);
         cm2.getCompanyEmpList().add(d2);
 
-        companyRepository.save(cm1);
-        companyRepository.save(cm2);
+        companyDAO.save(cm1);
+        companyDAO.save(cm2);
 
 
         p1.setCompany(cm1);
@@ -229,25 +229,25 @@ public class InitialTableLoad implements CommandLineRunner {
         d2.getWorklogs().add(w7);
         d2.getWorklogs().add(w8);
 
-        personRepository.save(p1);
-        personRepository.save(p2);
-        personRepository.save(d1);
-        personRepository.save(d2);
+        personDAO.save(p1);
+        personDAO.save(p2);
+        personDAO.save(d1);
+        personDAO.save(d2);
 
-        workLogRepository.save(w1);
-        workLogRepository.save(w2);
-        workLogRepository.save(w3);
-        workLogRepository.save(w4);
-        workLogRepository.save(w5);
-        workLogRepository.save(w6);
-        workLogRepository.save(w7);
-        workLogRepository.save(w8);
+        workLogDAO.save(w1);
+        workLogDAO.save(w2);
+        workLogDAO.save(w3);
+        workLogDAO.save(w4);
+        workLogDAO.save(w5);
+        workLogDAO.save(w6);
+        workLogDAO.save(w7);
+        workLogDAO.save(w8);
 
 
-        progLangRepository.save(pl1);
-        progLangRepository.save(pl2);
-        progLangRepository.save(pl3);
-        progLangRepository.save(pl4);
+        progLangDAO.save(pl1);
+        progLangDAO.save(pl2);
+        progLangDAO.save(pl3);
+        progLangDAO.save(pl4);
 
 
     }
