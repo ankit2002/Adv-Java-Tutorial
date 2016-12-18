@@ -30,7 +30,6 @@ public class WorklogDayEntry {
     private Person person;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "worklogDayEntry", cascade = CascadeType.ALL)
     public List<WorklogTimeEntry> getEntries() {
         return entries;
     }

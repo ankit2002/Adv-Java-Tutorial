@@ -2,8 +2,6 @@ package de.fh_kiel.person.worklog;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.time.LocalTime;
 
 /**
@@ -15,20 +13,6 @@ public class WorklogTimeEntry {
     LocalTime begin;
     @Column(name = "WORKLOG_TIME_ENTRY_END")
     LocalTime end;
-
-    @ManyToOne
-    @JoinColumn(name = "WORKLOG_ID")
-    private WorklogDayEntry worklogDayEntry;
-
-
-    public WorklogDayEntry getWorklogDayEntry() {
-        return worklogDayEntry;
-    }
-
-    public void setWorklogDayEntry(WorklogDayEntry worklogDayEntry) {
-        this.worklogDayEntry = worklogDayEntry;
-    }
-
 
     public LocalTime getBegin() {
         return begin;
