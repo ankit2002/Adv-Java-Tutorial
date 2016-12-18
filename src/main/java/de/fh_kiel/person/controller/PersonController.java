@@ -103,30 +103,30 @@ public class PersonController implements ErrorController {
         }
     }
 
-//
-//    /**
-//     * Update person by id
-//     * @param id
-//     * @param person
-//     * @param request
-//     * @param response
-//     */
-//
-//    @RequestMapping(value ="update/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public void updatePerson(@PathVariable("id") long id,@RequestBody Person person, HttpServletRequest request, HttpServletResponse response){
-//        System.out.println("personupdateamit id:" + id);
-//        System.out.println("personupdateamit person:" + person.getId());
-//        if(person.getId() == id){
-//            logger.error("To update a person");
-//            response.setStatus( HttpServletResponse.SC_OK);
-//            personService.updatePerson(person);
-//
-//        }else {
-//            logger.error("Person's ID is not same for updation");
-//            response.setStatus( HttpServletResponse.SC_NOT_FOUND);
-//        }
 
-  //  }
+    /**
+     * Update person by id
+     * @param id
+     * @param person
+     * @param request
+     * @param response
+     */
+
+    @RequestMapping(value ="update/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void updatePerson(@PathVariable("id") long id,@RequestBody Person person, HttpServletRequest request, HttpServletResponse response){
+        System.out.println("personupdateamit id:" + id);
+        System.out.println("personupdateamit person:" + person.getId());
+        if(person.getId() == id){
+            logger.error("To update a person");
+            response.setStatus( HttpServletResponse.SC_OK);
+            personService.updatePerson(person);
+
+        }else {
+            logger.error("Person's ID is not same for updation");
+            response.setStatus( HttpServletResponse.SC_NOT_FOUND);
+        }
+
+    }
 
 
 

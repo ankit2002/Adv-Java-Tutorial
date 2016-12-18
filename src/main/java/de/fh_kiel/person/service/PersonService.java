@@ -79,23 +79,23 @@ public class PersonService {
         }
     }
 
-//
-//    /**
-//     * Update a Person based on id
-//     * @param person
-//     */
-//    @CheckNull
-//    public void updatePerson(Person person) {
-//        if (personDAO.findOne(person.getId()).getId() == person.getId()) {
-//            System.out.print("amitisinside: + " + person);
-//            personDAO.save(person);
-//        }
-//    }
-//     /* public void updatePerson(Long id) {
-//        Person p = personRepository.findOne(id);
-//        p.setLast_Name("i am changed");
-//        personRepository.save(p);
-//    }*/
+
+    /**
+     * Update a Person based on id
+     * @param person
+     */
+    @CheckNull
+    public void updatePerson(Person person) {
+        if (personDAO.findOne(person.getId()).getId() == person.getId()) {
+            System.out.print("amitisinside: + " + person);
+            personDAO.save(person);
+        }
+    }
+     /* public void updatePerson(Long id) {
+        Person p = personRepository.findOne(id);
+        p.setLast_Name("i am changed");
+        personRepository.save(p);
+    }*/
 }
 
 
