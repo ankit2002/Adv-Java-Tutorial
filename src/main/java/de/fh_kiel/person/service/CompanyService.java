@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Ankit on 10/25/2016.
@@ -33,15 +34,15 @@ public class CompanyService {
         this.companyDAO = companyDAO;
     }
 
-//    /**
-//     * Create company
-//     * @param company
-//     */
-//    @CheckNull
-//    public List<Company> createCompany(Company company){
-//         companyDAO.save(company);
-//        return companyDAO.findAll();
-//    }
+    /**
+     * Create company
+     * @param company
+     */
+    @CheckNull
+    public List<Company> createCompany(Company company){
+         companyDAO.save(company);
+        return companyDAO.findAll();
+    }
 
     /**
      * Get All companies

@@ -6,14 +6,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorController;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by amit on 03.11.16.
@@ -66,25 +65,25 @@ public class CompanyController implements ErrorController {
         return company;
     }
 
-//    /**
-//     * Create Company
-//     * @return
-//     */
-//    @RequestMapping(value ="/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public List<Company> createCompany(@RequestBody Company company, HttpServletRequest request, HttpServletResponse response){
-//
-//
-//        if(company !=null){
-//            logger.debug("Company Created");
-//            response.setStatus( HttpServletResponse.SC_OK);
-//        }else {
-//            logger.error("Company object was null and cant be created");
-//            response.setStatus( HttpServletResponse.SC_NOT_FOUND);
-//        }
-//        return this.companyService.createCompany(company);
-//
-//    }
-//
+    /**
+     * Create Company
+     * @return
+     */
+    @RequestMapping(value ="/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public List<Company> createCompany(@RequestBody Company company, HttpServletRequest request, HttpServletResponse response){
+
+
+        if(company !=null){
+            logger.debug("Company Created");
+            response.setStatus( HttpServletResponse.SC_OK);
+        }else {
+            logger.error("Company object was null and cant be created");
+            response.setStatus( HttpServletResponse.SC_NOT_FOUND);
+        }
+        return this.companyService.createCompany(company);
+
+    }
+
 //
 //    /**
 //     * Update Company
