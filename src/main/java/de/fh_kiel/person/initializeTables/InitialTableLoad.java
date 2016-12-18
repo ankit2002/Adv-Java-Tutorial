@@ -41,6 +41,7 @@ public class InitialTableLoad implements CommandLineRunner {
          * Project Manager details loaded
          */
 
+
         ProjectManager p1 = new ProjectManager();
         ProjectManager p2 = new ProjectManager();
 
@@ -64,48 +65,6 @@ public class InitialTableLoad implements CommandLineRunner {
         p2.setMin_Salary(1000.00);
 
         p2.setPmExp(10);
-
-        /**
-         * Project manager Work log loaded
-         */
-        WorklogDayEntry w1 = new WorklogDayEntry();
-        WorklogDayEntry w2 = new WorklogDayEntry();
-
-
-
-        WorklogTimeEntry wt1 = new WorklogTimeEntry();
-        WorklogTimeEntry wt2 = new WorklogTimeEntry();
-        WorklogTimeEntry wt3 = new WorklogTimeEntry();
-        WorklogTimeEntry wt4 = new WorklogTimeEntry();
-
-
-        wt1.setBegin(LocalTime.MIN);
-        wt1.setEnd(LocalTime.MAX);
-        wt1.setWorklogDayEntry(w1);
-        wt2.setBegin(LocalTime.MIN);
-        wt2.setEnd(LocalTime.MAX);
-        wt2.setWorklogDayEntry(w2);
-        wt3.setBegin(LocalTime.MIN);
-        wt3.setEnd(LocalTime.MAX);
-        wt3.setWorklogDayEntry(w1);
-        wt4.setBegin(LocalTime.MIN);
-        wt4.setEnd(LocalTime.MAX);
-        wt4.setWorklogDayEntry(w2);
-
-        w1.setDay(LocalDate.now());
-        w2.setDay(LocalDate.now());
-
-
-
-        w1.getEntries().add(wt1);
-        w2.getEntries().add(wt2);
-        w1.getEntries().add(wt1);
-        w2.getEntries().add(wt2);
-
-
-        w1.setPerson(p1);
-        w2.setPerson(p1);
-
 
         /**
          * Developer details loaded
@@ -148,16 +107,12 @@ public class InitialTableLoad implements CommandLineRunner {
 
         wt5.setBegin(LocalTime.MIN);
         wt5.setEnd(LocalTime.MAX);
-        wt5.setWorklogDayEntry(w5);
         wt6.setBegin(LocalTime.MIN);
         wt6.setEnd(LocalTime.MAX);
-        wt6.setWorklogDayEntry(w6);
         wt7.setBegin(LocalTime.MIN);
         wt7.setEnd(LocalTime.MAX);
-        wt7.setWorklogDayEntry(w5);
         wt8.setBegin(LocalTime.MIN);
         wt8.setEnd(LocalTime.MAX);
-        wt8.setWorklogDayEntry(w6);
 
         w5.setDay(LocalDate.now());
         w6.setDay(LocalDate.now());
@@ -173,6 +128,83 @@ public class InitialTableLoad implements CommandLineRunner {
         w6.setPerson(d1);
 
 
+        /**
+         * Company load details
+         */
+        Company cm1 = new Company();
+        cm1.setCompanyName("Bosch");
+        Company cm2 = new Company();
+        cm2.setCompanyName("Google");
+        cm1.getCompanyEmpList().add(p1);
+        cm1.getCompanyEmpList().add(p2);
+        cm2.getCompanyEmpList().add(d1);
+        cm2.getCompanyEmpList().add(d2);
+
+        companyDAO.save(cm1);
+        companyDAO.save(cm2);
+
+        p1.setCompany(cm1);
+        p2.setCompany(cm1);
+        d1.setCompany(cm2);
+        d2.setCompany(cm2);
+
+        /**
+         * Project manager Work log loaded
+         */
+        WorklogDayEntry w1 = new WorklogDayEntry();
+        WorklogDayEntry w2 = new WorklogDayEntry();
+
+
+
+        WorklogTimeEntry wt1 = new WorklogTimeEntry();
+        WorklogTimeEntry wt2 = new WorklogTimeEntry();
+        WorklogTimeEntry wt3 = new WorklogTimeEntry();
+        WorklogTimeEntry wt4 = new WorklogTimeEntry();
+
+
+        wt1.setBegin(LocalTime.MIN);
+        wt1.setEnd(LocalTime.MAX);
+        wt2.setBegin(LocalTime.MIN);
+        wt2.setEnd(LocalTime.MAX);
+        wt3.setBegin(LocalTime.MIN);
+        wt3.setEnd(LocalTime.MAX);
+        wt4.setBegin(LocalTime.MIN);
+        wt4.setEnd(LocalTime.MAX);
+
+        w1.setDay(LocalDate.now());
+        w2.setDay(LocalDate.now());
+
+
+
+        w1.getEntries().add(wt1);
+        w2.getEntries().add(wt2);
+        w1.getEntries().add(wt3);
+        w2.getEntries().add(wt4);
+
+
+        w1.setPerson(p1);
+        w2.setPerson(p1);
+
+
+        p1.getWorklogs().add(w1);
+        p1.getWorklogs().add(w2);
+
+
+        d1.getWorklogs().add(w5);
+        d1.getWorklogs().add(w6);
+
+
+        personDAO.save(p1);
+        personDAO.save(p2);
+        personDAO.save(d1);
+        personDAO.save(d2);
+
+
+        workLogDAO.save(w1);
+        workLogDAO.save(w2);
+
+        workLogDAO.save(w5);
+        workLogDAO.save(w6);
 
         /**
          * Programming Languages loaded for the Developer
@@ -191,57 +223,10 @@ public class InitialTableLoad implements CommandLineRunner {
         pl1.getDeveloperlist().add(d2);
         pl2.getDeveloperlist().add(d2);
 
-
-
-
-
         d1.getProglanglist().add(pl1);
         d1.getProglanglist().add(pl2);
         d2.getProglanglist().add(pl1);
         d2.getProglanglist().add(pl2);
-
-        /**
-         * Company details loaded for both developer and project managed
-         */
-
-        Company cm1 = new Company();
-        cm1.setCompanyName("Bosch");
-        Company cm2 = new Company();
-        cm2.setCompanyName("Google");
-        cm1.getCompanyEmpList().add(p1);
-        cm1.getCompanyEmpList().add(p2);
-        cm2.getCompanyEmpList().add(d1);
-        cm2.getCompanyEmpList().add(d2);
-
-        companyDAO.save(cm1);
-        companyDAO.save(cm2);
-
-
-        p1.setCompany(cm1);
-        p2.setCompany(cm1);
-        d1.setCompany(cm2);
-        d2.setCompany(cm2);
-
-        p1.getWorklogs().add(w1);
-        p1.getWorklogs().add(w2);
-
-
-        d1.getWorklogs().add(w5);
-        d1.getWorklogs().add(w6);
-
-
-        personDAO.save(p1);
-        personDAO.save(p2);
-        personDAO.save(d1);
-        personDAO.save(d2);
-
-        workLogDAO.save(w1);
-        workLogDAO.save(w2);
-
-        workLogDAO.save(w5);
-        workLogDAO.save(w6);
-
-
 
         progLangDAO.save(pl1);
         progLangDAO.save(pl2);

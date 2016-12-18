@@ -23,13 +23,14 @@ public class WorklogDayEntry {
 
     @ElementCollection
     @JoinTable(name = "PERSON_WORKLOG_TIME_ENTRY")
+    @JsonIgnore
     List<WorklogTimeEntry> entries = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "PERSON_ID")
     private Person person;
 
-    @JsonIgnore
+
     public List<WorklogTimeEntry> getEntries() {
         return entries;
     }
