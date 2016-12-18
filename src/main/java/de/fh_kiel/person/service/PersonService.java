@@ -65,20 +65,20 @@ public class PersonService {
         return personDAO.findAll();
     }
 
-//    /**
-//     * Delete Person by id
-//     *
-//     * @param id
-//     * @return
-//     */
-//    @CheckNull
-//    public void deletePerson(long id) throws Exception {
-//        if (personDAO.findOne(id).getId() == id) {
-//            System.out.print("amitisinsidedelete: + " + id + "hellodi: " + personDAO.findOne(id));
-//            personDAO.delete(id);
-//        }
-//    }
-//
+    /**
+     * Delete Person by id
+     *
+     * @param id
+     * @return
+     */
+    @CheckNull
+    public void deletePerson(long id) throws Exception {
+        if (personDAO.findOne(id).getId() == id) {
+            System.out.print("amitisinsidedelete: + " + id + "hellodi: " + personDAO.findOne(id));
+            personDAO.delete(id);
+        }
+    }
+
 //
 //    /**
 //     * Update a Person based on id

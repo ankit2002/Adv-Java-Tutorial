@@ -86,23 +86,23 @@ public class PersonController implements ErrorController {
         return this.personService.createPerson(person);
     }
 
-//    /**
-//     * Delete a person based on the ID
-//     * @param id
-//     * @param request
-//     * @param response
-//     */
-//
-//    @RequestMapping(value = "delete/{id}", method = RequestMethod.DELETE)
-//    public void  deletePerson(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response) {
-//        logger.debug("To delete a person by id");
-//        try{
-//            personService.deletePerson(id);
-//        }catch (Exception e){
-//            logger.error("Exception during delete: " + e);
-//        }
-//    }
-//
+    /**
+     * Delete a person based on the ID
+     * @param id
+     * @param request
+     * @param response
+     */
+
+    @RequestMapping(value = "delete/{id}", method = RequestMethod.DELETE)
+    public void  deletePerson(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response) {
+        logger.debug("To delete a person by id");
+        try{
+            personService.deletePerson(id);
+        }catch (Exception e){
+            logger.error("Exception during delete: " + e);
+        }
+    }
+
 //
 //    /**
 //     * Update person by id
