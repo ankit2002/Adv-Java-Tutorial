@@ -98,6 +98,7 @@ public class PersonController implements ErrorController {
         logger.debug("To delete a person by id");
         try{
             personService.deletePerson(id);
+            response.setStatus( HttpServletResponse.SC_OK);
         }catch (Exception e){
             logger.error("Exception during delete: " + e);
         }

@@ -2,22 +2,18 @@ package de.fh_kiel.person.controller;
 
 import de.fh_kiel.person.service.CompanyService;
 import de.fh_kiel.person.stubclass.Company;
-import de.fh_kiel.person.stubclass.Gender;
-import de.fh_kiel.person.stubclass.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorController;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.Optional;
 
 /**
  * Created by amit on 03.11.16.
@@ -58,64 +54,69 @@ public class CompanyController implements ErrorController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Company getCompanyById(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response){
 
-        Optional<Company> company = companyService.getCompanyById(id);
-        if (company.isPresent()){
-            logger.debug("Object is not Null");
+        Company company = companyService.getCompanyById(id);
+        if (company != null){
+            logger.debug("Get company by id");
             response.setStatus( HttpServletResponse.SC_OK);
-            return company.get();
         }
         else{
-            logger.error("Object is NULLABLE, Default object set to : " + (new Company(0L, "Default Company",new ArrayList<Person>())));
+            logger.error("No Company found with this id");
             response.setStatus( HttpServletResponse.SC_NOT_FOUND);
-            return company.orElse(new Company(0L, "Default Company", new ArrayList<Person>(Arrays.asList(new Person ("Default", "User", LocalDate.of(1900,1,1), Gender.Male, null)))));
         }
+        return company;
     }
 
-    /**
-     * Create Company
-     * @return
-     */
-    @RequestMapping(value ="/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public long createCompany(@RequestBody Company company, HttpServletRequest request, HttpServletResponse response){
-
-        long id = companyService.createCompany(company);
-        if(id == 0L){
-            throw new IllegalArgumentException("Company ID should not be 0");
-        }else {
-            response.setStatus(HttpServletResponse.SC_OK);
-            logger.debug("To create a company");
-            return id;
-        }
-    }
-
-
-    /**
-     * Update Company
-     * @param id
-     * @param company
-     */
-    @RequestMapping(value ="/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void updateCompany(@PathVariable("id") long id,@RequestBody Company company, HttpServletRequest request, HttpServletResponse response){
-        if(company.getCompanyid() == id){
-            response.setStatus(HttpServletResponse.SC_OK);
-            logger.debug("To update a company");
-            companyService.updateCompany(company, id);
-        }else {
-            logger.error("Companies ID is not same for updation");
-        }
-
-    }
-
-    /**
-     * Delete Company
-     * @param id
-     */
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deleteCompany(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response){
-        response.setStatus(HttpServletResponse.SC_OK);
-        logger.debug("To delete a company by id");
-        companyService.deleteCompany(id);
-    }
+//    /**
+//     * Create Company
+//     * @return
+//     */
+//    @RequestMapping(value ="/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+//    public List<Company> createCompany(@RequestBody Company company, HttpServletRequest request, HttpServletResponse response){
+//
+//
+//        if(company !=null){
+//            logger.debug("Company Created");
+//            response.setStatus( HttpServletResponse.SC_OK);
+//        }else {
+//            logger.error("Company object was null and cant be created");
+//            response.setStatus( HttpServletResponse.SC_NOT_FOUND);
+//        }
+//        return this.companyService.createCompany(company);
+//
+//    }
+//
+//
+//    /**
+//     * Update Company
+//     * @param id
+//     * @param company
+//     */
+//    @RequestMapping(value ="/update/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+//    public void updateCompany(@PathVariable("id") long id,@RequestBody Company company, HttpServletRequest request, HttpServletResponse response){
+//        if(company.getCompanyid() == id){
+//            response.setStatus(HttpServletResponse.SC_OK);
+//            logger.debug("To update a company");
+//            companyService.updateCompany(company);
+//        }else {
+//            logger.error("Companies ID is not same for updation");
+//        }
+//
+//    }
+//
+//    /**
+//     * Delete Company
+//     * @param id
+//     */
+//    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+//    public void deleteCompany(@PathVariable("id") long id, HttpServletRequest request, HttpServletResponse response){
+//        logger.debug("To delete a company by id");
+//        try{
+//            companyService.deleteCompany(id);
+//            response.setStatus(HttpServletResponse.SC_OK);
+//        }catch (Exception e){
+//            logger.error("Exception during delete: " + e);
+//        }
+//    }
 
     /**
      * Error Handling
