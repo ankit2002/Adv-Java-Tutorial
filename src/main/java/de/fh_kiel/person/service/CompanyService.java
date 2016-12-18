@@ -68,15 +68,15 @@ public class CompanyService {
      * @param company
      * @return
      */
-//    @CheckNull
-//    public void updateCompany(Company company) {
-//        if(companyDAO.findOne(company.getCompanyid()).getCompanyid() == company.getCompanyid()){
-//            System.out.print("amitcompanyupdate: + " + company);
-//            companyDAO.save(company);
-//        }
-//    }
-//
-//
+    @CheckNull
+    public void updateCompany(Company company) {
+        if(companyDAO.findOne(company.getCompanyid()).getCompanyid() == company.getCompanyid()){
+            System.out.print("amitcompanyupdate: + " + company);
+            companyDAO.save(company);
+        }
+    }
+
+
 //    /**
 //     * Delete company
 //     * @param id

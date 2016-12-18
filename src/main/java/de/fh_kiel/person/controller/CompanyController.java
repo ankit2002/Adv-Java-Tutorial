@@ -84,23 +84,23 @@ public class CompanyController implements ErrorController {
 
     }
 
-//
-//    /**
-//     * Update Company
-//     * @param id
-//     * @param company
-//     */
-//    @RequestMapping(value ="/update/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public void updateCompany(@PathVariable("id") long id,@RequestBody Company company, HttpServletRequest request, HttpServletResponse response){
-//        if(company.getCompanyid() == id){
-//            response.setStatus(HttpServletResponse.SC_OK);
-//            logger.debug("To update a company");
-//            companyService.updateCompany(company);
-//        }else {
-//            logger.error("Companies ID is not same for updation");
-//        }
-//
-//    }
+
+    /**
+     * Update Company
+     * @param id
+     * @param company
+     */
+    @RequestMapping(value ="/update/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void updateCompany(@PathVariable("id") long id,@RequestBody Company company, HttpServletRequest request, HttpServletResponse response){
+        if(company.getCompanyid() == id){
+            response.setStatus(HttpServletResponse.SC_OK);
+            logger.debug("To update a company");
+            companyService.updateCompany(company);
+        }else {
+            logger.error("Companies ID is not same for updation");
+        }
+
+    }
 //
 //    /**
 //     * Delete Company
